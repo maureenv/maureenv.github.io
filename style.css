@@ -8,22 +8,22 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', end
 
 background-size: center center;
 
-;
-
-overflow: hidden;
-	
+overflow-y: scroll;
+overflow-y: -moz-scrollbars-vertical;	
 }
 
-body {
-	height: 1000px;
-}
+
 
 h1 {
-	padding-top: 100px;
+
 	text-align: center;
 	color: black;
 	font-size: 6em;
 	font-family: arial;
+}
+
+body {
+	height: 650px;
 }
 
 .asterisk {
@@ -48,7 +48,7 @@ h2 {
 	max-width: 300px;
 	margin: auto;
 	margin-top: 50px;
-	margin-bottom: 50px;
+	margin-bottom: 100px;
 }
 
 
@@ -57,7 +57,7 @@ img {
 	height: 300px;
 }
 
-a {
+*{
 	outline: 0; /* remove dotted outline from lik */
 }
 
