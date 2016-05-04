@@ -116,3 +116,16 @@ h2 {
 	height: 800px;
 	background-color: yellow;
 }
+
+/* MEDIA QUERI */
+@media screen and (min-width: 1500px) {
+	h2 {
+		font-size: 40px;
+	}
+}
+
+@media screen and (min-width: 1700px) {
+	h2 {
+		font-size: 50px;
+	}
+}
