@@ -129,3 +129,17 @@ h2 {
 		font-size: 50px;
 	}
 }
+
+@media screen and (max-width: 500px) {
+	h1 {
+		font-size: 45px;
+	}
+
+
+	h2 {
+		font-size: 20px;
+		max-width: 90%;
+		margin: 0 auto;
+		padding-top: 45vh;
+	}
+}
