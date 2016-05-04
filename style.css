@@ -131,6 +131,9 @@ h2 {
 }
 
 @media screen and (max-width: 500px) {
+	.stars {
+		display: none;
+	}
 	.welcome {
 		background: url('images/backgroundsmall.jpg');
 		no-repeat center center fixed;
@@ -144,12 +147,34 @@ h2 {
 	}
 
 	h1 {
-		font-size: 45px;
+		font-size: 50px;
 	}
 	h2 {
 		font-size: 20px;
 		max-width: 90%;
 		margin: 0 auto;
-		padding-top: 45vh;
+		padding-top: 20px;
+		text-shadow: black 2px 2px 1px;
+		color: white;
 	}
 }
+
+@media screen and (max-width: 350px) {
+	.welcome {
+		background: url('images/background300.jpg');
+		no-repeat center center fixed;
+	  -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
+		height: 100vh;
+		z-index: -100;
+		position: relative;
+	}
+	h1 {
+		padding-top: 10vh;
+		font-size: 40px;
+	}
+
+
+};
