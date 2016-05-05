@@ -110,12 +110,38 @@ h2 {
     -moz-animation-name: twinkle;
     -moz-animation-timing-function: ease-in-out;
 }
+/*<div class="mac_container">
+<img src="images/mac.png" class="mac">
+<video autoplay loop class="tempermetro">
+  <source src="images/tempermetro.mp4" type="video/mp4">
+  </video>
+</div>*/
+.web_container {
+	padding-top: 50px;
+	width: 80%;
+	margin: auto;
 
-.yellow {
-	width: 100%;
-	height: 800px;
-	background-color: yellow;
 }
+.mac_container {
+	width: 100%;
+	position: relative;
+}
+
+.mac {
+	width: 100%;
+	position: absolute;
+	margin: auto;
+}
+
+.tempermetro {
+	position: absolute;
+	width: 66%;
+	margin-left: 17%;
+	margin-top: 3.3%;
+	z-index: -100;
+}
+
+
 
 /* MEDIA QUERI */
 @media screen and (min-width: 1500px) {
