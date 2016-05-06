@@ -110,12 +110,7 @@ h2 {
     -moz-animation-name: twinkle;
     -moz-animation-timing-function: ease-in-out;
 }
-/*<div class="mac_container">
-<img src="images/mac.png" class="mac">
-<video autoplay loop class="tempermetro">
-  <source src="images/tempermetro.mp4" type="video/mp4">
-  </video>
-</div>*/
+/**************** WEB WORK ******************/
 .web_container {
 	padding-top: 50px;
 	width: 80%;
@@ -125,6 +120,7 @@ h2 {
 .mac_container {
 	width: 100%;
 	position: relative;
+		/*outline: red solid 1px;*/
 }
 
 .mac {
@@ -141,8 +137,84 @@ h2 {
 	z-index: -100;
 }
 
+.des_container {
+	max-width: 800px;
+	position: relative;
+	/*outline: red solid 1px;*/
+	padding-top: 53%;
+	padding-left: 3%;
+	margin-bottom: 100px;
+}
+
+.title, .description {
+		font-family: 'Source Sans Pro', sans-serif;
+}
+
+.title {
+	font-size: 55px;
+	font-weight: 600;
+	padding-bottom: 20px;
+}
+
+.description {
+	line-height: 1.4;
+	font-size: 20px;
+	color: #646467;
+	clear: left;
+}
+
+.tools {
+	color: black;
+	font-size: 25px;
+	font-weight: 600;
+}
+
+.each_tool {
+	background-color: #646467;
+	color: white;
+	padding: 10px;
+	font-size: 18px;
+	float: left;
+	margin-top: 15px;
+	margin-right: 10px;
+	border-radius: 10px;
+}
+.break {
+	padding-top: 20px;
+}
+
+.site_link {
+	text-decoration: none;
+	color: white;
+	padding: 15px;
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 20px;
+	background-color: orange;
+	font-size: 20px;
+	font-weight: 600;
+	border-radius: 10px;
+	font-family: 'Source Sans Pro', sans-serif;
+	clear: right;
+	display: block;
+	transition: background-color 0.5s ease;
+}
 
 
+
+.site_link.git_icon span{
+	padding-left: 40px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	background: url('images/github-logo.svg') no-repeat;
+	background-size: 30px 30px;
+	background-position: 0;
+	z-index: 100;
+}
+
+.site_link:hover{
+	background-color: #d13b00;
+}
 /* MEDIA QUERI */
 @media screen and (min-width: 1500px) {
 	h2 {
@@ -160,6 +232,7 @@ h2 {
 	.stars {
 		display: none;
 	}
+
 	.welcome {
 		background: url('images/backgroundsmall.jpg');
 		no-repeat center center fixed;
@@ -182,6 +255,25 @@ h2 {
 		padding-top: 20px;
 		text-shadow: black 2px 2px 1px;
 		color: white;
+	}
+
+	.web_container {
+		width: 90%;
+	}
+
+	.title {
+		font-size: 45px;
+	}
+	.site_link {
+		font-size: 17px;
+	}
+
+	.each_tool {
+		font-size: 16px;
+	}
+
+	.description {
+		font-size: 17px;
 	}
 }
 
