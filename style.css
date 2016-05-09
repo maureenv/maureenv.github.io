@@ -104,8 +104,8 @@ h2 {
 	-webkit-justify-content: center;
 	justify-content: center;
 	overflow: hidden;
-	/*background-color: black;
-	background: url('http://api.thumbr.it/whitenoise-361x370.png?background=000000ff&noise=ffffff&density=55&opacity=11');*/
+	background-color: black;
+	background: url('http://api.thumbr.it/whitenoise-361x370.png?background=000000ff&noise=ffffff&density=55&opacity=11');
 	z-index: -2000;
 
 
