@@ -30,7 +30,48 @@ body {
 ol, ul {
 	list-style: none;
 }
-/* END RESET */
+/****************************************** END RESET */
+
+.title_container{
+	width: 100%;
+	height: 150px;
+	clear: left;
+
+background: rgba(169,3,41,1);
+background: -moz-linear-gradient(left, rgba(169,3,41,1) 0%, rgba(143,2,34,1) 44%, rgba(109,0,25,1) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(169,3,41,1)), color-stop(44%, rgba(143,2,34,1)), color-stop(100%, rgba(109,0,25,1)));
+background: -webkit-linear-gradient(left, rgba(169,3,41,1) 0%, rgba(143,2,34,1) 44%, rgba(109,0,25,1) 100%);
+background: -o-linear-gradient(left, rgba(169,3,41,1) 0%, rgba(143,2,34,1) 44%, rgba(109,0,25,1) 100%);
+background: -ms-linear-gradient(left, rgba(169,3,41,1) 0%, rgba(143,2,34,1) 44%, rgba(109,0,25,1) 100%);
+background: linear-gradient(to right, rgba(169,3,41,1) 0%, rgba(143,2,34,1) 44%, rgba(109,0,25,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019', GradientType=1 );
+}
+
+p {
+
+	color: white;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 50px;
+	text-align: center;
+	width: 100%;
+	font-weight: 900;
+
+
+}
+
+.title_icon{
+	display: flex;
+	display:-webkit-flex;
+	-webkit-align-items:center;
+	justify-content: center;
+	width: 80px;
+	margin: 0 auto;
+}
+
+.graphic_icon{
+	width: 70px;
+	padding-top: 10px;
+}
 h1, h2 {
 	color: white;
 	text-align: center;
@@ -38,78 +79,31 @@ h1, h2 {
 }
 
 h1 {
+	width: 100%;
 	font-weight: 900;
-	padding-top: 20vh;
 	font-size: 10vw;
 	z-index: 1000;
-	text-shadow: black 0.1em 0.1em 0.2em
+	text-shadow: black 0.1em 0.1em 0.2em;
 }
 
 h2 {
 	font-size: 30px;
-	padding-top: 40vh;
 	font-style: italic;
-	color: #abbcc4;
+	color: black;
+	padding-top: 30px;
 }
 .welcome {
-	background: url('images/background.jpg') no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
 	height: 100vh;
-	z-index: -100;
-	position: relative;
-}
-.stars {
 	width: 100%;
-	height: 100vh;
-	position: absolute;
-		z-index: -50;
+	position: relative;
+	display: flex;
+	display:-webkit-flex;
+	align-items:center;
+	-webkit-align-items:center;
+	justify-content: center;
 }
-/* animation for stars */
 
-@-webkit-keyframes twinkle {
-    0% {
-        opacity:1;
-    }
-    50% {
-        opacity:0;
-    }
-    100% {
-        opacity:1;
-    }
-}
-@-moz-keyframes twinkle {
-    0% {
-        opacity:1;
-    }
-    50% {
-        opacity:0;
-    }
-    100% {
-        opacity:1;
-    }
-}
-.stars {
--webkit-transition: all 1s ease-in-out;
-    -moz-transition: all 1s ease-in-out;
-    -o-transition: all 1s ease-in-out;
-    -ms-transition: all 1s ease-in-out;
-    transition: all 1s ease-in-out;
 
-    -webkit-animation-direction: normal;
-    -webkit-animation-duration: 2s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-name: twinkle;
-    -webkit-animation-timing-function: ease-in-out;
-
--moz-animation-direction: normal;
-    -moz-animation-duration: 2s;
-    -moz-animation-iteration-count: infinite;
-    -moz-animation-name: twinkle;
-    -moz-animation-timing-function: ease-in-out;
-}
 /**************** WEB WORK ******************/
 .web_container {
 	padding-top: 50px;
@@ -201,8 +195,6 @@ h2 {
 	transition: background-color 0.5s ease;
 }
 
-
-
 .site_link.git_icon span{
 	padding-left: 40px;
 	padding-top: 15px;
@@ -216,6 +208,114 @@ h2 {
 .site_link:hover{
 	background-color: #d13b00;
 }
+
+.logo_container {
+	padding-top: 50px;
+	width: 90%;
+	margin: auto;
+	clear: left;
+}
+
+.logo_1_container {
+	position: relative;
+	width: 27%;
+	margin-top: -3%;
+	float: left;
+}
+
+.logo1, .logo2, .logo3, .logo4 {
+	width: 100%;
+	position: relative;
+}
+
+.overlay {
+ 	top: 0;
+  position: absolute;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  display: flex;
+	display:-webkit-flex;
+	align-items:center;
+	justify-content: center;
+	-webkit-align-items:center;
+	text-align: center;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 600;
+	font-size: 24px;
+  opacity: 0;
+	 -webkit-transition: opacity 0.3s ease-in-out;
+  -moz-transition: opacity 0.3s ease-in-out;
+  -o-transition: opacity 0.3s ease-in-out;
+  -ms-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+
+}
+
+.overlay_with_link {
+ 	top: 0;
+  position: absolute;
+  background-color: white;
+	padding-top: 40%;
+  width: 100%;
+  height: 100%;
+	align-items:center;
+	-webkit-align-items:center;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 600;
+	font-size: 24px;
+  opacity: 0;
+	 -webkit-transition: opacity 0.3s ease-in-out;
+  -moz-transition: opacity 0.3s ease-in-out;
+  -o-transition: opacity 0.3s ease-in-out;
+  -ms-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.overlay_with_link > a {
+	text-decoration: none;
+	color: orange;
+}
+
+.logo_1_container:hover > .overlay{
+  opacity: 0.95;
+}
+
+.logo_2_container {
+	position: relative;
+	width: 18%;
+	margin: 1%;
+	float: left;
+}
+
+.logo_2_container:hover > .overlay {
+	opacity: 0.95;
+}
+
+.logo_3_container {
+	position: relative;
+	width: 27%;
+	margin-top: -3%;
+	float: left;
+}
+
+.logo_3_container:hover> .overlay_with_link {
+	opacity: 0.95;
+}
+
+.logo_4_container {
+	width: 25%;
+	margin-top: -3%;
+	position: relative;
+	float: left;
+}
+
+.logo_4_container:hover > .overlay_with_link {
+	opacity: 0.95;
+}
+
+
+
 /* MEDIA QUERI */
 @media screen and (min-width: 1500px) {
 	h2 {
