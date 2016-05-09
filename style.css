@@ -448,6 +448,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4be8c1', end
 	h2 {
 		font-size: 50px;
 	}
+
+	.shape1 {
+		top: -1000;
+		left: -700;
+		z-index: -1000;
+		height: 2000px;
+		width: 2000px;
+		position: absolute;
+		border-radius: 1000px;
+		border-bottom-left-radius: 700px;
+		border-top-right-radius: 1300px;
+	}
 }
 
 @media screen and (max-width: 500px) {
