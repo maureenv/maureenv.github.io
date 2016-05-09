@@ -110,15 +110,16 @@ h2 {
 }
 
 .shape3 {
-	top: -500px;
+	top: -1000px;
 	z-index: -1000;
-	height: 1000px;
-	width: 1000px;
+	height: 2000px;
+	width: 2000px;
 	position: absolute;
-	border-radius: 800px;
-	border-top-left-radius: 400px;
-	border-bottom-left-radius: 500px;
-	border-top-right-radius: 600px;
+	border-radius: 1600px;
+	border-top-left-radius: 800px;
+	border-bottom-left-radius: 1000px;
+	border-top-right-radius: 1200px;
+
 
 	background: rgba(255,0,132,1);
 	background: -moz-linear-gradient(left, rgba(255,0,132,1) 0%, rgba(137,0,191,1) 100%);
@@ -131,16 +132,15 @@ h2 {
 }
 
 .shape4 {
-	top: -500px;
+	top: -1000px;
 	z-index: -1200;
-	height: 1000px;
-	width: 1000px;
+	height: 2000px;
+	width: 2000px;
 	position: absolute;
-	border-radius: 500px;
-	border-top-left-radius: 600px;
-	border-bottom-left-radius: 800px;
-	border-top-right-radius: 400px;
-
+	border-radius: 1000px;
+	border-top-left-radius: 1200px;
+	border-bottom-left-radius: 1600px;
+	border-top-right-radius: 800px;
 
 background: rgba(87,235,255,1);
 background: -moz-linear-gradient(left, rgba(87,235,255,1) 0%, rgba(0,124,191,1) 100%);
