@@ -391,15 +391,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#57ebff', end
 	h2 {
 		font-size: 40px;
 	}
-}
-
-@media screen and (min-width: 1700px) {
-	h2 {
-		font-size: 50px;
-	}
-
 	.shape3 {
-		top: -500px;
+		top: -1000px;
 		z-index: -1000;
 		height: 2000px;
 		width: 2000px;
@@ -411,7 +404,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#57ebff', end
 	}
 
 	.shape4 {
-		top: -500px;
+		top: -1000px;
 		z-index: -1200;
 		height: 2000px;
 		width: 2000px;
@@ -421,6 +414,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#57ebff', end
 		border-bottom-left-radius: 1600px;
 		border-top-right-radius: 800px;
 	}
+}
+
+@media screen and (min-width: 1700px) {
+	h2 {
+		font-size: 50px;
+	}
+
 }
 
 @media screen and (max-width: 500px) {
