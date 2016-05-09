@@ -93,6 +93,7 @@ h2 {
 	color: white;
 	padding-top: 30px;
 }
+
 .welcome {
 	height: 100vh;
 	width: 100%;
@@ -104,11 +105,7 @@ h2 {
 	-webkit-justify-content: center;
 	justify-content: center;
 	overflow: hidden;
-	background-color: black;
-	background: url('http://api.thumbr.it/whitenoise-361x370.png?background=000000ff&noise=ffffff&density=55&opacity=11');
 	z-index: -2000;
-
-
 }
 
 .shape3 {
@@ -155,17 +152,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#57ebff', end
 
 }
 
-
-.shape_animate {
-  opacity: 0.8;
-  animation: spin 10s linear infinite;
-	  animation-delay: -2.4s;
-}
-
-.shape_animate2 {
-  opacity: 0.8;
-  animation: spin 8s linear infinite;
-}
 
 .shape_animate3 {
   opacity: 0.8;
@@ -412,16 +398,28 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#57ebff', end
 		font-size: 50px;
 	}
 
-	.shape1 {
-		top: -1000;
-		left: -700;
+	.shape3 {
+		top: -500px;
 		z-index: -1000;
 		height: 2000px;
 		width: 2000px;
 		position: absolute;
+		border-radius: 1600px;
+		border-top-left-radius: 800px;
+		border-bottom-left-radius: 1000px;
+		border-top-right-radius: 1200px;
+	}
+
+	.shape4 {
+		top: -500px;
+		z-index: -1200;
+		height: 2000px;
+		width: 2000px;
+		position: absolute;
 		border-radius: 1000px;
-		border-bottom-left-radius: 700px;
-		border-top-right-radius: 1300px;
+		border-top-left-radius: 1200px;
+		border-bottom-left-radius: 1600px;
+		border-top-right-radius: 800px;
 	}
 }
 
