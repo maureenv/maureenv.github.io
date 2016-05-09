@@ -156,14 +156,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#57ebff', end
 
 .shape_animate3 {
   opacity: 0.8;
-  animation: spin 5s linear infinite;
+  animation: spin 13s linear infinite;
 	animation-delay: -1.4s;
 }
 
 .shape_animate4 {
   opacity: 0.8;
   animation: spin 9s linear infinite;
-	animation-delay: -1s;
 }
 
 @keyframes spin {
