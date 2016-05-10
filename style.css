@@ -46,6 +46,9 @@ ol, ul {
 	background: linear-gradient(to right, rgba(87,235,255,1) 0%, rgba(0,124,191,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#57ebff', endColorstr='#007cbf', GradientType=1 );
 
+	background-image: url('images/purplebar.jpg');
+	background-size: 100%;
+
 }
 
 p {
@@ -96,6 +99,7 @@ h2 {
 }
 
 .welcome {
+	z-index: 500;
 	height: 100vh;
 	width: 100%;
 	position: relative;
@@ -106,12 +110,25 @@ h2 {
 	-webkit-justify-content: center;
 	justify-content: center;
 	overflow: hidden;
-	z-index: -2000;
+}
+
+.computer {
+	z-index: -2;
+	opacity: 0.5;
+	top: 0;
+	width: 100%;
+	height: 100vh;
+	position: absolute;
+	background: url('images/computer.svg') no-repeat center center fixed;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
 }
 
 .shape3 {
 	top: -1000px;
-	z-index: -1000;
+	z-index: -1;
 	height: 2000px;
 	width: 2000px;
 	position: absolute;
@@ -133,7 +150,7 @@ h2 {
 
 .shape4 {
 	top: -1000px;
-	z-index: -1200;
+	z-index: -3;
 	height: 2000px;
 	width: 2000px;
 	position: absolute;
@@ -283,8 +300,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#57ebff', end
 	padding-top: 50px;
 	width: 90%;
 	margin: auto;
-	clear: left;
+	clear: both;
 }
+
 
 .logo_1_container {
 	position: relative;
@@ -384,6 +402,70 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#57ebff', end
 	opacity: 0.95;
 }
 
+.flyer1, .flyer2 {
+	position: relative;
+	margin-top: 3%;
+	padding-bottom: 100px;
+	margin-bottom: 20px;
+	width: 42.5%;
+	float: left;
+	display: block;
+}
+
+.flyer1 {
+	margin-left: 5%;
+	margin-right: 2.5%;
+}
+
+.flyer2 {
+	margin-right: 5%;
+	margin-left: 2.5%;
+}
+
+.flyer {
+	width: 100%;
+	outline: 1px solid gray;
+	-webkit-box-shadow: -7px 7px 8px -4px rgba(0,0,0,0.56);
+	-moz-box-shadow: -7px 7px 8px -4px rgba(0,0,0,0.56);
+	box-shadow: -7px 7px 8px -4px rgba(0,0,0,0.56);
+}
+
+
+
+.flyer_des {
+	z-index: -10;
+	position: absolute;
+	bottom: 100px;
+	line-height: 1.4;
+	font-weight: 600;
+	font-size: 24px;
+	color: black;
+	font-family: 'Source Sans Pro', sans-serif;
+	-webkit-transition: bottom 1s;
+ -moz-transition: bottom 1s;
+ transition: bottom 1s;
+}
+
+.flyer_des a {
+	text-decoration: none;
+	color: orange;
+}
+
+.flyer1:hover > .flyer_des {
+	bottom: 10px;
+}
+
+.flyer2:hover > .flyer_des {
+	bottom: 40px;
+}
+
+
+
+
+
+
+
+
 
 
 /* MEDIA QUERI */
@@ -416,6 +498,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#57ebff', end
 	}
 }
 
+
 @media screen and (min-width: 1700px) {
 	h2 {
 		font-size: 50px;
@@ -423,22 +506,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#57ebff', end
 
 }
 
-@media screen and (max-width: 500px) {
-	.stars {
-		display: none;
+@media screen and (max-width: 800px) {
+	.flyer1, .flyer2 {
+		width: 90%;
+		margin-left: 5%;
+		margin-right: 5%;
 	}
 
-	.welcome {
-		background: url('images/backgroundsmall.jpg');
-		no-repeat center center fixed;
-	  -webkit-background-size: cover;
-	  -moz-background-size: cover;
-	  -o-background-size: cover;
-	  background-size: cover;
-		height: 100vh;
-		z-index: -100;
-		position: relative;
-	}
+}
+
+@media screen and (max-width: 500px) {
 
 	h1 {
 		font-size: 50px;
@@ -452,6 +529,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#57ebff', end
 		color: white;
 	}
 
+	p {
+		font-size: 30px;
+		padding-top: 20px;
+	}
 	.web_container {
 		width: 90%;
 	}
