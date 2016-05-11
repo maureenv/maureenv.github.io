@@ -5,7 +5,9 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,400italic,900' rel='stylesheet' type='text/css'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   </head>
+
   <body>
 <div class="welcome">
   <div class="welcome_text">
@@ -179,3 +181,24 @@
     <p class"title"> Illustrations & Paintings </p>
   </div>
 </div>
+
+<div class="image1">
+  <img src="images/charizard.jpg" class="image_size">
+  <div class="image_des_container"></div>
+    <div class="image_des"> Illustration of a dragon made in Photoshop </div>
+</div>
+<!-- <div class="image_des">
+  random text
+</div> -->
+
+
+<script>
+$(document).ready(function(){
+  $(".image1").click(function(){
+      $(".image1").toggleClass("enlargeimage");
+      $(".image_des").toggleClass("show_text");
+      $(".image_des_container").toggleClass("show_text_container");
+  });
+});
+console.log("i work");
+</script>
