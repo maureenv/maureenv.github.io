@@ -6,9 +6,19 @@
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,400italic,900' rel='stylesheet' type='text/css'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="script.js"></script>
   </head>
 
   <body>
+<div class="navbar">
+  <ul>
+    <li><a href="#web"> Web Work </a></li>
+    <li><a href="#graphic"> Graphic Design </a></li>
+    <li><a href="#painting"> Paintings </a></li>
+    <li><a href="#about"> About </a></li>
+  </ul>
+
+</div>
 <div class="welcome">
   <div class="welcome_text">
       <h1> Maureen Vogel </h1>
@@ -19,6 +29,7 @@
   </div>
 </div>
 <!-- web work -->
+<div id="web"></div>
 <div class="title_container web">
   <img src="images/laptop.svg" class="title_icon">
   <p class"title"> Web Development Work </p>
@@ -137,7 +148,7 @@
       </div>
   </div>
 </div>
-
+<div id="graphic"></div>
 <div class="title_container web">
   <img src="images/graphicdesign.svg" class="title_icon graphic_icon">
   <p class"title"> Graphic Design Work </p>
@@ -151,8 +162,8 @@
   </div>
 
   <div class="logo_2_container">
-      <img src="images/logo2.png" class="logo2">
-    <div class="overlay"> Logo designed in Illustrator </div>
+      <img src="images/batman.png" class="logo2">
+    <div class="overlay"> Bathroom sign designed in Illustrator </div>
   </div>
 
   <div class="logo_3_container">
@@ -178,7 +189,8 @@
     <div class="image_des_container"></div>
       <div class="image_des"> Flyer designed for <a href="http://www.a2lc.com/"> A2L Consulting</a> in Photoshop  </div>
 </div>
-
+</div>
+  <div id="painting"></div>
   <div class="title_container web">
     <img src="images/artist-tools.svg" class="title_icon graphic_icon">
     <p class"title"> Illustrations & Paintings </p>
@@ -233,7 +245,30 @@
   <div class="image_des_container"></div>
     <div class="image_des"> Acrylic painting </div>
 </div>
+<div class="clearfix"></div>
 
+  <div id="about"></div>
+<div class="title_container about_banner">
+  <img src="images/me.svg" class="title_icon about_icon">
+  <p class"title"> About Maureen </p>
+</div>
+
+
+<div class="about_container">
+  <div class="description about_box"> Hello, my name is Maureen and I'm a front-end web developer and designer. I started making websites when I worked as a graphic designer and needed a place to show off my work to the world -- And there's no better place to do this than the world wide web! </div>
+  <div class="break"></div>
+  <div class="description about_box">
+  Being the perfectionist artist that I am, I was never satisfied with the overall look of my portfolio website which prompted me to start over multiple times. Each time I started over, I had a whole new idea in mind which required hours of HTML, CSS and JavaScript research. As a result, I learned so many cool techniques that keep growing every time I start a new project.
+  </div>
+  <div class="break"></div>
+  <div class="description about_box">
+    Besides making websites, I also have a diverse set of skills that include design (in Photoshop and Illustrator), painting, and crafts (I make dream catchers and sling shots). I've also lived in Japan for seventeen years and Taiwan for two so I speak both Japanese and Chinese (Mandarin).
+  </div>
+  <div class="break"></div>
+  <div class="description contact_line"> You can contact me at: <span class="contact"> maureenvogel@outlook.com</span></div>
+</div>
+
+<div class="footer"> This layout was designed and coded by Maureen </div>
 
 <!-- <script>
 $(document).ready(function(){
