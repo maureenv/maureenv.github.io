@@ -543,7 +543,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#57ebff', end
 	}
 	.shape3 {
 		top: -1000px;
-		z-index: -1000;
 		height: 2000px;
 		width: 2000px;
 		position: absolute;
@@ -555,7 +554,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#57ebff', end
 
 	.shape4 {
 		top: -1000px;
-		z-index: -1200;
 		height: 2000px;
 		width: 2000px;
 		position: absolute;
