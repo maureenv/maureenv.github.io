@@ -9,23 +9,27 @@
     <script src="script.js"></script>
   </head>
 
-  <body>
+<body>
 <div class="navbar">
   <ul>
-    <li><a href="#web"> Web Work </a></li>
-    <li><a href="#graphic"> Graphic Design </a></li>
-    <li><a href="#painting"> Paintings </a></li>
-    <li><a href="#about"> About </a></li>
+    <li><a href="#welcome" class="home"> Home </a></li>
+    <li><a href="#about" class="about"> About </a></li>
+    <li><a href="#painting" class="painting"> Paintings </a></li>
+    <li><a href="#graphic" class="graphic"> Graphic Design </a></li>
+    <li><a href="#web" class="web_link"> Web Work </a></li>
   </ul>
-
 </div>
+
+<div id="welcome"></div>
 <div class="welcome">
+  <img src="images/stars.png" class="stars">
   <div class="welcome_text">
       <h1> Maureen Vogel </h1>
-      <h2>An artist and front-end web developer <br>who makes visualizations come to life. </h2>
-      <div class="computer"></div>
-      <div class="shape3 shape_animate3"></div>
-      <div class="shape4 shape_animate4"></div>
+    <div class="background"></div>
+
+      <!-- <div class="shape3 shape_animate3"></div>
+      <div class="shape4 shape_animate4"></div>  -->
+        <h2>An artist and front-end web developer who makes visualizations come to life. </h2>
   </div>
 </div>
 <!-- web work -->
@@ -188,10 +192,10 @@
     <img src="images/flyer2.jpg" class="flyer flyer_2_space">
     <div class="image_des_container"></div>
       <div class="image_des"> Flyer designed for <a href="http://www.a2lc.com/"> A2L Consulting</a> in Photoshop  </div>
+        <div id="painting"></div>
 </div>
 </div>
-  <div id="painting"></div>
-  <div class="title_container web">
+  <div class="title_container painting_container">
     <img src="images/artist-tools.svg" class="title_icon graphic_icon">
     <p class"title"> Illustrations & Paintings </p>
   </div>
@@ -253,7 +257,7 @@
   <p class"title"> About Maureen </p>
 </div>
 
-
+<!-- <img src="images/space.jpg" class="space"> -->
 <div class="about_container">
   <div class="description about_box"> Hello, my name is Maureen and I'm a front-end web developer and designer. I started making websites when I worked as a graphic designer and needed a place to show off my work to the world -- And there's no better place to do this than the world wide web! </div>
   <div class="break"></div>
@@ -268,7 +272,6 @@
   <div class="description contact_line"> You can contact me at: <span class="contact"> maureenvogel@outlook.com</span></div>
 </div>
 
-<div class="footer"> This layout was designed and coded by Maureen </div>
 
 <!-- <script>
 $(document).ready(function(){
