@@ -4,45 +4,43 @@
   <title>Maureen Vogel | Portfolio</title>
   <link rel="stylesheet" type="text/css" href="style.css">
   <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,400italic,900' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script src="script.js"></script>
 </head>
 
 <body>
-  <div class="navbar">
-    <ul>
-      <li><a href="#welcome" class="home"> Home </a></li>
-      <li><a href="#about" class="about"> About </a></li>
-      <li><a href="#painting" class="painting"> Paintings </a></li>
-      <li><a href="#graphic" class="graphic"> Graphic Design </a></li>
-      <li><a href="#web" class="web_link"> Web Work </a></li>
-    </ul>
-  </div>
 
-  <div id="welcome"></div>
-  <div class="welcome">
-    <img src="images/stars.png" class="stars">
-    <div class="welcome_text">
-      <h1> Maureen Vogel </h1>
-      <div class="background"></div>
-
-      <!-- <div class="shape3 shape_animate3"></div>
-      <div class="shape4 shape_animate4"></div>  -->
-      <h2>An artist and front-end web developer who makes visualizations come to life. </h2>
-    </div>
+  <div class="square">
+    <img src="images/burger.png" class="nav-logo"></div>
   </div>
-  <!-- web work -->
+</ul>
+<li class="nav-li li-home"><a href="#welcome" class="home"> Home </a></li>
+<li class="nav-li li-web"><a href="#web" class="web_link"> Web Work </a></li>
+<li class="nav-li li-graphic"><a href="#graphic" class="graphic"> Graphic Design </a></li>
+<li class="nav-li li-painting"><a href="#painting" class="painting"> Paintings </a></li>
+<li class="nav-li li-about"><a href="#about" class="about"> About </a></li>
+</ul>
+
+
+
+<div id="welcome"></div>
+<div class="welcome">
+  <div class="welcome_text">
+    <h1> Maureen Vogel </h1>
+    <div class="background"></div>
+    <h2>An artist and front-end web developer who makes visualizations come to life. </h2>
+  </div>
+</div>
+<!-- web work -->
+<div class="section-container webbg">
   <div id="web"></div>
-  <div class="title_container web">
-    <img src="images/laptop.svg" class="title_icon">
-    <p class"title"> Web Development Work </p>
-  </div>
-
+  <div class="section-header"> Web Development Work </div>
   <div class="web_container">
     <div class="mac_container">
-      <img src="images/mac.png" class="mac">
-      <video autoplay loop class="tempermetro">
+      <img src="images/laptop.png" class="mac">
+      <video autoplay loop class="video">
         <source src="images/tempermetro2.mp4" type="video/mp4">
         </video>
       </div>
@@ -71,8 +69,8 @@
     <!--======================================== web work -->
     <div class="web_container">
       <div class="mac_container">
-        <img src="images/mac.png" class="mac">
-        <video autoplay loop class="tempermetro">
+        <img src="images/laptop.png" class="mac">
+        <video autoplay loop class="video">
           <source src="images/cheatss.mp4" type="video/mp4">
           </video>
         </div>
@@ -104,8 +102,8 @@
       <!--======================================== web work -->
       <div class="web_container">
         <div class="mac_container">
-          <img src="images/mac.png" class="mac">
-          <video autoplay loop class="tempermetro">
+          <img src="images/laptop.png" class="mac">
+          <video autoplay loop class="video">
             <source src="images/memory2.mp4" type="video/mp4">
             </video>
           </div>
@@ -130,8 +128,8 @@
         <!--======================================== web work -->
         <div class="web_container">
           <div class="mac_container">
-            <img src="images/mac.png" class="mac">
-            <video autoplay loop class="tempermetro">
+            <img src="images/laptop.png" class="mac">
+            <video autoplay loop class="video cryptly">
               <source src="images/cryptly2.mp4" type="video/mp4">
               </video>
             </div>
@@ -152,12 +150,12 @@
               </div>
             </div>
           </div>
-          <div id="graphic"></div>
-          <div class="title_container graphic_banner">
-            <img src="images/graphicdesign.svg" class="title_icon graphic_icon">
-            <p class"title"> Graphic Design Work </p>
-          </div>
+        </div>
 
+
+        <div class="section-container graphicbg">
+          <div id="graphic"></div>
+          <div class="section-header"> Graphic Design Work </div>
 
           <div class="logos first_logo">
             <img src="images/batman.png" class="logo">
@@ -167,10 +165,10 @@
 
 
           <div class="logos">
-          <img src="images/logo1.png" class="logo">
-          <div class="image_des_container"></div>
-          <div class="image_des"> Logo designed in Illustrator </div>
-        </div>
+            <img src="images/logo1.png" class="logo">
+            <div class="image_des_container"></div>
+            <div class="image_des"> Logo designed in Illustrator </div>
+          </div>
 
           <div class="logos">
             <img src="images/logo3.png" class="logo">
@@ -191,104 +189,92 @@
           </div>
 
           <div class="flyer2">
-            <img src="images/flyer2.jpg" class="flyer flyer_2_space">
+            <img src="images/flyer2.jpg" class="flyer">
             <div class="image_des_container"></div>
             <div class="image_des"> Flyer designed for <a href="http://www.a2lc.com/"> A2L Consulting</a> in Photoshop  </div>
-            <div id="painting"></div>
+          </div>
+
+          <div class="map_container">
+            <img src="images/map.png" class="map">
+            <div class="image_des_container"></div>
+            <div class="image_des"> Map designed for <a href="http://www.a2lc.com/"> A2L Consulting</a> in Photoshop  </div>
+          </div>
+
+          <div class="map_container">
+            <img src="images/scholarship.jpg" class="map">
+            <div class="image_des_container"></div>
+            <div class="image_des"> Map designed for <a href="http://www.a2lc.com/"> A2L Consulting</a> in Photoshop  </div>
+          </div>
+
+        </div>
+
+        <div class="section-container paintingbg">
+          <div id="painting"></div>
+          <div class="section-header"> Paintings </div>
+          <div class="image_left">
+            <img src="images/charizard.jpg" class="image_size">
+            <div class="image_des_container"></div>
+            <div class="image_des"> Illustration of a dragon made in Photoshop </div>
+          </div>
+
+          <div class="image_right">
+            <img src="images/woodpainting.jpg" class="image_size">
+            <div class="image_des_container"></div>
+            <div class="image_des"> Acrylic painting made on wood </div>
+          </div>
+
+          <div class="image_left">
+            <img src="images/cowboy.jpg" class="image_size">
+            <div class="image_des_container"></div>
+            <div class="image_des"> 30 inch x 40 inch acrylic painting </div>
+          </div>
+
+          <div class="image_right">
+            <img src="images/jaguar.jpg" class="image_size">
+            <div class="image_des_container"></div>
+            <div class="image_des"> Acrylic painting </div>
+          </div>
+
+          <div class="image_left">
+            <img src="images/elephant.jpg" class="image_size">
+            <div class="image_des_container"></div>
+            <div class="image_des"> Acrylic painting </div>
+          </div>
+
+          <div class="image_left">
+            <img src="images/fox.jpg" class="image_size">
+            <div class="image_des_container"></div>
+            <div class="image_des"> Digital painting made in Photoshop </div>
+          </div>
+
+          <div class="image_right">
+            <img src="images/skeleton.jpg" class="image_size">
+            <div class="image_des_container"></div>
+            <div class="image_des"> Water color painting </div>
+          </div>
+
+
+          <div class="image_left">
+            <img src="images/turtle.jpg" class="image_size">
+            <div class="image_des_container"></div>
+            <div class="image_des"> Acrylic painting </div>
           </div>
         </div>
-        <div class="title_container painting_container">
-          <img src="images/artist-tools.svg" class="title_icon graphic_icon">
-          <p class"title"> Illustrations & Paintings </p>
+
+        <div class="section-container aboutbg">
+          <div id="about"></div>
+          <div class="section-header about-header"> About Me </div>
+          <div class="about_container">
+            <div class="description about_box"> Hello, my name is Maureen and I'm a front-end web developer and designer. I started making websites when I worked as a graphic designer and needed a place to show off my work to the world -- And there's no better place to do this than the world wide web! </div>
+            <div class="break"></div>
+            <div class="description about_box">
+              Being the perfectionist artist that I am, I was never satisfied with the overall look of my portfolio website which prompted me to start over multiple times. Each time I started over, I had a whole new idea in mind which required hours of HTML, CSS and JavaScript research. As a result, I learned so many cool techniques that keep growing every time I start a new project.
+            </div>
+            <div class="break"></div>
+            <div class="description about_box">
+              Besides making websites, I also have a diverse set of skills that include design (in Photoshop and Illustrator), painting, and crafts (I make dream catchers and sling shots). I've also lived in Japan for seventeen years and Taiwan for two so I speak both Japanese and Chinese (Mandarin).
+            </div>
+            <div class="break"></div>
+            <div class="description contact_line"> You can contact me at: <span class="contact"> maureenvogel@outlook.com</span></div>
+          </div>
         </div>
-      </div>
-
-      <div class="image_left">
-        <img src="images/charizard.jpg" class="image_size">
-        <div class="image_des_container"></div>
-        <div class="image_des"> Illustration of a dragon made in Photoshop </div>
-      </div>
-
-      <div class="image_right">
-        <img src="images/woodpainting.jpg" class="image_size">
-        <div class="image_des_container"></div>
-        <div class="image_des"> Acrylic painting made on wood </div>
-      </div>
-
-      <div class="image_left">
-        <img src="images/cowboy.jpg" class="image_size">
-        <div class="image_des_container"></div>
-        <div class="image_des"> 30 inch x 40 inch acrylic painting </div>
-      </div>
-
-      <div class="image_right">
-        <img src="images/jaguar.jpg" class="image_size">
-        <div class="image_des_container"></div>
-        <div class="image_des"> Acrylic painting </div>
-      </div>
-
-      <div class="image_left">
-        <img src="images/elephant.jpg" class="image_size">
-        <div class="image_des_container"></div>
-        <div class="image_des"> Acrylic painting </div>
-      </div>
-
-      <div class="image_left">
-        <img src="images/fox.jpg" class="image_size">
-        <div class="image_des_container"></div>
-        <div class="image_des"> Digital painting made in Photoshop </div>
-      </div>
-
-      <div class="image_right">
-        <img src="images/skeleton.jpg" class="image_size">
-        <div class="image_des_container"></div>
-        <div class="image_des"> Water color painting </div>
-      </div>
-
-
-      <div class="image_left">
-        <img src="images/turtle.jpg" class="image_size">
-        <div class="image_des_container"></div>
-        <div class="image_des"> Acrylic painting </div>
-      </div>
-      <div class="clearfix"></div>
-
-      <div id="about"></div>
-      <div class="title_container about_banner">
-        <img src="images/me.svg" class="title_icon about_icon">
-        <p class"title"> About Maureen </p>
-      </div>
-
-      <!-- <img src="images/space.jpg" class="space"> -->
-      <div class="about_container">
-        <div class="description about_box"> Hello, my name is Maureen and I'm a front-end web developer and designer. I started making websites when I worked as a graphic designer and needed a place to show off my work to the world -- And there's no better place to do this than the world wide web! </div>
-        <div class="break"></div>
-        <div class="description about_box">
-          Being the perfectionist artist that I am, I was never satisfied with the overall look of my portfolio website which prompted me to start over multiple times. Each time I started over, I had a whole new idea in mind which required hours of HTML, CSS and JavaScript research. As a result, I learned so many cool techniques that keep growing every time I start a new project.
-        </div>
-        <div class="break"></div>
-        <div class="description about_box">
-          Besides making websites, I also have a diverse set of skills that include design (in Photoshop and Illustrator), painting, and crafts (I make dream catchers and sling shots). I've also lived in Japan for seventeen years and Taiwan for two so I speak both Japanese and Chinese (Mandarin).
-        </div>
-        <div class="break"></div>
-        <div class="description contact_line"> You can contact me at: <span class="contact"> maureenvogel@outlook.com</span></div>
-      </div>
-
-
-<!-- <script>
-$(document).ready(function(){
-  $(".image_left").click(function(){
-      $(".image_left").toggleClass("enlargeimage");
-      $(".image_des").toggleClass("show_text");
-      $(".image_des_container").toggleClass("show_text_container");
-  });
-
-  $(".image_right").click(function(){
-      $(".image_right").toggleClass("enlargeimage");
-      $(".image_des").toggleClass("show_text");
-      $(".image_des_container").toggleClass("show_text_container");
-      $(".image_left").toggleClass("move_image_left");
-  });
-});
-console.log("i work");
-</script> -->
