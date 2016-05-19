@@ -94,6 +94,7 @@ html {
 	position: fixed;
 	z-index: 10000;
 	right: 0;
+	cursor: pointer;
 
 }
 
@@ -292,6 +293,7 @@ h2 {
 	font-size: 20px;
 	clear: left;
 	font-weight: 300;
+	padding-bottom: 50px;
 }
 
 .tools {
@@ -562,6 +564,10 @@ h2 {
 
 	.contact_line {
 		font-size: 30px;
+	}
+
+	.section-header {
+		font-size: 120px;
 	}
 
 }

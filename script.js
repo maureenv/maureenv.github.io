@@ -15,7 +15,7 @@ $(document).ready(function(){
 
 // smooth scroll tutorial https://paulund.co.uk/smooth-scroll-to-internal-links-with-jquery
 
-  $(".nav-logo").click(function(){
+  $(".square").click(function(){
       $(".li-home").toggleClass("move-nav");
 			$(".li-web").toggleClass("move-nav");
 			$(".li-graphic").toggleClass("move-nav");
