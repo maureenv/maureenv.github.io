@@ -1,28 +1,15 @@
 {
-  "name": "app",
+  "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "node-sass-chokidar": "0.0.3",
-    "npm-run-all": "^4.1.2",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-scripts": "1.0.17"
-  },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start-js": "react-scripts start",
-    "start": "npm-run-all -p watch-css start-js",
-    "build": "npm run build-css && react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
-  "homepage": "https://maureenv.github.io",
-  "devDependencies": {
-    "css-loader": "^0.28.7",
-    "gh-pages": "^1.1.0"
+  "dependencies": {
+    "next": "9.4.4",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
   }
 }
