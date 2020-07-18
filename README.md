@@ -1,6 +1,8 @@
 CHANGE 1
 ## Available Scripts
+To deploy do npm run build > copy everything in build folder and move out to root foler
 
+https://medium.com/@derekgc/deploy-a-react-app-on-github-user-page-25b6991dec87
 In the project directory, you can run:
 
 ### `yarn start`
