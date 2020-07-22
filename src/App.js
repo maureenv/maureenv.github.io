@@ -1,12 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './App.css'
+import styled from '@emotion/styled'
+
+const Test = styled.div`
+  font-size: 30px;
+  color: Red;
+`
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <Test>Testing</Test>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
