@@ -6,6 +6,8 @@ import stockMobile from './images/stock-mobile.png'
 import stockPad from './images/stock-desktop.png'
 import natsMobile from './images/nats-mobile.png'
 import natsDesktop from './images/nats-desktop.png'
+import opsMobile from './images/ops-mobile.png'
+import opsDesktop from './images/ops-desktop.png'
 import Logo from './images/logo.js'
 
 
@@ -258,6 +260,39 @@ function App() {
           <PhoneContainer>
             <PhoneScreen>
               <img src={ natsMobile }/>
+            </PhoneScreen>
+          </PhoneContainer>
+        </div>
+      </Container>
+
+      <Divider height="200px"/>
+      <Container>
+        <PortfolioContainer>
+          <Title>Order Delivery <br/>Management Dashboard</Title>
+          <ColorPalette>
+            <Color bg="#303131">#303131</Color>
+            <Color bg="#00809e">#00809e</Color>
+            <Color bg="#ff624d">#ff624d</Color>
+            <Color bg="#f3f3f4">#f3f3f4</Color>
+          </ColorPalette>
+          <Info>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut?"</Info>
+          <Tools>Tools Used</Tools>
+          <ToolsContainer>
+            <Tool>React JS</Tool>
+            <Tool>SASS</Tool>
+            <Tool>Sketch</Tool>
+            <Tool>InVision</Tool>
+          </ToolsContainer>
+        </PortfolioContainer>
+        <div>
+          <PadContainer>
+            <PadScreen>
+              <img src={ opsDesktop }/>
+            </PadScreen>
+          </PadContainer>
+          <PhoneContainer>
+            <PhoneScreen>
+              <img src={ opsMobile }/>
             </PhoneScreen>
           </PhoneContainer>
         </div>
