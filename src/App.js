@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
+import { jsx, css, keyframes } from '@emotion/core'
 import bg from './images/bg.jpg'
 import stockMobile from './images/stock-mobile.png'
 
@@ -15,7 +16,7 @@ margin: auto;
 padding: 0 20px;
 box-sizing: border-box;
 display: flex;
-justify-content: center;
+justify-content: space-between;
 align-items: center;
 `
 
@@ -87,6 +88,15 @@ const PhoneContainer = styled.div`
   justify-content: center;
 `
 
+const slide = keyframes`
+  from, 0% to {
+    transform: translate3d(0,0,0);
+  }
+  100% {
+    transform: translate3d(0,-70%,0);
+  }
+`
+
 const PhoneScreen = styled.div`
   overflow: hidden;
   border-radius: 10px;
@@ -95,6 +105,11 @@ const PhoneScreen = styled.div`
   border: 1px solid #c5c5c5;
   img {
     width: 100%;
+    animation: ${slide} 11s ease alternate infinite;
+    animation-play-state: paused;
+    &:hover {
+      animation-play-state: running;
+    }
   }
 `
 
