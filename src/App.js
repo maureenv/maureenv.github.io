@@ -14,8 +14,6 @@ import seeMenusMobile from './images/seemenus-mobile.jpg'
 import seeMenusDesktop from './images/seemenus-desktop.jpg'
 import { breakpoints } from './constants.js'
 import Logo from './images/logo.js'
-import video from './images/video.mp4'
-
 
 const Divider = styled.div`
   height: ${ props => props.height };
@@ -256,7 +254,7 @@ function App() {
       </LogoContainer>
       <Header bg={ bg }>
         <VideoContainer>
-        <video muted loop autoPlay playsInline src={ video } type="video/mp4" ></video>
+        <video muted loop autoPlay playsInline src="https://www.videvo.net/videvo_files/converted/2013_08/preview/hd0992.mov31753.webm" type="video/mp4" ></video>
         </VideoContainer>
       </Header>
 
