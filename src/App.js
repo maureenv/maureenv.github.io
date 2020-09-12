@@ -1,6 +1,9 @@
 import React from 'react'
 import styled from '@emotion/styled'
+import MediaQuery from 'react-responsive'
 import { jsx, css, keyframes } from '@emotion/core'
+import { breakpoints } from './constants.js'
+
 import bg from './images/bg.jpg'
 import stockMobile from './images/stock-mobile.png'
 import stockPad from './images/stock-desktop.png'
@@ -12,11 +15,15 @@ import marketplaceMobile from './images/marketplace-mobile.png'
 import marketplaceDesktop from './images/marketplace-desktop.png'
 import seeMenusMobile from './images/seemenus-mobile.jpg'
 import seeMenusDesktop from './images/seemenus-desktop.jpg'
-import { breakpoints } from './constants.js'
+import popupDesktop from './images/popup-desktop.jpg'
+import popupMobile from './images/popup-mobile.png'
 import Logo from './images/logo.js'
 
 const Divider = styled.div`
   height: ${ props => props.height };
+  @media (max-width: ${breakpoints[0] + "px"}) {
+    height: ${ props => props.mobileHeight };
+  }
 `
 
 const LogoContainer = styled.div`
@@ -106,6 +113,9 @@ const Title = styled.h2`
   margin-bottom: 10px;
   text-transform: uppercase;
   color: ${ props => props.theme.textColor };
+  @media (max-width: ${breakpoints[0] + "px"}) {
+    font-size: 40px;
+  }
 `
 
 const Info = styled.p`
@@ -181,11 +191,13 @@ const PhoneScreen = styled.div`
   border: 1px solid #c5c5c5;
   img {
     width: 100%;
-    animation: ${slide} 8s ease alternate infinite;
-    animation-play-state: paused;
-    &:hover {
-      animation-play-state: running;
-    }
+    ${ props => props.animate && css`
+        animation: ${slide} 8s ease alternate infinite;
+        animation-play-state: paused;
+        &:hover {
+          animation-play-state: running;
+        }
+    `}
   }
 `
 
@@ -228,6 +240,33 @@ const PadScreen = styled.div`
   }
 `
 
+const NoBorder = styled.div`
+  width: 800px;
+  height: 830px;
+/*  box-shadow: 0 10px 15px -3px rgba(0,0,0,.2),0 4px 6px -2px rgba(0,0,0,.05);*/
+  opacity: 0.6;
+  box-sizing: border-box;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: ${ props => props.right ? 'translate(-50%, -50%)' : 'translate(0, -50%)' };
+  margin-left: ${ props => props.right ? '0' : '150px' };
+`
+
+const NoBorderInner = styled.div`
+  overflow: hidden;
+  width: 85%;
+  height: 87%;
+  display: flex;
+  align-items: center;
+  img {
+    width: 100%;
+  }
+`
+
 const ColorPalette = styled.div`
   display: flex;
   margin-bottom: 20px;
@@ -246,6 +285,20 @@ const Color = styled.div`
   text-shadow: 1px 1px rgba(0,0,0,0.2);
 `
 
+const MobileImageContainer = styled.div`
+  width: 100%;
+  height: ${ props => props.height };
+  overflow: hidden;
+  ${ props => !props.noShadow && css`
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border: 1px solid #d4d4d4;
+  `}
+`
+
+const MobileImage = styled.img`
+  width: 100%;
+`
+
 function App() {
   return (
     <Page>
@@ -258,7 +311,45 @@ function App() {
         </VideoContainer>
       </Header>
 
-      <Divider height="120px"/>
+      <Divider height="140px"/>
+      <Container>
+        <PortfolioContainer>
+          <Title>HUNGRY POPUPS App</Title>
+          <ColorPalette>
+            <Color bg="#3d4853">#3d4853</Color>
+            <Color bg="#ee346d">#ee346d</Color>
+            <Color bg="#ff624d">#ff624d</Color>
+            <Color bg="#edf2f7">#edf2f7</Color>
+          </ColorPalette>
+          <Info>HUNGRY Popups is a mobile app I'm designing and developing for HUNGRY to allow customers to find catering popups nearby. It uses location tracking and google maps to notify customers of popups being held in nearby buildings.</Info>
+          <Tools>Tools Used</Tools>
+          <ToolsContainer>
+            <Tool>React Native</Tool>
+            <Tool>Sketch</Tool>
+            <Tool>InVision</Tool>
+            <Tool>Emotion CSS</Tool>
+          </ToolsContainer>
+        </PortfolioContainer>
+        <MediaQuery minWidth={ breakpoints[1]}>
+          <div>
+            <NoBorder>
+              <NoBorderInner>
+                <img alt="Web Developer" src={ popupDesktop }/>
+              </NoBorderInner>
+            </NoBorder>
+            <PhoneContainer>
+              <PhoneScreen>
+                <img alt="Web Developer" src={ popupMobile }/>
+              </PhoneScreen>
+            </PhoneContainer>
+          </div>
+        </MediaQuery>
+        <MediaQuery maxWidth={ breakpoints[1]}>
+          <MobileImage noShadow={ true } alt="Web Developer" src={ popupDesktop }/>
+        </MediaQuery>
+      </Container>
+
+      <Divider height="220px" mobileHeight="100px"/>
       <Container>
         <PortfolioContainer>
           <Title>SeeMenus Menu Builder</Title>
@@ -276,21 +367,28 @@ function App() {
             <Tool>Emotion CSS</Tool>
           </ToolsContainer>
         </PortfolioContainer>
-        <div>
-          <PadContainer>
-            <PadScreen>
-              <img src={ seeMenusDesktop }/>
-            </PadScreen>
-          </PadContainer>
-          <PhoneContainer>
-            <PhoneScreen>
-              <img src={ seeMenusMobile }/>
-            </PhoneScreen>
-          </PhoneContainer>
-        </div>
+        <MediaQuery minWidth={ breakpoints[1]}>
+          <div>
+            <PadContainer>
+              <PadScreen>
+                <img src={ seeMenusDesktop }/>
+              </PadScreen>
+            </PadContainer>
+            <PhoneContainer>
+              <PhoneScreen animate={ true }>
+                <img src={ seeMenusMobile }/>
+              </PhoneScreen>
+            </PhoneContainer>
+          </div>
+        </MediaQuery>
+        <MediaQuery maxWidth={ breakpoints[1]}>
+          <MobileImageContainer height="300px">
+            <MobileImage alt="Web Developer" src={ seeMenusDesktop }/>
+          </MobileImageContainer>
+        </MediaQuery>
       </Container>
 
-      <Divider height="200px"/>
+      <Divider height="200px" mobileHeight="100px"/>
       <Container>
         <PortfolioContainer>
           <Title>Stock Comparer</Title>
@@ -309,24 +407,31 @@ function App() {
             <Tool>Mongo DB</Tool>
           </ToolsContainer>
         </PortfolioContainer>
-        <div>
-          <PadContainer>
-            <PadScreen>
-              <img src={ stockPad }/>
-            </PadScreen>
-          </PadContainer>
-          <PhoneContainer>
-            <PhoneScreen>
-              <img src={ stockMobile }/>
-            </PhoneScreen>
-          </PhoneContainer>
-        </div>
+        <MediaQuery minWidth={ breakpoints[1]}>
+          <div>
+            <PadContainer>
+              <PadScreen>
+                <img src={ stockPad }/>
+              </PadScreen>
+            </PadContainer>
+            <PhoneContainer>
+              <PhoneScreen animate={ true }>
+                <img src={ stockMobile }/>
+              </PhoneScreen>
+            </PhoneContainer>
+          </div>
+        </MediaQuery>
+        <MediaQuery maxWidth={ breakpoints[1]}>
+          <MobileImageContainer height="300px">
+            <MobileImage alt="Web Developer" src={ stockPad }/>
+          </MobileImageContainer>
+        </MediaQuery>
       </Container>
 
-      <Divider height="200px"/>
+      <Divider height="200px" mobileHeight="100px"/>
       <Container>
         <PortfolioContainer>
-          <Title>Major league baseball <br/> stadium food delivery site</Title>
+          <Title>Major league baseball stadium food delivery site</Title>
           <ColorPalette>
             <Color bg="#00073b">#00073b</Color>
             <Color bg="#ba0c2f">#ba0c2f</Color>
@@ -342,21 +447,28 @@ function App() {
             <Tool>InVision</Tool>
           </ToolsContainer>
         </PortfolioContainer>
-        <div>
-          <PadContainer>
-            <PadScreen>
-              <img src={ natsDesktop }/>
-            </PadScreen>
-          </PadContainer>
-          <PhoneContainer>
-            <PhoneScreen>
-              <img src={ natsMobile }/>
-            </PhoneScreen>
-          </PhoneContainer>
-        </div>
+          <MediaQuery minWidth={ breakpoints[1]}>
+            <div>
+              <PadContainer>
+                <PadScreen>
+                  <img src={ natsDesktop }/>
+                </PadScreen>
+              </PadContainer>
+              <PhoneContainer>
+                <PhoneScreen animate={ true }>
+                  <img src={ natsMobile }/>
+                </PhoneScreen>
+              </PhoneContainer>
+            </div>
+          </MediaQuery>
+          <MediaQuery maxWidth={ breakpoints[1]}>
+            <MobileImageContainer height="300px">
+              <MobileImage alt="Web Developer" src={ natsDesktop }/>
+            </MobileImageContainer>
+          </MediaQuery>
       </Container>
 
-      <Divider height="200px"/>
+      <Divider height="200px" mobileHeight="100px"/>
       <Container>
         <PortfolioContainer>
           <Title>Order Delivery <br/>Management Dashboard</Title>
@@ -375,21 +487,28 @@ function App() {
             <Tool>InVision</Tool>
           </ToolsContainer>
         </PortfolioContainer>
-        <div>
-          <PadContainer>
-            <PadScreen>
-              <img src={ opsDesktop }/>
-            </PadScreen>
-          </PadContainer>
-          <PhoneContainer>
-            <PhoneScreen>
-              <img src={ opsMobile }/>
-            </PhoneScreen>
-          </PhoneContainer>
-        </div>
+        <MediaQuery minWidth={ breakpoints[1]}>
+          <div>
+            <PadContainer>
+              <PadScreen>
+                <img src={ opsDesktop }/>
+              </PadScreen>
+            </PadContainer>
+            <PhoneContainer>
+              <PhoneScreen animate={ true }>
+                <img src={ opsMobile }/>
+              </PhoneScreen>
+            </PhoneContainer>
+          </div>
+        </MediaQuery>
+        <MediaQuery maxWidth={ breakpoints[1]}>
+          <MobileImageContainer height="200px">
+            <MobileImage alt="Web Developer" src={ opsDesktop }/>
+          </MobileImageContainer>
+        </MediaQuery>
       </Container>
 
-      <Divider height="200px"/>
+      <Divider height="200px" mobileHeight="100px"/>
       <Container>
         <PortfolioContainer>
           <Title>Catering Chef Marketplace</Title>
@@ -409,18 +528,25 @@ function App() {
             <Tool>Google Analytics</Tool>
           </ToolsContainer>
         </PortfolioContainer>
-        <div>
-          <PadContainer>
-            <PadScreen>
-              <img src={ marketplaceDesktop }/>
-            </PadScreen>
-          </PadContainer>
-          <PhoneContainer>
-            <PhoneScreen>
-              <img src={ marketplaceMobile }/>
-            </PhoneScreen>
-          </PhoneContainer>
-        </div>
+        <MediaQuery minWidth={ breakpoints[1]}>
+          <div>
+            <PadContainer>
+              <PadScreen>
+                <img src={ marketplaceDesktop }/>
+              </PadScreen>
+            </PadContainer>
+            <PhoneContainer>
+              <PhoneScreen animate={ true }>
+                <img src={ marketplaceMobile }/>
+              </PhoneScreen>
+            </PhoneContainer>
+          </div>
+        </MediaQuery>
+        <MediaQuery maxWidth={ breakpoints[1]}>
+          <MobileImageContainer height="270px">
+            <MobileImage alt="Web Developer" src={ marketplaceDesktop }/>
+          </MobileImageContainer>
+        </MediaQuery>
       </Container>
       {/*<Container right={ true }>
         <div>
