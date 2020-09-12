@@ -8,7 +8,13 @@ import natsMobile from './images/nats-mobile.png'
 import natsDesktop from './images/nats-desktop.png'
 import opsMobile from './images/ops-mobile.png'
 import opsDesktop from './images/ops-desktop.png'
+import marketplaceMobile from './images/marketplace-mobile.png'
+import marketplaceDesktop from './images/marketplace-desktop.png'
+import seeMenusMobile from './images/seemenus-mobile.jpg'
+import seeMenusDesktop from './images/seemenus-desktop.jpg'
+import { breakpoints } from './constants.js'
 import Logo from './images/logo.js'
+import video from './images/video.mp4'
 
 
 const Divider = styled.div`
@@ -37,16 +43,50 @@ const Container = styled.div`
   ${ props => props.right && css`
     justify-content: flex-end;
   `};
+  @media (max-width: ${breakpoints[1] + "px"}) {
+    flex-direction: column;
+  }
 `
 
 const Header = styled.header`
-  background: url(${(props) => props.bg}) no-repeat center center;
+  /* background: url(${(props) => props.bg}) no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  background-size: cover; */
+  height: 60vh;
+  width: 100%;
+  video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    min-width: 100%;
+    height: 100%;
+    width: 130%;
+    height: auto;
+    overflow: hidden;
+    z-index: -1;
+    &:after {
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background: black;
+      opacity: 0.4;
+      z-index: 0;
+    }
+  }
+`
+
+const VideoContainer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 60vh;
+  overflow: hidden;
 `
 
 const PortfolioContainer = styled.div`
@@ -54,6 +94,12 @@ const PortfolioContainer = styled.div`
   ${ props => props.right && css`
     margin-left: 40px;
   `};
+  @media (max-width: ${breakpoints[1] + "px"}) {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-left: 0;
+  }
 `
 
 const Title = styled.h2`
@@ -76,15 +122,17 @@ const Tools = styled.p`
   font-family: "black";
   font-size: 17px;
   line-height: 1.4;
-  margin-top: 20px;
+  margin-top: 30px;
   margin-bottom: 5px;
   text-transform: uppercase;
   color: ${ props => props.theme.textColor };
   max-width: 500px;
+  flex-wrap: wrap;
 `
 
 const ToolsContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
 `
 
 const Tool = styled.div`
@@ -95,6 +143,8 @@ const Tool = styled.div`
   font-size: 16px;
   border-radius: 20px;
   margin-right: 10px;
+  white-space: nowrap;
+  margin-bottom: 10px;
 `
 
 const slide = keyframes`
@@ -119,6 +169,10 @@ const PhoneContainer = styled.div`
   justify-content: center;
   position: relative;
   z-index: 3;
+  @media (max-width: ${breakpoints[1] + "px"}) {
+    width: 100%;
+    height: 650px;
+  }
 `
 
 const PhoneScreen = styled.div`
@@ -155,6 +209,9 @@ const PadContainer = styled.div`
   ${ props => props.right && css`
     left: -50px;
   `};
+  @media (max-width: ${breakpoints[1] + "px"}) {
+    display: none;
+  }
 `
 
 const PadScreen = styled.div`
@@ -198,8 +255,44 @@ function App() {
         <Logo mColor={ '#00aee0' } vColor={ '#fff'}/>
       </LogoContainer>
       <Header bg={ bg }>
+        <VideoContainer>
+        <video muted loop autoPlay playsInline src={ video } type="video/mp4" ></video>
+        </VideoContainer>
       </Header>
+
       <Divider height="120px"/>
+      <Container>
+        <PortfolioContainer>
+          <Title>SeeMenus Menu Builder</Title>
+          <ColorPalette>
+            <Color bg="#215a46">#215a46</Color>
+            <Color bg="#248c67">#248c67</Color>
+            <Color bg="#04bf7b">#04bf7b</Color>
+            <Color bg="#edf2f7">#edf2f7</Color>
+          </ColorPalette>
+          <Info>SeeMenus is a website I am designing and coding to help restaurants easily build their own website with an online menu and editable theme. The menu is automatically translated into Japanese and Chinese using a machine learning translation API called Deepl. Users can also print a PDF of their menu in the translated languages. </Info>
+          <Tools>Tools Used</Tools>
+          <ToolsContainer>
+            <Tool>React JS</Tool>
+            <Tool>Next JS</Tool>
+            <Tool>Emotion CSS</Tool>
+          </ToolsContainer>
+        </PortfolioContainer>
+        <div>
+          <PadContainer>
+            <PadScreen>
+              <img src={ seeMenusDesktop }/>
+            </PadScreen>
+          </PadContainer>
+          <PhoneContainer>
+            <PhoneScreen>
+              <img src={ seeMenusMobile }/>
+            </PhoneScreen>
+          </PhoneContainer>
+        </div>
+      </Container>
+
+      <Divider height="200px"/>
       <Container>
         <PortfolioContainer>
           <Title>Stock Comparer</Title>
@@ -209,7 +302,7 @@ function App() {
             <Color bg="#f44336">#f44336</Color>
             <Color bg="#efefef">#efefef</Color>
           </ColorPalette>
-          <Info>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut?"</Info>
+          <Info>Stock Comparer is a project that uses the <a href="https://iexcloud.io/docs/api/">IEX Cloud API</a> to display stock data visually in charts. I've designed and started coding this site to help new investors better compare stock financial data through a clean and simple UI that explains what different financial data means.</Info>
           <Tools>Tools Used</Tools>
           <ToolsContainer>
             <Tool>React JS</Tool>
@@ -235,14 +328,14 @@ function App() {
       <Divider height="200px"/>
       <Container>
         <PortfolioContainer>
-          <Title>Washington Nationals <br/>Ballpark Bites</Title>
+          <Title>Major league baseball <br/> stadium food delivery site</Title>
           <ColorPalette>
             <Color bg="#00073b">#00073b</Color>
             <Color bg="#ba0c2f">#ba0c2f</Color>
             <Color bg="#b7b7b7">#b7b7b7</Color>
             <Color bg="#efefef">#efefef</Color>
           </ColorPalette>
-          <Info>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut?"</Info>
+          <Info>I managed, designed and coded a themeable website for MLB teams to deliver stadium food to fan's homes during the covid pandemic so that they can experience the ballpark from home. It's been a huge hit among baseball fans who've been ecstatically ordering food to to their homes to watch the baseball games. Here's a press page on this website: <a href="https://www.arlnow.com/2020/07/27/arlington-startup-hungry-offering-ballpark-food-delivery-for-nationals-fans/?mc_cid=8cf027a4c2&mc_eid=aebdd8191c">Arlington Startup Hungry Offering Ballpark Food Delivery for Nationals Fans</a></Info>
           <Tools>Tools Used</Tools>
           <ToolsContainer>
             <Tool>React JS</Tool>
@@ -275,7 +368,7 @@ function App() {
             <Color bg="#ff624d">#ff624d</Color>
             <Color bg="#f3f3f4">#f3f3f4</Color>
           </ColorPalette>
-          <Info>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut?"</Info>
+          <Info>This is a dashboard designed and coded by me to help the HUNGRY delivery team manage all catering deliveries. I did user research to discover what the pain points where for our delivery team and designed a user interface to tackle these problems. Our delivery team can now easily see the status of all deliveries and whether they're on time or not. They can also use the accounting tab in the dashboard to manage delivery team pay. </Info>
           <Tools>Tools Used</Tools>
           <ToolsContainer>
             <Tool>React JS</Tool>
@@ -293,6 +386,40 @@ function App() {
           <PhoneContainer>
             <PhoneScreen>
               <img src={ opsMobile }/>
+            </PhoneScreen>
+          </PhoneContainer>
+        </div>
+      </Container>
+
+      <Divider height="200px"/>
+      <Container>
+        <PortfolioContainer>
+          <Title>Catering Chef Marketplace</Title>
+          <ColorPalette>
+            <Color bg="#3d4853">#3d4853</Color>
+            <Color bg="#ee346d">#ee346d</Color>
+            <Color bg="#ff624d">#ff624d</Color>
+            <Color bg="#2eb9f0">#2eb9f0</Color>
+          </ColorPalette>
+          <Info>HUNGRY is an office catering & event platform that connects clients with chef entrepreneurs. The company has rapidly grown into a national platform for chef-made food production and delivery services. I helped conduct user experience research and develop some of the user interfaces in the online ordering checkout flow. Clients can use this site to place and edit orders, see invoices, and see upcoming caterings on their calendar.</Info>
+          <Tools>Tools Used</Tools>
+          <ToolsContainer>
+            <Tool>React JS</Tool>
+            <Tool>SASS</Tool>
+            <Tool>Sketch</Tool>
+            <Tool>InVision</Tool>
+            <Tool>Google Analytics</Tool>
+          </ToolsContainer>
+        </PortfolioContainer>
+        <div>
+          <PadContainer>
+            <PadScreen>
+              <img src={ marketplaceDesktop }/>
+            </PadScreen>
+          </PadContainer>
+          <PhoneContainer>
+            <PhoneScreen>
+              <img src={ marketplaceMobile }/>
             </PhoneScreen>
           </PhoneContainer>
         </div>
