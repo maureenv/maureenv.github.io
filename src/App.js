@@ -17,6 +17,10 @@ import seeMenusMobile from './images/seemenus-mobile.jpg'
 import seeMenusDesktop from './images/seemenus-desktop.jpg'
 import popupDesktop from './images/popup-desktop.jpg'
 import popupMobile from './images/popup-mobile.png'
+import aboutImage from './images/about2.jpg'
+import linkedIn from './images/linkedin.svg'
+import email from './images/email.svg'
+import resume from './images/resume.pdf'
 import Logo from './images/logo.js'
 
 const Divider = styled.div`
@@ -40,7 +44,8 @@ const Container = styled.div`
   max-width: 1200px;
   width: 100%;
   margin: auto;
-  padding: 0 20px;
+  position: relative;
+  padding: 100px 20px;
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -50,6 +55,17 @@ const Container = styled.div`
   `};
   @media (max-width: ${breakpoints[1] + "px"}) {
     flex-direction: column;
+    ${ props => !props.hideUnderline && css`
+      &:after {
+        content: "";
+        position: absolute;
+        margin-top: 100px;
+        width: 50px;
+        height: 5px;
+        background: #c7c7c7;
+        bottom: 0;
+      }
+    `}
   }
 `
 
@@ -59,6 +75,7 @@ const Header = styled.header`
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover; */
+  background: #069688;
   height: 60vh;
   width: 100%;
   video {
@@ -152,7 +169,7 @@ const Tool = styled.div`
   padding: 7px 13px;
   font-size: 16px;
   color: #3f4144;
-  background: #efefef;
+  background: #edf2f7;
   /* border-radius: 20px; */
   margin-right: 10px;
   white-space: nowrap;
@@ -275,6 +292,7 @@ const NoBorderInner = styled.div`
 const ColorPalette = styled.div`
   display: flex;
   margin-bottom: 20px;
+  display: none;
 `
 
 const Color = styled.div`
@@ -305,7 +323,9 @@ const MobileImage = styled.img`
 `
 
 const SeeWeb = styled.a`
-  background: ${ props => props.color };
+  /*background: ${ props => props.color };*/
+  background: #069688;
+  position: relative;
   padding: 15px;
   width: 150px;
   text-align: center;
@@ -316,8 +336,32 @@ const SeeWeb = styled.a`
   text-decoration: none;
   font-family: "regular";
   transition: 0.3s ease-in-out all;
+  overflow: hidden;
+  z-index: 1;
+  &:before {
+    transition: 0.2s ease-in-out all;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: #069688;
+    position: absolute;
+    left: 0;
+    z-index: -1;
+    left: -100%;
+    top: 0;
+  }
   &:hover {
-    filter: brightness(90%);
+    &:before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      background: #02655b;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      left: 0;
+    }
   }
   @media (max-width: ${breakpoints[0] + "px"}) {
     width: 100%;
@@ -326,9 +370,83 @@ const SeeWeb = styled.a`
   }
 `
 
+const Download = styled.a`
+  background: #fff;
+  padding: 13px;
+  width: 150px;
+  text-align: center;
+  border-radius: 30px;
+  margin-top: 30px;
+  display: inline-block;
+  color: #3f4144;
+  text-decoration: none;
+  font-family: "regular";
+  border: 1px solid #fff;
+  transition: 0.3s ease-in-out all;
+  &:hover {
+    border: 1px solid #fff;
+    background: none;
+    color: #fff;
+  }
+`
+
 const Link = styled.a`
   color: ${ props => props.color };
 `
+
+const About = styled.div`
+  width: 100%;
+  background: #069688;
+  /* #be2f2e */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+const AboutInner = styled.div`
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+`
+
+const AboutImage = styled.img`
+  width: 400px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  /* border-right: 10px solid white;
+  border-left: 10px solid white; */
+`
+
+const AboutBio = styled.div`
+  margin-left: 30px;
+  p {
+    font-family: 'regular';
+    color: #fff;
+    font-size: 17px;
+    margin-top: 30px;
+    line-height: 1.5;
+    max-width: 550px;
+  }
+`
+
+const AboutTitle = styled.h3`
+  color: #fff;
+  font-family: 'bebas';
+  font-size: 50px;
+`
+
+const Contact = styled.div`
+  display: flex;
+  a {
+    margin: 5px;
+  }
+  img {
+    width: 28px;
+  }
+`
+
 
 function App() {
   return (
@@ -337,12 +455,12 @@ function App() {
         <Logo mColor={ '#00aee0' } vColor={ '#fff'}/>
       </LogoContainer>
       <Header bg={ bg }>
-        <VideoContainer>
+        {/*<VideoContainer>
         <video muted loop autoPlay playsInline src="https://www.videvo.net/videvo_files/converted/2013_08/preview/hd0992.mov31753.webm" type="video/mp4" ></video>
-        </VideoContainer>
+        </VideoContainer>*/}
       </Header>
 
-      <Divider height="140px"/>
+      <Divider height="80px"/>
       <Container>
         <PortfolioContainer>
           <Title>HUNGRY POPUPS App</Title>
@@ -386,7 +504,7 @@ function App() {
         </MediaQuery>
       </Container>
 
-      <Divider height="220px" mobileHeight="100px"/>
+
       <Container>
         <PortfolioContainer>
           <Title>SeeMenus Menu Builder</Title>
@@ -425,7 +543,6 @@ function App() {
         </MediaQuery>
       </Container>
 
-      <Divider height="200px" mobileHeight="100px"/>
       <Container>
         <PortfolioContainer>
           <Title>Stock Comparer</Title>
@@ -471,7 +588,6 @@ function App() {
         </MediaQuery>
       </Container>
 
-      <Divider height="200px" mobileHeight="100px"/>
       <Container>
         <PortfolioContainer>
           <Title>Major league baseball stadium food delivery site</Title>
@@ -481,7 +597,7 @@ function App() {
             <Color bg="#b7b7b7">#b7b7b7</Color>
             <Color bg="#efefef">#efefef</Color>
           </ColorPalette>
-          <Info>I managed, designed and coded a themeable website for MLB teams to deliver stadium food to fan's homes during the covid pandemic so that they can experience the ballpark from home. It's been a huge hit among baseball fans who've been ecstatically ordering food to to their homes to watch the baseball games. Here's a press page on this website: <Link color="#00073b" href="https://www.arlnow.com/2020/07/27/arlington-startup-hungry-offering-ballpark-food-delivery-for-nationals-fans/?mc_cid=8cf027a4c2&mc_eid=aebdd8191c">Arlington Startup Hungry Offering Ballpark Food Delivery for Nationals Fans</Link></Info>
+          <Info>I managed, designed and coded a themeable website for MLB teams to deliver stadium food to fan's homes during the Covid pandemic so that they can experience the ballpark from home. It's been a huge hit among baseball fans who've been ecstatically ordering food to to their homes to watch the baseball games. Here's a press page on this website: <Link color="#00073b" href="https://www.arlnow.com/2020/07/27/arlington-startup-hungry-offering-ballpark-food-delivery-for-nationals-fans/?mc_cid=8cf027a4c2&mc_eid=aebdd8191c">Arlington Startup Hungry Offering Ballpark Food Delivery for Nationals Fans</Link></Info>
           <Tools>Tools Used</Tools>
           <ToolsContainer>
             <Tool color="#efefef">React JS</Tool>
@@ -517,7 +633,6 @@ function App() {
           </MediaQuery>
       </Container>
 
-      <Divider height="200px" mobileHeight="100px"/>
       <Container>
         <PortfolioContainer>
           <Title>Order Delivery <br/>Management Dashboard</Title>
@@ -557,8 +672,7 @@ function App() {
         </MediaQuery>
       </Container>
 
-      <Divider height="200px" mobileHeight="100px"/>
-      <Container>
+      <Container hideUnderline={ true }>
         <PortfolioContainer>
           <Title>Catering Chef Marketplace</Title>
           <ColorPalette>
@@ -603,40 +717,31 @@ function App() {
           <SeeWeb color="#ee346d" href="https://tryhungry.com/">See Website</SeeWeb>
         </MediaQuery>
       </Container>
-      {/*<Container right={ true }>
-        <div>
-          <PadContainer right={ true }>
-            <PadScreen>
-              <img src={ natsDesktop }/>
-            </PadScreen>
-          </PadContainer>
-          <PhoneContainer right={ true }>
-            <PhoneScreen>
-              <img src={ natsMobile }/>
-            </PhoneScreen>
-          </PhoneContainer>
-        </div>
-        <PortfolioContainer right={ true }>
-          <Title>Washington Nationals</Title>
-          <ColorPalette>
-            <Color bg="#00aee0">#00aee0</Color>
-            <Color bg="#00659e">#00659e</Color>
-            <Color bg="#f44336">#f44336</Color>
-            <Color bg="#efefef">#efefef</Color>
-          </ColorPalette>
-          <Info>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut?"</Info>
-          <Tools>Tools Used</Tools>
-          <ToolsContainer>
-            <Tool>React JS</Tool>
-            <Tool>Emotion CSS</Tool>
-            <Tool>Sketch</Tool>
-          </ToolsContainer>
-        </PortfolioContainer>
-      </Container>*/}
+      <Divider height="100px"/>
+      <About>
+        <AboutInner>
+          <AboutImage src={ aboutImage }/>
+          <AboutBio>
+            <AboutTitle>About Me</AboutTitle>
+            <p>I'm a Front-end Web Developer and UIUX Designer who currently works remotely as an Associate Product Manager for a startup in the US. My role spans  developing product concepts, prototyping, designing and coding. I also work as a freelance graphic designer and artist.</p>
 
-      <Divider height="200px"/>
+            <p>Raised in Japan and currently residing in Taiwan, I speak both Japanese and Mandarin. On my spare time, I like to work on personal web projects, draw and study foreign languages.</p>
+            <Download href={ resume } download="Maureen_Vogel_Resume">Download Resume</Download>
+          </AboutBio>
+        </AboutInner>
+      </About>
+      {/*<Footer>
+        <Contact>
+          <a href="https://www.linkedin.com/in/maureenvogel/">
+            <img src={ linkedIn }/>
+          </a>
+          <a href="mailto: maureenvogel@outlook.com">
+            <img src={ email }/>
+          </a>
+        </Contact>
+      </Footer>*/}
     </Page>
-  );
+  )
 }
 
-export default App;
+export default App
