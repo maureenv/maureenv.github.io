@@ -101,9 +101,9 @@ const PortfolioContainer = styled.div`
   `};
   @media (max-width: ${breakpoints[1] + "px"}) {
     width: 100%;
-    padding: 20px;
     box-sizing: border-box;
     margin-left: 0;
+    margin-right: 0;
   }
 `
 
@@ -112,6 +112,7 @@ const Title = styled.h2`
   font-size: 50px;
   margin-bottom: 10px;
   text-transform: uppercase;
+  max-width: 500px;
   color: ${ props => props.theme.textColor };
   @media (max-width: ${breakpoints[0] + "px"}) {
     font-size: 40px;
@@ -141,18 +142,22 @@ const Tools = styled.p`
 const ToolsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  @media (max-width: ${breakpoints[1] + "px"}) {
+    margin-bottom: 10px;
+  }
 `
 
 const Tool = styled.div`
   font-family: "Regular";
-  background: #787f8a;
   padding: 7px 13px;
-  color: #fff;
   font-size: 16px;
-  border-radius: 20px;
+  color: #3f4144;
+  background: #efefef;
+  /* border-radius: 20px; */
   margin-right: 10px;
   white-space: nowrap;
   margin-bottom: 10px;
+  background: ${ props => props.color };
 `
 
 const slide = keyframes`
@@ -299,6 +304,32 @@ const MobileImage = styled.img`
   width: 100%;
 `
 
+const SeeWeb = styled.a`
+  background: ${ props => props.color };
+  padding: 15px;
+  width: 150px;
+  text-align: center;
+  border-radius: 30px;
+  margin-top: 20px;
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  font-family: "regular";
+  transition: 0.3s ease-in-out all;
+  &:hover {
+    filter: brightness(90%);
+  }
+  @media (max-width: ${breakpoints[0] + "px"}) {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 30px;
+  }
+`
+
+const Link = styled.a`
+  color: ${ props => props.color };
+`
+
 function App() {
   return (
     <Page>
@@ -324,11 +355,14 @@ function App() {
           <Info>HUNGRY Popups is a mobile app I'm designing and developing for HUNGRY to allow customers to find catering popups nearby. It uses location tracking and google maps to notify customers of popups being held in nearby buildings.</Info>
           <Tools>Tools Used</Tools>
           <ToolsContainer>
-            <Tool>React Native</Tool>
-            <Tool>Sketch</Tool>
-            <Tool>InVision</Tool>
-            <Tool>Emotion CSS</Tool>
+            <Tool color="#edf2f7">React Native</Tool>
+            <Tool color="#edf2f7">Sketch</Tool>
+            <Tool color="#edf2f7">InVision</Tool>
+            <Tool color="#edf2f7">Emotion CSS</Tool>
           </ToolsContainer>
+          <MediaQuery minWidth={ breakpoints[1]}>
+            <SeeWeb color="#ee346d" href="https://projects.invisionapp.com/share/X9YLMJ0SCQE#/screens/430161794">See Prototype</SeeWeb>
+          </MediaQuery>
         </PortfolioContainer>
         <MediaQuery minWidth={ breakpoints[1]}>
           <div>
@@ -347,6 +381,9 @@ function App() {
         <MediaQuery maxWidth={ breakpoints[1]}>
           <MobileImage noShadow={ true } alt="Web Developer" src={ popupDesktop }/>
         </MediaQuery>
+        <MediaQuery maxWidth={ breakpoints[1]}>
+          <SeeWeb color="#ee346d" href="https://projects.invisionapp.com/share/X9YLMJ0SCQE#/screens/430161794">See Prototype</SeeWeb>
+        </MediaQuery>
       </Container>
 
       <Divider height="220px" mobileHeight="100px"/>
@@ -362,9 +399,9 @@ function App() {
           <Info>SeeMenus is a website I am designing and coding to help restaurants easily build their own website with an online menu and editable theme. The menu is automatically translated into Japanese and Chinese using a machine learning translation API called Deepl. Users can also print a PDF of their menu in the translated languages. </Info>
           <Tools>Tools Used</Tools>
           <ToolsContainer>
-            <Tool>React JS</Tool>
-            <Tool>Next JS</Tool>
-            <Tool>Emotion CSS</Tool>
+            <Tool color="#edf2f7">React JS</Tool>
+            <Tool color="#edf2f7">Next JS</Tool>
+            <Tool color="#edf2f7">Emotion CSS</Tool>
           </ToolsContainer>
         </PortfolioContainer>
         <MediaQuery minWidth={ breakpoints[1]}>
@@ -398,14 +435,17 @@ function App() {
             <Color bg="#f44336">#f44336</Color>
             <Color bg="#efefef">#efefef</Color>
           </ColorPalette>
-          <Info>Stock Comparer is a project that uses the <a href="https://iexcloud.io/docs/api/">IEX Cloud API</a> to display stock data visually in charts. I've designed and started coding this site to help new investors better compare stock financial data through a clean and simple UI that explains what different financial data means.</Info>
+          <Info>Stock Comparer is a project that uses the <Link color="#00659e" href="https://iexcloud.io/docs/api/">IEX Cloud API</Link> to display stock data visually in charts. I've designed and started coding this site to help new investors better compare stock financial data through a clean and simple UI that explains what different financial data means.</Info>
           <Tools>Tools Used</Tools>
           <ToolsContainer>
-            <Tool>React JS</Tool>
-            <Tool>Emotion CSS</Tool>
-            <Tool>Node</Tool>
-            <Tool>Mongo DB</Tool>
+            <Tool color="#efefef">React JS</Tool>
+            <Tool color="#efefef">Emotion CSS</Tool>
+            <Tool color="#efefef">Node</Tool>
+            <Tool color="#efefef">Mongo DB</Tool>
           </ToolsContainer>
+          <MediaQuery minWidth={ breakpoints[1]}>
+            <SeeWeb color="#00659e" href="http://www.stockcomparer.com/">See Website</SeeWeb>
+          </MediaQuery>
         </PortfolioContainer>
         <MediaQuery minWidth={ breakpoints[1]}>
           <div>
@@ -426,6 +466,9 @@ function App() {
             <MobileImage alt="Web Developer" src={ stockPad }/>
           </MobileImageContainer>
         </MediaQuery>
+        <MediaQuery maxWidth={ breakpoints[1]}>
+          <SeeWeb color="#00659e" href="http://www.stockcomparer.com/">See Website</SeeWeb>
+        </MediaQuery>
       </Container>
 
       <Divider height="200px" mobileHeight="100px"/>
@@ -438,14 +481,17 @@ function App() {
             <Color bg="#b7b7b7">#b7b7b7</Color>
             <Color bg="#efefef">#efefef</Color>
           </ColorPalette>
-          <Info>I managed, designed and coded a themeable website for MLB teams to deliver stadium food to fan's homes during the covid pandemic so that they can experience the ballpark from home. It's been a huge hit among baseball fans who've been ecstatically ordering food to to their homes to watch the baseball games. Here's a press page on this website: <a href="https://www.arlnow.com/2020/07/27/arlington-startup-hungry-offering-ballpark-food-delivery-for-nationals-fans/?mc_cid=8cf027a4c2&mc_eid=aebdd8191c">Arlington Startup Hungry Offering Ballpark Food Delivery for Nationals Fans</a></Info>
+          <Info>I managed, designed and coded a themeable website for MLB teams to deliver stadium food to fan's homes during the covid pandemic so that they can experience the ballpark from home. It's been a huge hit among baseball fans who've been ecstatically ordering food to to their homes to watch the baseball games. Here's a press page on this website: <Link color="#00073b" href="https://www.arlnow.com/2020/07/27/arlington-startup-hungry-offering-ballpark-food-delivery-for-nationals-fans/?mc_cid=8cf027a4c2&mc_eid=aebdd8191c">Arlington Startup Hungry Offering Ballpark Food Delivery for Nationals Fans</Link></Info>
           <Tools>Tools Used</Tools>
           <ToolsContainer>
-            <Tool>React JS</Tool>
-            <Tool>Emotion CSS</Tool>
-            <Tool>Sketch</Tool>
-            <Tool>InVision</Tool>
+            <Tool color="#efefef">React JS</Tool>
+            <Tool color="#efefef">Emotion CSS</Tool>
+            <Tool color="#efefef">Sketch</Tool>
+            <Tool color="#efefef">InVision</Tool>
           </ToolsContainer>
+          <MediaQuery minWidth={ breakpoints[1]}>
+            <SeeWeb color="#00073b" href="https://nationals.tryhungry.com/">See Website</SeeWeb>
+          </MediaQuery>
         </PortfolioContainer>
           <MediaQuery minWidth={ breakpoints[1]}>
             <div>
@@ -466,6 +512,9 @@ function App() {
               <MobileImage alt="Web Developer" src={ natsDesktop }/>
             </MobileImageContainer>
           </MediaQuery>
+          <MediaQuery maxWidth={ breakpoints[1]}>
+            <SeeWeb color="#00073b" href="https://nationals.tryhungry.com/">See Website</SeeWeb>
+          </MediaQuery>
       </Container>
 
       <Divider height="200px" mobileHeight="100px"/>
@@ -481,10 +530,10 @@ function App() {
           <Info>This is a dashboard designed and coded by me to help the HUNGRY delivery team manage all catering deliveries. I did user research to discover what the pain points where for our delivery team and designed a user interface to tackle these problems. Our delivery team can now easily see the status of all deliveries and whether they're on time or not. They can also use the accounting tab in the dashboard to manage delivery team pay. </Info>
           <Tools>Tools Used</Tools>
           <ToolsContainer>
-            <Tool>React JS</Tool>
-            <Tool>SASS</Tool>
-            <Tool>Sketch</Tool>
-            <Tool>InVision</Tool>
+            <Tool color="#f3f3f4">React JS</Tool>
+            <Tool color="#f3f3f4">SASS</Tool>
+            <Tool color="#f3f3f4">Sketch</Tool>
+            <Tool color="#f3f3f4">InVision</Tool>
           </ToolsContainer>
         </PortfolioContainer>
         <MediaQuery minWidth={ breakpoints[1]}>
@@ -527,6 +576,9 @@ function App() {
             <Tool>InVision</Tool>
             <Tool>Google Analytics</Tool>
           </ToolsContainer>
+          <MediaQuery minWidth={ breakpoints[1]}>
+            <SeeWeb color="#ee346d" href="https://tryhungry.com/">See Website</SeeWeb>
+          </MediaQuery>
         </PortfolioContainer>
         <MediaQuery minWidth={ breakpoints[1]}>
           <div>
@@ -546,6 +598,9 @@ function App() {
           <MobileImageContainer height="270px">
             <MobileImage alt="Web Developer" src={ marketplaceDesktop }/>
           </MobileImageContainer>
+        </MediaQuery>
+        <MediaQuery maxWidth={ breakpoints[1]}>
+          <SeeWeb color="#ee346d" href="https://tryhungry.com/">See Website</SeeWeb>
         </MediaQuery>
       </Container>
       {/*<Container right={ true }>
