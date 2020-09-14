@@ -19,9 +19,10 @@ import popupDesktop from './images/popup-desktop.jpg'
 import popupMobile from './images/popup-mobile.png'
 import aboutImage from './images/about2.jpg'
 import linkedIn from './images/linkedin.svg'
-import email from './images/email.svg'
+import email3 from './images/email3.svg'
 import resume from './images/resume.pdf'
 import Logo from './images/logo.js'
+import background from './images/background.jpg'
 
 const Divider = styled.div`
   height: ${ props => props.height };
@@ -31,9 +32,10 @@ const Divider = styled.div`
 `
 
 const LogoContainer = styled.div`
-  width: 50px;
+  width: 40px;
   position: absolute;
   padding: 20px;
+  z-index: 3;
 `
 
 const Page = styled.div`
@@ -70,14 +72,32 @@ const Container = styled.div`
 `
 
 const Header = styled.header`
-  /* background: url(${(props) => props.bg}) no-repeat center center;
+  display: flex;
+  align-items: center;
+   background: url(${(props) => props.bg}) no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover; */
-  background: #069688;
+  background-size: cover;
+  position: relative;
+  /*background: #069688;*/
   height: 60vh;
   width: 100%;
+  z-index: 1;
+  &:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgb(22,46,105);
+    background: linear-gradient(45deg, rgba(6,150,136,1) 0%, rgba(22,46,105,1) 100%);
+    opacity: 0.8;
+    z-index: -1;
+  }
   video {
     position: absolute;
     top: 50%;
@@ -100,6 +120,25 @@ const Header = styled.header`
       z-index: 0;
     }
   }
+`
+
+const HeaderContainer = styled.div`
+  width: 50%;
+  margin-left: auto;
+`
+
+const Heading = styled.div`
+  font-family: "bebas";
+  font-size: 110px;
+  color: #fff;
+`
+
+const SubHeading = styled.div`
+  color: #fff;
+  font-family: 'Regular';
+  font-size: 30px;
+  margin-top: 20px;
+  position: relative;
 `
 
 const VideoContainer = styled.div`
@@ -254,11 +293,13 @@ const PadScreen = styled.div`
   border: 1px solid #c5c5c5;
   img {
     width: 100%;
-    animation: ${slide} 8s ease alternate infinite;
-    animation-play-state: paused;
-    &:hover {
-      animation-play-state: running;
-    }
+    ${ props => props.animate && css`
+      animation: ${slide} 8s ease alternate infinite;
+      animation-play-state: paused;
+      &:hover {
+        animation-play-state: running;
+      }
+    `}
   }
 `
 
@@ -391,12 +432,13 @@ const Download = styled.a`
 `
 
 const Link = styled.a`
-  color: ${ props => props.color };
+  color: #069688;
 `
 
 const About = styled.div`
   width: 100%;
-  background: #069688;
+  background: rgb(22,46,105);
+  background: linear-gradient(45deg, rgba(6,150,136,1) 0%, rgba(22,46,105,1) 100%);
   /* #be2f2e */
   display: flex;
   align-items: center;
@@ -421,14 +463,15 @@ const AboutImage = styled.img`
 
 const AboutBio = styled.div`
   margin-left: 30px;
-  p {
-    font-family: 'regular';
-    color: #fff;
-    font-size: 17px;
-    margin-top: 30px;
-    line-height: 1.5;
-    max-width: 550px;
-  }
+`
+
+const AboutP = styled.div`
+  font-family: 'regular';
+  color: #fff;
+  font-size: 17px;
+  margin-top: 30px;
+  line-height: 1.5;
+  max-width: 550px;
 `
 
 const AboutTitle = styled.h3`
@@ -439,11 +482,16 @@ const AboutTitle = styled.h3`
 
 const Contact = styled.div`
   display: flex;
-  a {
-    margin: 5px;
-  }
+  align-items: center;
+  margin-top: 15px;
   img {
-    width: 28px;
+    width: 25px;
+  }
+  p {
+    margin-left: 10px;
+    color: #fff;
+    font-size: 17px;
+    font-family: 'bold';
   }
 `
 
@@ -452,9 +500,13 @@ function App() {
   return (
     <Page>
       <LogoContainer>
-        <Logo mColor={ '#00aee0' } vColor={ '#fff'}/>
+        <Logo mColor={ 'rgba(255, 255, 255, 0.3)' } vColor={ '#fff'}/>
       </LogoContainer>
-      <Header bg={ bg }>
+      <Header bg={ background }>
+        <HeaderContainer>
+          <Heading>Hi, I'm Maureen</Heading>
+          <SubHeading>Web Developer & UIUX Designer</SubHeading>
+        </HeaderContainer>
         {/*<VideoContainer>
         <video muted loop autoPlay playsInline src="https://www.videvo.net/videvo_files/converted/2013_08/preview/hd0992.mov31753.webm" type="video/mp4" ></video>
         </VideoContainer>*/}
@@ -525,7 +577,7 @@ function App() {
         <MediaQuery minWidth={ breakpoints[1]}>
           <div>
             <PadContainer>
-              <PadScreen>
+              <PadScreen animate={ true }>
                 <img src={ seeMenusDesktop }/>
               </PadScreen>
             </PadContainer>
@@ -552,7 +604,7 @@ function App() {
             <Color bg="#f44336">#f44336</Color>
             <Color bg="#efefef">#efefef</Color>
           </ColorPalette>
-          <Info>Stock Comparer is a project that uses the <Link color="#00659e" href="https://iexcloud.io/docs/api/">IEX Cloud API</Link> to display stock data visually in charts. I've designed and started coding this site to help new investors better compare stock financial data through a clean and simple UI that explains what different financial data means.</Info>
+          <Info>Stock Comparer is a project that uses the <Link href="https://iexcloud.io/docs/api/">IEX Cloud API</Link> to display stock data visually in charts. I've designed and started coding this site to help new investors better compare stock financial data through a clean and simple UI that explains what different financial data means.</Info>
           <Tools>Tools Used</Tools>
           <ToolsContainer>
             <Tool color="#efefef">React JS</Tool>
@@ -567,7 +619,7 @@ function App() {
         <MediaQuery minWidth={ breakpoints[1]}>
           <div>
             <PadContainer>
-              <PadScreen>
+              <PadScreen animate={ true }>
                 <img src={ stockPad }/>
               </PadScreen>
             </PadContainer>
@@ -597,7 +649,7 @@ function App() {
             <Color bg="#b7b7b7">#b7b7b7</Color>
             <Color bg="#efefef">#efefef</Color>
           </ColorPalette>
-          <Info>I managed, designed and coded a themeable website for MLB teams to deliver stadium food to fan's homes during the Covid pandemic so that they can experience the ballpark from home. It's been a huge hit among baseball fans who've been ecstatically ordering food to to their homes to watch the baseball games. Here's a press page on this website: <Link color="#00073b" href="https://www.arlnow.com/2020/07/27/arlington-startup-hungry-offering-ballpark-food-delivery-for-nationals-fans/?mc_cid=8cf027a4c2&mc_eid=aebdd8191c">Arlington Startup Hungry Offering Ballpark Food Delivery for Nationals Fans</Link></Info>
+          <Info>I managed, designed and coded a themeable website for MLB teams to deliver stadium food to fan's homes during the Covid pandemic so that they can experience the ballpark from home. It's been a huge hit among baseball fans who've been ecstatically ordering food to to their homes to watch the baseball games. Here's a press page on this website: <Link href="https://www.arlnow.com/2020/07/27/arlington-startup-hungry-offering-ballpark-food-delivery-for-nationals-fans/?mc_cid=8cf027a4c2&mc_eid=aebdd8191c">Arlington Startup Hungry Offering Ballpark Food Delivery for Nationals Fans</Link></Info>
           <Tools>Tools Used</Tools>
           <ToolsContainer>
             <Tool color="#efefef">React JS</Tool>
@@ -612,7 +664,7 @@ function App() {
           <MediaQuery minWidth={ breakpoints[1]}>
             <div>
               <PadContainer>
-                <PadScreen>
+                <PadScreen animate={ true }>
                   <img src={ natsDesktop }/>
                 </PadScreen>
               </PadContainer>
@@ -654,12 +706,12 @@ function App() {
         <MediaQuery minWidth={ breakpoints[1]}>
           <div>
             <PadContainer>
-              <PadScreen>
+              <PadScreen animate={ false }>
                 <img src={ opsDesktop }/>
               </PadScreen>
             </PadContainer>
             <PhoneContainer>
-              <PhoneScreen animate={ true }>
+              <PhoneScreen animate={ false }>
                 <img src={ opsMobile }/>
               </PhoneScreen>
             </PhoneContainer>
@@ -697,7 +749,7 @@ function App() {
         <MediaQuery minWidth={ breakpoints[1]}>
           <div>
             <PadContainer>
-              <PadScreen>
+              <PadScreen animate={ true }>
                 <img src={ marketplaceDesktop }/>
               </PadScreen>
             </PadContainer>
@@ -723,9 +775,13 @@ function App() {
           <AboutImage src={ aboutImage }/>
           <AboutBio>
             <AboutTitle>About Me</AboutTitle>
-            <p>I'm a Front-end Web Developer and UIUX Designer who currently works remotely as an Associate Product Manager for a startup in the US. My role spans  developing product concepts, prototyping, designing and coding. I also work as a freelance graphic designer and artist.</p>
+            <AboutP>I'm a Front-end Web Developer and UIUX Designer who currently works remotely as an Associate Product Manager for a startup in the US. My role spans  developing product concepts, prototyping, designing and coding. I also work as a freelance graphic designer and artist.</AboutP>
 
-            <p>Raised in Japan and currently residing in Taiwan, I speak both Japanese and Mandarin. On my spare time, I like to work on personal web projects, draw and study foreign languages.</p>
+            <AboutP>Raised in Japan and currently residing in Taiwan, I speak both Japanese and Mandarin. On my spare time, I like to work on personal web projects, draw and study foreign languages.</AboutP>
+            <Contact>
+              <img src={ email3 }/>
+              <p>maureenvogel@outlook.com</p>
+            </Contact>
             <Download href={ resume } download="Maureen_Vogel_Resume">Download Resume</Download>
           </AboutBio>
         </AboutInner>
