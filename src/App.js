@@ -200,7 +200,7 @@ const ToolsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   @media (max-width: ${breakpoints[1] + "px"}) {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
 `
 
@@ -384,7 +384,7 @@ const SeeWeb = styled.a`
     content: '';
     width: 100%;
     height: 100%;
-    background: #069688;
+    background: #162e69;
     position: absolute;
     left: 0;
     z-index: -1;
@@ -404,7 +404,7 @@ const SeeWeb = styled.a`
       left: 0;
     }
   }
-  @media (max-width: ${breakpoints[0] + "px"}) {
+  @media (max-width: ${breakpoints[1] + "px"}) {
     width: 100%;
     box-sizing: border-box;
     margin-top: 30px;
@@ -463,6 +463,10 @@ const AboutImage = styled.img`
 
 const AboutBio = styled.div`
   margin-left: 30px;
+  @media (max-width: ${breakpoints[1] + "px"}) {
+    margin-left: 0;
+    padding: 20px;
+  }
 `
 
 const AboutP = styled.div`
@@ -478,6 +482,38 @@ const AboutTitle = styled.h3`
   color: #fff;
   font-family: 'bebas';
   font-size: 50px;
+`
+
+const AboutMobile = styled.div`
+  display: flex;
+  align-items: flex-start;
+   background: url(${(props) => props.bg}) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+  height: 120vh;
+  padding: 30px 0;
+  padding-bottom: 100px;
+  z-index: 1;
+  &:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgb(22,46,105);
+    background: linear-gradient(0deg, rgba(255,255,255,0) 20%, rgba(22,46,105,1) 60%, rgba(6,150,136,1) 100%);
+    opacity: 0.95;
+    z-index: -1;
+  }
+  @media (max-width: ${breakpoints[0] + "px"}) {
+    height: 150vh;
+  }
 `
 
 const Contact = styled.div`
@@ -814,11 +850,30 @@ function App() {
         </Fade>
       </Container>
       <Divider height="100px"/>
-      <About>
-        <AboutInner>
-          <Zoom>
-            <AboutImage src={ aboutImage }/>
-          </Zoom>
+      <MediaQuery minWidth={ breakpoints[1]}>
+        <About>
+          <AboutInner>
+            <Zoom>
+              <AboutImage src={ aboutImage }/>
+            </Zoom>
+            <Fade left>
+              <AboutBio>
+                <AboutTitle>About Me</AboutTitle>
+                <AboutP>I'm a Frontend Engineer and UIUX Designer who currently works remotely for a startup in the US. My role spans developing product concepts, prototyping, designing and coding. I also work as a freelance graphic designer and artist.</AboutP>
+
+                <AboutP>Raised in Japan and currently residing in Taiwan, I speak both Japanese and Mandarin. On my spare time, I like to work on personal web projects, draw and study foreign languages.</AboutP>
+                <Contact>
+                  <img src={ email3 }/>
+                  <p>maureenvogel@outlook.com</p>
+                </Contact>
+                <Download href={ resume } download="Maureen_Vogel_Resume">Download Resume</Download>
+              </AboutBio>
+            </Fade>
+          </AboutInner>
+        </About>
+      </MediaQuery>
+      <MediaQuery maxWidth={ breakpoints[1]}>
+        <AboutMobile bg={ aboutImage }>
           <Fade left>
             <AboutBio>
               <AboutTitle>About Me</AboutTitle>
@@ -832,8 +887,8 @@ function App() {
               <Download href={ resume } download="Maureen_Vogel_Resume">Download Resume</Download>
             </AboutBio>
           </Fade>
-        </AboutInner>
-      </About>
+        </AboutMobile>
+      </MediaQuery>
       {/*<Footer>
         <Contact>
           <a href="https://www.linkedin.com/in/maureenvogel/">
