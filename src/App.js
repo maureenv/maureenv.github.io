@@ -6,7 +6,6 @@ import Fade from 'react-reveal/Fade'
 import Zoom from 'react-reveal/Zoom'
 import { breakpoints } from './constants.js'
 
-import bg from './images/bg.jpg'
 import stockMobile from './images/stock-mobile.png'
 import stockPad from './images/stock-desktop.png'
 import natsMobile from './images/nats-mobile.png'
@@ -553,12 +552,16 @@ function App() {
             </div>
           </MediaQuery>
         </Fade>
-        <MediaQuery maxWidth={ breakpoints[1]}>
-          <MobileImage noShadow={ true } alt="Web Developer" src={ popupDesktop }/>
-        </MediaQuery>
-        <MediaQuery maxWidth={ breakpoints[1]}>
-          <SeeWeb color="#ee346d" href="https://projects.invisionapp.com/share/X9YLMJ0SCQE#/screens/430161794">See Prototype</SeeWeb>
-        </MediaQuery>
+        <Fade right>
+          <div>
+            <MediaQuery maxWidth={ breakpoints[1]}>
+              <MobileImage noShadow={ true } alt="Web Developer" src={ popupDesktop }/>
+            </MediaQuery>
+            <MediaQuery maxWidth={ breakpoints[1]}>
+              <SeeWeb color="#ee346d" href="https://projects.invisionapp.com/share/X9YLMJ0SCQE#/screens/430161794">See Prototype</SeeWeb>
+            </MediaQuery>
+          </div>
+        </Fade>
       </Container>
 
 
@@ -597,11 +600,13 @@ function App() {
             </div>
           </MediaQuery>
         </Fade>
-        <MediaQuery maxWidth={ breakpoints[1]}>
-          <MobileImageContainer height="300px">
-            <MobileImage alt="Web Developer" src={ seeMenusDesktop }/>
-          </MobileImageContainer>
-        </MediaQuery>
+        <Fade right>
+          <MediaQuery maxWidth={ breakpoints[1]}>
+            <MobileImageContainer height="300px">
+              <MobileImage alt="Web Developer" src={ seeMenusDesktop }/>
+            </MobileImageContainer>
+          </MediaQuery>
+        </Fade>
       </Container>
 
       <Container>
@@ -643,14 +648,18 @@ function App() {
           </div>
         </MediaQuery>
         </Fade>
-        <MediaQuery maxWidth={ breakpoints[1]}>
-          <MobileImageContainer height="300px">
-            <MobileImage alt="Web Developer" src={ stockPad }/>
-          </MobileImageContainer>
-        </MediaQuery>
-        <MediaQuery maxWidth={ breakpoints[1]}>
-          <SeeWeb color="#00659e" href="http://www.stockcomparer.com/">See Website</SeeWeb>
-        </MediaQuery>
+        <Fade right>
+          <div>
+            <MediaQuery maxWidth={ breakpoints[1]}>
+              <MobileImageContainer height="300px">
+                <MobileImage alt="Web Developer" src={ stockPad }/>
+              </MobileImageContainer>
+            </MediaQuery>
+            <MediaQuery maxWidth={ breakpoints[1]}>
+              <SeeWeb color="#00659e" href="http://www.stockcomparer.com/">See Website</SeeWeb>
+            </MediaQuery>
+          </div>
+        </Fade>
       </Container>
 
       <Container>
@@ -675,31 +684,35 @@ function App() {
               <SeeWeb color="#00073b" href="https://nationals.tryhungry.com/">See Website</SeeWeb>
             </MediaQuery>
           </PortfolioContainer>
-          </Fade>
-          <Fade right>
-            <MediaQuery minWidth={ breakpoints[1]}>
-              <div>
-                <PadContainer>
-                  <PadScreen animate={ true }>
-                    <img src={ natsDesktop }/>
-                  </PadScreen>
-                </PadContainer>
-                <PhoneContainer>
-                  <PhoneScreen animate={ true }>
-                    <img src={ natsMobile }/>
-                  </PhoneScreen>
-                </PhoneContainer>
-              </div>
+        </Fade>
+        <Fade right>
+          <MediaQuery minWidth={ breakpoints[1]}>
+            <div>
+              <PadContainer>
+                <PadScreen animate={ true }>
+                  <img src={ natsDesktop }/>
+                </PadScreen>
+              </PadContainer>
+              <PhoneContainer>
+                <PhoneScreen animate={ true }>
+                  <img src={ natsMobile }/>
+                </PhoneScreen>
+              </PhoneContainer>
+            </div>
+          </MediaQuery>
+        </Fade>
+        <Fade right>
+          <div>
+            <MediaQuery maxWidth={ breakpoints[1]}>
+              <MobileImageContainer height="300px">
+                <MobileImage alt="Web Developer" src={ natsDesktop }/>
+              </MobileImageContainer>
             </MediaQuery>
-          </Fade>
-          <MediaQuery maxWidth={ breakpoints[1]}>
-            <MobileImageContainer height="300px">
-              <MobileImage alt="Web Developer" src={ natsDesktop }/>
-            </MobileImageContainer>
-          </MediaQuery>
-          <MediaQuery maxWidth={ breakpoints[1]}>
-            <SeeWeb color="#00073b" href="https://nationals.tryhungry.com/">See Website</SeeWeb>
-          </MediaQuery>
+            <MediaQuery maxWidth={ breakpoints[1]}>
+              <SeeWeb color="#00073b" href="https://nationals.tryhungry.com/">See Website</SeeWeb>
+            </MediaQuery>
+          </div>
+        </Fade>
       </Container>
 
       <Container>
@@ -738,11 +751,13 @@ function App() {
             </div>
           </MediaQuery>
         </Fade>
-        <MediaQuery maxWidth={ breakpoints[1]}>
-          <MobileImageContainer height="200px">
-            <MobileImage alt="Web Developer" src={ opsDesktop }/>
-          </MobileImageContainer>
-        </MediaQuery>
+        <Fade right>
+          <MediaQuery maxWidth={ breakpoints[1]}>
+            <MobileImageContainer height="200px">
+              <MobileImage alt="Web Developer" src={ opsDesktop }/>
+            </MobileImageContainer>
+          </MediaQuery>
+        </Fade>
       </Container>
 
       <Container hideUnderline={ true }>
@@ -785,14 +800,18 @@ function App() {
             </div>
           </MediaQuery>
         </Fade>
-        <MediaQuery maxWidth={ breakpoints[1]}>
-          <MobileImageContainer height="270px">
-            <MobileImage alt="Web Developer" src={ marketplaceDesktop }/>
-          </MobileImageContainer>
-        </MediaQuery>
-        <MediaQuery maxWidth={ breakpoints[1]}>
-          <SeeWeb color="#ee346d" href="https://tryhungry.com/">See Website</SeeWeb>
-        </MediaQuery>
+        <Fade right>
+          <div>
+            <MediaQuery maxWidth={ breakpoints[1]}>
+              <MobileImageContainer height="270px">
+                <MobileImage alt="Web Developer" src={ marketplaceDesktop }/>
+              </MobileImageContainer>
+            </MediaQuery>
+            <MediaQuery maxWidth={ breakpoints[1]}>
+              <SeeWeb color="#ee346d" href="https://tryhungry.com/">See Website</SeeWeb>
+            </MediaQuery>
+          </div>
+        </Fade>
       </Container>
       <Divider height="100px"/>
       <About>
@@ -803,7 +822,7 @@ function App() {
           <Fade left>
             <AboutBio>
               <AboutTitle>About Me</AboutTitle>
-              <AboutP>I'm a Front-end Web Developer and UIUX Designer who currently works remotely as an Associate Product Manager for a startup in the US. My role spans  developing product concepts, prototyping, designing and coding. I also work as a freelance graphic designer and artist.</AboutP>
+              <AboutP>I'm a Frontend Engineer and UIUX Designer who currently works remotely for a startup in the US. My role spans developing product concepts, prototyping, designing and coding. I also work as a freelance graphic designer and artist.</AboutP>
 
               <AboutP>Raised in Japan and currently residing in Taiwan, I speak both Japanese and Mandarin. On my spare time, I like to work on personal web projects, draw and study foreign languages.</AboutP>
               <Contact>
