@@ -2,6 +2,8 @@ import React from 'react'
 import styled from '@emotion/styled'
 import MediaQuery from 'react-responsive'
 import { jsx, css, keyframes } from '@emotion/core'
+import Fade from 'react-reveal/Fade'
+import Zoom from 'react-reveal/Zoom'
 import { breakpoints } from './constants.js'
 
 import bg from './images/bg.jpg'
@@ -213,7 +215,6 @@ const Tool = styled.div`
   margin-right: 10px;
   white-space: nowrap;
   margin-bottom: 10px;
-  background: ${ props => props.color };
 `
 
 const slide = keyframes`
@@ -514,40 +515,44 @@ function App() {
 
       <Divider height="80px"/>
       <Container>
-        <PortfolioContainer>
-          <Title>HUNGRY POPUPS App</Title>
-          <ColorPalette>
-            <Color bg="#3d4853">#3d4853</Color>
-            <Color bg="#ee346d">#ee346d</Color>
-            <Color bg="#ff624d">#ff624d</Color>
-            <Color bg="#edf2f7">#edf2f7</Color>
-          </ColorPalette>
-          <Info>HUNGRY Popups is a mobile app I'm designing and developing for HUNGRY to allow customers to find catering popups nearby. It uses location tracking and google maps to notify customers of popups being held in nearby buildings.</Info>
-          <Tools>Tools Used</Tools>
-          <ToolsContainer>
-            <Tool color="#edf2f7">React Native</Tool>
-            <Tool color="#edf2f7">Sketch</Tool>
-            <Tool color="#edf2f7">InVision</Tool>
-            <Tool color="#edf2f7">Emotion CSS</Tool>
-          </ToolsContainer>
+        <Fade left>
+          <PortfolioContainer>
+            <Title>HUNGRY POPUPS App</Title>
+            <ColorPalette>
+              <Color bg="#3d4853">#3d4853</Color>
+              <Color bg="#ee346d">#ee346d</Color>
+              <Color bg="#ff624d">#ff624d</Color>
+              <Color bg="#edf2f7">#edf2f7</Color>
+            </ColorPalette>
+            <Info>HUNGRY Popups is a mobile app I'm designing and developing for HUNGRY to allow customers to find catering popups nearby. It uses location tracking and google maps to notify customers of popups being held in nearby buildings.</Info>
+            <Tools>Tools Used</Tools>
+            <ToolsContainer>
+              <Tool color="#edf2f7">React Native</Tool>
+              <Tool color="#edf2f7">Sketch</Tool>
+              <Tool color="#edf2f7">InVision</Tool>
+              <Tool color="#edf2f7">Emotion CSS</Tool>
+            </ToolsContainer>
+            <MediaQuery minWidth={ breakpoints[1]}>
+              <SeeWeb color="#ee346d" href="https://projects.invisionapp.com/share/X9YLMJ0SCQE#/screens/430161794">See Prototype</SeeWeb>
+            </MediaQuery>
+          </PortfolioContainer>
+        </Fade>
+        <Fade right>
           <MediaQuery minWidth={ breakpoints[1]}>
-            <SeeWeb color="#ee346d" href="https://projects.invisionapp.com/share/X9YLMJ0SCQE#/screens/430161794">See Prototype</SeeWeb>
+            <div>
+              <NoBorder>
+                <NoBorderInner>
+                  <img alt="Web Developer" src={ popupDesktop }/>
+                </NoBorderInner>
+              </NoBorder>
+              <PhoneContainer>
+                <PhoneScreen>
+                  <img alt="Web Developer" src={ popupMobile }/>
+                </PhoneScreen>
+              </PhoneContainer>
+            </div>
           </MediaQuery>
-        </PortfolioContainer>
-        <MediaQuery minWidth={ breakpoints[1]}>
-          <div>
-            <NoBorder>
-              <NoBorderInner>
-                <img alt="Web Developer" src={ popupDesktop }/>
-              </NoBorderInner>
-            </NoBorder>
-            <PhoneContainer>
-              <PhoneScreen>
-                <img alt="Web Developer" src={ popupMobile }/>
-              </PhoneScreen>
-            </PhoneContainer>
-          </div>
-        </MediaQuery>
+        </Fade>
         <MediaQuery maxWidth={ breakpoints[1]}>
           <MobileImage noShadow={ true } alt="Web Developer" src={ popupDesktop }/>
         </MediaQuery>
@@ -558,36 +563,40 @@ function App() {
 
 
       <Container>
-        <PortfolioContainer>
-          <Title>SeeMenus Menu Builder</Title>
-          <ColorPalette>
-            <Color bg="#215a46">#215a46</Color>
-            <Color bg="#248c67">#248c67</Color>
-            <Color bg="#04bf7b">#04bf7b</Color>
-            <Color bg="#edf2f7">#edf2f7</Color>
-          </ColorPalette>
-          <Info>SeeMenus is a website I am designing and coding to help restaurants easily build their own website with an online menu and editable theme. The menu is automatically translated into Japanese and Chinese using a machine learning translation API called Deepl. Users can also print a PDF of their menu in the translated languages. </Info>
-          <Tools>Tools Used</Tools>
-          <ToolsContainer>
-            <Tool color="#edf2f7">React JS</Tool>
-            <Tool color="#edf2f7">Next JS</Tool>
-            <Tool color="#edf2f7">Emotion CSS</Tool>
-          </ToolsContainer>
-        </PortfolioContainer>
-        <MediaQuery minWidth={ breakpoints[1]}>
-          <div>
-            <PadContainer>
-              <PadScreen animate={ true }>
-                <img src={ seeMenusDesktop }/>
-              </PadScreen>
-            </PadContainer>
-            <PhoneContainer>
-              <PhoneScreen animate={ true }>
-                <img src={ seeMenusMobile }/>
-              </PhoneScreen>
-            </PhoneContainer>
-          </div>
-        </MediaQuery>
+        <Fade left>
+          <PortfolioContainer>
+            <Title>SeeMenus Menu Builder</Title>
+            <ColorPalette>
+              <Color bg="#215a46">#215a46</Color>
+              <Color bg="#248c67">#248c67</Color>
+              <Color bg="#04bf7b">#04bf7b</Color>
+              <Color bg="#edf2f7">#edf2f7</Color>
+            </ColorPalette>
+            <Info>SeeMenus is a website I am designing and coding to help restaurants easily build their own website with an online menu and editable theme. The menu is automatically translated into Japanese and Chinese using a machine learning translation API called Deepl. Users can also print a PDF of their menu in the translated languages. </Info>
+            <Tools>Tools Used</Tools>
+            <ToolsContainer>
+              <Tool color="#edf2f7">React JS</Tool>
+              <Tool color="#edf2f7">Next JS</Tool>
+              <Tool color="#edf2f7">Emotion CSS</Tool>
+            </ToolsContainer>
+          </PortfolioContainer>
+        </Fade>
+        <Fade right>
+          <MediaQuery minWidth={ breakpoints[1]}>
+            <div>
+              <PadContainer>
+                <PadScreen animate={ true }>
+                  <img src={ seeMenusDesktop }/>
+                </PadScreen>
+              </PadContainer>
+              <PhoneContainer>
+                <PhoneScreen animate={ true }>
+                  <img src={ seeMenusMobile }/>
+                </PhoneScreen>
+              </PhoneContainer>
+            </div>
+          </MediaQuery>
+        </Fade>
         <MediaQuery maxWidth={ breakpoints[1]}>
           <MobileImageContainer height="300px">
             <MobileImage alt="Web Developer" src={ seeMenusDesktop }/>
@@ -596,26 +605,29 @@ function App() {
       </Container>
 
       <Container>
-        <PortfolioContainer>
-          <Title>Stock Comparer</Title>
-          <ColorPalette>
-            <Color bg="#00aee0">#00aee0</Color>
-            <Color bg="#00659e">#00659e</Color>
-            <Color bg="#f44336">#f44336</Color>
-            <Color bg="#efefef">#efefef</Color>
-          </ColorPalette>
-          <Info>Stock Comparer is a project that uses the <Link href="https://iexcloud.io/docs/api/">IEX Cloud API</Link> to display stock data visually in charts. I've designed and started coding this site to help new investors better compare stock financial data through a clean and simple UI that explains what different financial data means.</Info>
-          <Tools>Tools Used</Tools>
-          <ToolsContainer>
-            <Tool color="#efefef">React JS</Tool>
-            <Tool color="#efefef">Emotion CSS</Tool>
-            <Tool color="#efefef">Node</Tool>
-            <Tool color="#efefef">Mongo DB</Tool>
-          </ToolsContainer>
-          <MediaQuery minWidth={ breakpoints[1]}>
-            <SeeWeb color="#00659e" href="http://www.stockcomparer.com/">See Website</SeeWeb>
-          </MediaQuery>
-        </PortfolioContainer>
+        <Fade left>
+          <PortfolioContainer>
+            <Title>Stock Comparer</Title>
+            <ColorPalette>
+              <Color bg="#00aee0">#00aee0</Color>
+              <Color bg="#00659e">#00659e</Color>
+              <Color bg="#f44336">#f44336</Color>
+              <Color bg="#efefef">#efefef</Color>
+            </ColorPalette>
+            <Info>Stock Comparer is a project that uses the <Link href="https://iexcloud.io/docs/api/">IEX Cloud API</Link> to display stock data visually in charts. I've designed and started coding this site to help new investors better compare stock financial data through a clean and simple UI that explains what different financial data means.</Info>
+            <Tools>Tools Used</Tools>
+            <ToolsContainer>
+              <Tool color="#efefef">React JS</Tool>
+              <Tool color="#efefef">Emotion CSS</Tool>
+              <Tool color="#efefef">Node</Tool>
+              <Tool color="#efefef">Mongo DB</Tool>
+            </ToolsContainer>
+            <MediaQuery minWidth={ breakpoints[1]}>
+              <SeeWeb color="#00659e" href="http://www.stockcomparer.com/">See Website</SeeWeb>
+            </MediaQuery>
+          </PortfolioContainer>
+        </Fade>
+        <Fade right>
         <MediaQuery minWidth={ breakpoints[1]}>
           <div>
             <PadContainer>
@@ -630,6 +642,7 @@ function App() {
             </PhoneContainer>
           </div>
         </MediaQuery>
+        </Fade>
         <MediaQuery maxWidth={ breakpoints[1]}>
           <MobileImageContainer height="300px">
             <MobileImage alt="Web Developer" src={ stockPad }/>
@@ -641,40 +654,44 @@ function App() {
       </Container>
 
       <Container>
-        <PortfolioContainer>
-          <Title>Major league baseball stadium food delivery site</Title>
-          <ColorPalette>
-            <Color bg="#00073b">#00073b</Color>
-            <Color bg="#ba0c2f">#ba0c2f</Color>
-            <Color bg="#b7b7b7">#b7b7b7</Color>
-            <Color bg="#efefef">#efefef</Color>
-          </ColorPalette>
-          <Info>I managed, designed and coded a themeable website for MLB teams to deliver stadium food to fan's homes during the Covid pandemic so that they can experience the ballpark from home. It's been a huge hit among baseball fans who've been ecstatically ordering food to to their homes to watch the baseball games. Here's a press page on this website: <Link href="https://www.arlnow.com/2020/07/27/arlington-startup-hungry-offering-ballpark-food-delivery-for-nationals-fans/?mc_cid=8cf027a4c2&mc_eid=aebdd8191c">Arlington Startup Hungry Offering Ballpark Food Delivery for Nationals Fans</Link></Info>
-          <Tools>Tools Used</Tools>
-          <ToolsContainer>
-            <Tool color="#efefef">React JS</Tool>
-            <Tool color="#efefef">Emotion CSS</Tool>
-            <Tool color="#efefef">Sketch</Tool>
-            <Tool color="#efefef">InVision</Tool>
-          </ToolsContainer>
-          <MediaQuery minWidth={ breakpoints[1]}>
-            <SeeWeb color="#00073b" href="https://nationals.tryhungry.com/">See Website</SeeWeb>
-          </MediaQuery>
-        </PortfolioContainer>
-          <MediaQuery minWidth={ breakpoints[1]}>
-            <div>
-              <PadContainer>
-                <PadScreen animate={ true }>
-                  <img src={ natsDesktop }/>
-                </PadScreen>
-              </PadContainer>
-              <PhoneContainer>
-                <PhoneScreen animate={ true }>
-                  <img src={ natsMobile }/>
-                </PhoneScreen>
-              </PhoneContainer>
-            </div>
-          </MediaQuery>
+        <Fade left>
+          <PortfolioContainer>
+            <Title>Major league baseball stadium food delivery site</Title>
+            <ColorPalette>
+              <Color bg="#00073b">#00073b</Color>
+              <Color bg="#ba0c2f">#ba0c2f</Color>
+              <Color bg="#b7b7b7">#b7b7b7</Color>
+              <Color bg="#efefef">#efefef</Color>
+            </ColorPalette>
+            <Info>I managed, designed and coded a themeable website for MLB teams to deliver stadium food to fan's homes during the Covid pandemic so that they can experience the ballpark from home. It's been a huge hit among baseball fans who've been ecstatically ordering food to to their homes to watch the baseball games. Here's a press page on this website: <Link href="https://www.arlnow.com/2020/07/27/arlington-startup-hungry-offering-ballpark-food-delivery-for-nationals-fans/?mc_cid=8cf027a4c2&mc_eid=aebdd8191c">Arlington Startup Hungry Offering Ballpark Food Delivery for Nationals Fans</Link></Info>
+            <Tools>Tools Used</Tools>
+            <ToolsContainer>
+              <Tool color="#efefef">React JS</Tool>
+              <Tool color="#efefef">Emotion CSS</Tool>
+              <Tool color="#efefef">Sketch</Tool>
+              <Tool color="#efefef">InVision</Tool>
+            </ToolsContainer>
+            <MediaQuery minWidth={ breakpoints[1]}>
+              <SeeWeb color="#00073b" href="https://nationals.tryhungry.com/">See Website</SeeWeb>
+            </MediaQuery>
+          </PortfolioContainer>
+          </Fade>
+          <Fade right>
+            <MediaQuery minWidth={ breakpoints[1]}>
+              <div>
+                <PadContainer>
+                  <PadScreen animate={ true }>
+                    <img src={ natsDesktop }/>
+                  </PadScreen>
+                </PadContainer>
+                <PhoneContainer>
+                  <PhoneScreen animate={ true }>
+                    <img src={ natsMobile }/>
+                  </PhoneScreen>
+                </PhoneContainer>
+              </div>
+            </MediaQuery>
+          </Fade>
           <MediaQuery maxWidth={ breakpoints[1]}>
             <MobileImageContainer height="300px">
               <MobileImage alt="Web Developer" src={ natsDesktop }/>
@@ -686,37 +703,41 @@ function App() {
       </Container>
 
       <Container>
-        <PortfolioContainer>
-          <Title>Order Delivery <br/>Management Dashboard</Title>
-          <ColorPalette>
-            <Color bg="#303131">#303131</Color>
-            <Color bg="#00809e">#00809e</Color>
-            <Color bg="#ff624d">#ff624d</Color>
-            <Color bg="#f3f3f4">#f3f3f4</Color>
-          </ColorPalette>
-          <Info>This is a dashboard designed and coded by me to help the HUNGRY delivery team manage all catering deliveries. I did user research to discover what the pain points where for our delivery team and designed a user interface to tackle these problems. Our delivery team can now easily see the status of all deliveries and whether they're on time or not. They can also use the accounting tab in the dashboard to manage delivery team pay. </Info>
-          <Tools>Tools Used</Tools>
-          <ToolsContainer>
-            <Tool color="#f3f3f4">React JS</Tool>
-            <Tool color="#f3f3f4">SASS</Tool>
-            <Tool color="#f3f3f4">Sketch</Tool>
-            <Tool color="#f3f3f4">InVision</Tool>
-          </ToolsContainer>
-        </PortfolioContainer>
-        <MediaQuery minWidth={ breakpoints[1]}>
-          <div>
-            <PadContainer>
-              <PadScreen animate={ false }>
-                <img src={ opsDesktop }/>
-              </PadScreen>
-            </PadContainer>
-            <PhoneContainer>
-              <PhoneScreen animate={ false }>
-                <img src={ opsMobile }/>
-              </PhoneScreen>
-            </PhoneContainer>
-          </div>
-        </MediaQuery>
+        <Fade left>
+          <PortfolioContainer>
+            <Title>Order Delivery <br/>Management Dashboard</Title>
+            <ColorPalette>
+              <Color bg="#303131">#303131</Color>
+              <Color bg="#00809e">#00809e</Color>
+              <Color bg="#ff624d">#ff624d</Color>
+              <Color bg="#f3f3f4">#f3f3f4</Color>
+            </ColorPalette>
+            <Info>This is a dashboard designed and coded by me to help the HUNGRY delivery team manage all catering deliveries. I did user research to discover what the pain points where for our delivery team and designed a user interface to tackle these problems. Our delivery team can now easily see the status of all deliveries and whether they're on time or not. They can also use the accounting tab in the dashboard to manage delivery team pay. </Info>
+            <Tools>Tools Used</Tools>
+            <ToolsContainer>
+              <Tool color="#f3f3f4">React JS</Tool>
+              <Tool color="#f3f3f4">SASS</Tool>
+              <Tool color="#f3f3f4">Sketch</Tool>
+              <Tool color="#f3f3f4">InVision</Tool>
+            </ToolsContainer>
+          </PortfolioContainer>
+        </Fade>
+        <Fade right>
+          <MediaQuery minWidth={ breakpoints[1]}>
+            <div>
+              <PadContainer>
+                <PadScreen animate={ false }>
+                  <img src={ opsDesktop }/>
+                </PadScreen>
+              </PadContainer>
+              <PhoneContainer>
+                <PhoneScreen animate={ false }>
+                  <img src={ opsMobile }/>
+                </PhoneScreen>
+              </PhoneContainer>
+            </div>
+          </MediaQuery>
+        </Fade>
         <MediaQuery maxWidth={ breakpoints[1]}>
           <MobileImageContainer height="200px">
             <MobileImage alt="Web Developer" src={ opsDesktop }/>
@@ -725,41 +746,45 @@ function App() {
       </Container>
 
       <Container hideUnderline={ true }>
-        <PortfolioContainer>
-          <Title>Catering Chef Marketplace</Title>
-          <ColorPalette>
-            <Color bg="#3d4853">#3d4853</Color>
-            <Color bg="#ee346d">#ee346d</Color>
-            <Color bg="#ff624d">#ff624d</Color>
-            <Color bg="#2eb9f0">#2eb9f0</Color>
-          </ColorPalette>
-          <Info>HUNGRY is an office catering & event platform that connects clients with chef entrepreneurs. The company has rapidly grown into a national platform for chef-made food production and delivery services. I helped conduct user experience research and develop some of the user interfaces in the online ordering checkout flow. Clients can use this site to place and edit orders, see invoices, and see upcoming caterings on their calendar.</Info>
-          <Tools>Tools Used</Tools>
-          <ToolsContainer>
-            <Tool>React JS</Tool>
-            <Tool>SASS</Tool>
-            <Tool>Sketch</Tool>
-            <Tool>InVision</Tool>
-            <Tool>Google Analytics</Tool>
-          </ToolsContainer>
+        <Fade left>
+          <PortfolioContainer>
+            <Title>Catering Chef Marketplace</Title>
+            <ColorPalette>
+              <Color bg="#3d4853">#3d4853</Color>
+              <Color bg="#ee346d">#ee346d</Color>
+              <Color bg="#ff624d">#ff624d</Color>
+              <Color bg="#2eb9f0">#2eb9f0</Color>
+            </ColorPalette>
+            <Info>HUNGRY is an office catering & event platform that connects clients with chef entrepreneurs. The company has rapidly grown into a national platform for chef-made food production and delivery services. I helped conduct user experience research and develop some of the user interfaces in the online ordering checkout flow. Clients can use this site to place and edit orders, see invoices, and see upcoming caterings on their calendar.</Info>
+            <Tools>Tools Used</Tools>
+            <ToolsContainer>
+              <Tool>React JS</Tool>
+              <Tool>SASS</Tool>
+              <Tool>Sketch</Tool>
+              <Tool>InVision</Tool>
+              <Tool>Google Analytics</Tool>
+            </ToolsContainer>
+            <MediaQuery minWidth={ breakpoints[1]}>
+              <SeeWeb color="#ee346d" href="https://tryhungry.com/">See Website</SeeWeb>
+            </MediaQuery>
+          </PortfolioContainer>
+        </Fade>
+        <Fade right>
           <MediaQuery minWidth={ breakpoints[1]}>
-            <SeeWeb color="#ee346d" href="https://tryhungry.com/">See Website</SeeWeb>
+            <div>
+              <PadContainer>
+                <PadScreen animate={ true }>
+                  <img src={ marketplaceDesktop }/>
+                </PadScreen>
+              </PadContainer>
+              <PhoneContainer>
+                <PhoneScreen animate={ true }>
+                  <img src={ marketplaceMobile }/>
+                </PhoneScreen>
+              </PhoneContainer>
+            </div>
           </MediaQuery>
-        </PortfolioContainer>
-        <MediaQuery minWidth={ breakpoints[1]}>
-          <div>
-            <PadContainer>
-              <PadScreen animate={ true }>
-                <img src={ marketplaceDesktop }/>
-              </PadScreen>
-            </PadContainer>
-            <PhoneContainer>
-              <PhoneScreen animate={ true }>
-                <img src={ marketplaceMobile }/>
-              </PhoneScreen>
-            </PhoneContainer>
-          </div>
-        </MediaQuery>
+        </Fade>
         <MediaQuery maxWidth={ breakpoints[1]}>
           <MobileImageContainer height="270px">
             <MobileImage alt="Web Developer" src={ marketplaceDesktop }/>
@@ -772,18 +797,22 @@ function App() {
       <Divider height="100px"/>
       <About>
         <AboutInner>
-          <AboutImage src={ aboutImage }/>
-          <AboutBio>
-            <AboutTitle>About Me</AboutTitle>
-            <AboutP>I'm a Front-end Web Developer and UIUX Designer who currently works remotely as an Associate Product Manager for a startup in the US. My role spans  developing product concepts, prototyping, designing and coding. I also work as a freelance graphic designer and artist.</AboutP>
+          <Zoom>
+            <AboutImage src={ aboutImage }/>
+          </Zoom>
+          <Fade left>
+            <AboutBio>
+              <AboutTitle>About Me</AboutTitle>
+              <AboutP>I'm a Front-end Web Developer and UIUX Designer who currently works remotely as an Associate Product Manager for a startup in the US. My role spans  developing product concepts, prototyping, designing and coding. I also work as a freelance graphic designer and artist.</AboutP>
 
-            <AboutP>Raised in Japan and currently residing in Taiwan, I speak both Japanese and Mandarin. On my spare time, I like to work on personal web projects, draw and study foreign languages.</AboutP>
-            <Contact>
-              <img src={ email3 }/>
-              <p>maureenvogel@outlook.com</p>
-            </Contact>
-            <Download href={ resume } download="Maureen_Vogel_Resume">Download Resume</Download>
-          </AboutBio>
+              <AboutP>Raised in Japan and currently residing in Taiwan, I speak both Japanese and Mandarin. On my spare time, I like to work on personal web projects, draw and study foreign languages.</AboutP>
+              <Contact>
+                <img src={ email3 }/>
+                <p>maureenvogel@outlook.com</p>
+              </Contact>
+              <Download href={ resume } download="Maureen_Vogel_Resume">Download Resume</Download>
+            </AboutBio>
+          </Fade>
         </AboutInner>
       </About>
       {/*<Footer>
