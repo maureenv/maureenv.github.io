@@ -4,6 +4,7 @@ import MediaQuery from 'react-responsive'
 import { jsx, css, keyframes } from '@emotion/core'
 import Fade from 'react-reveal/Fade'
 import Zoom from 'react-reveal/Zoom'
+import useWindowDimensions from './components/windowDimensions'
 import { breakpoints } from './constants.js'
 
 import stockMobile from './images/stock-mobile.png'
@@ -468,8 +469,10 @@ const AboutImage = styled.img`
 
 const AboutImageRelative = styled.img`
   width: 400px;
+  margin: 0;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  opacity: 0;
+  transition: 0.2s ease-in-out all;
+  transform: translate(${ props => props.translateX}px, ${ props => props.translateY }px);
 `
 
 const AboutBio = styled.div`
@@ -544,58 +547,18 @@ const Contact = styled.div`
 
 
 function App() {
-  const aboutPosOriginal = {
-    x: 0,
-    y: 0,
-  }
-  const [aboutPos, setAboutPos] = useState({
+  const { height, width } = useWindowDimensions()
+  const [aboutTranslate, setAboutTranslate] = useState({
     x: 0,
     y: 0,
   })
-  const aboutImageRef = useRef()
 
-  const onMove = e => {
-    const aboutPosX = aboutImageRef.current?.getBoundingClientRect().x
-    const aboutPosY = aboutImageRef.current?.getBoundingClientRect().y
-    // Mouse move Left
-    if ( aboutPosX > e.screenX ) {
-      const newValue = aboutPos.x - 1
-      if ( Math.abs(newValue - aboutPosOriginal.x) < 40 ) {
-        setAboutPos({ ...aboutPos, x: newValue })
-      }
-    }
-    // Mouse move right
-    else {
-      const newValue = aboutPos.x + 1
-      if ( newValue - aboutPosOriginal.x < 40 ) {
-        setAboutPos({ ...aboutPos, x: newValue })
-      }
-
-    }
-    // https://codepen.io/etreacy/pen/XRLxxp
-    // Mouse move up
-    if ( aboutPosY < e.clientY ) {
-      const newValue = aboutPos.y + 1
-        console.log( newValue, 'new', aboutPos.y, 'about', aboutPosOriginal.y, 'y orig')
-       if ( aboutPosOriginal.y - newValue < aboutPosOriginal.y ) {
-         setAboutPos({ ...aboutPos, y: newValue })
-       }
-    }
-    // Mouse move down
-    if ( aboutPosY > e.clientY ) {
-      const newValue = aboutPos.y - 1
-      if ( Math.abs(newValue - aboutPosOriginal.y) < 50 ) {
-        setAboutPos({ ...aboutPos, y: newValue })
-      }
-    }
-
+  const onMoveAbout = e => {
+    setAboutTranslate({
+      x: e.pageX/width * 15,
+      y: e.pageY/height * 5,
+    })
   }
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setSeconds(seconds => seconds + 1)
-  //   }, 50);
-  //   return () => clearInterval(interval);
-  // }, [])
 
   return (
     <Page>
@@ -915,11 +878,14 @@ function App() {
       </Container>
       <Divider height="100px"/>
       <MediaQuery minWidth={ breakpoints[1]}>
-        <About onMouseMove={ onMove }>
+        <About onMouseMove={ onMoveAbout }>
           <AboutInner>
             <Zoom>
-              <AboutImageRelative src={ aboutImage } ref={ aboutImageRef }/>
-              <AboutImage left={ aboutPos.x } top={ aboutPos.y } src={ aboutImage }/>
+              <AboutImageRelative
+                src={ aboutImage }
+                translateX={ aboutTranslate.x }
+                translateY={ aboutTranslate.y }
+              />
             </Zoom>
             <Fade left>
               <AboutBio>
