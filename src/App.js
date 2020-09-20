@@ -505,11 +505,44 @@ const Link = styled.a`
   color: #069688;
 `
 
-const AboutImageContainer = styled.div`
+const About = styled.div`
+  width: 100%;
+  background: rgb(22,46,105);
+  background: url(${(props) => props.bg}) repeat center center;
+  /* #be2f2e */
+  min-height: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  margin-top: 50px;
-  transition: 0.2s ease-in-out all;
-  transform: translate(${ props => props.translateX}px, ${ props => props.translateY }px);
+  z-index: 1;
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    background: linear-gradient(45deg, rgba(6,150,136,1) 0%, rgba(22,46,105,1) 100%);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.8;
+  }
+`
+
+const AboutInner = styled.div`
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
+  @media (max-width: ${breakpoints[1] + "px"}) {
+    flex-direction: column-reverse;
+    padding: 50px 20px;
+  }
 `
 
 const rotateMe = keyframes`
@@ -580,10 +613,51 @@ const HummingBird = styled.div`
     left: 130px;
     z-index: -1;
   }
+  @media (max-width: ${breakpoints[1] + "px"}) {
+    top: -120px;
+    left: 70px;
+    .body {
+      z-index: 3;
+      width: 130px;
+    }
+    .right {
+      width: 250px;
+      left: 100px;
+      top: 60px;
+      animation: ${ rotateWingRight } 3s linear infinite;
+      transform-origin: center left;
+    }
+    .left {
+      width: 180px;
+      left: -100px;
+      top: 70px;
+      z-index: -1;
+      transform-origin: center right;
+      animation: ${ rotateWingLeft } 3s linear infinite;
+    }
+    .tail {
+      width: 80px;
+      top: 120px;
+      left: 80px;
+      z-index: -1;
+    }
+  }
+`
+
+const AboutImageContainer = styled.div`
+  position: relative;
+  margin-top: 50px;
+  transition: 0.2s ease-in-out all;
+  width: 100%;
+  max-width: 400px;
+  transform: translate(${ props => props.translateX}px, ${ props => props.translateY }px);
+  @media (max-width: ${breakpoints[1] + "px"}) {
+    margin-top: 160px;
+  }
 `
 
 const AboutImage = styled.img`
-  width: 400px;
+  width:100%;
   margin: 0;
   margin-top: 40px;
   border: 10px solid #fff;
@@ -591,51 +665,13 @@ const AboutImage = styled.img`
   transition: 0.2s ease-in-out all;
   transform-origin: top center;
   animation: ${ rotateMe } 5s linear infinite;
-`
-
-
-const About = styled.div`
-  width: 100%;
-  background: rgb(22,46,105);
-  background: url(${(props) => props.bg}) repeat center center;
-  /* #be2f2e */
-  height: 90vh;
-  min-height: 800px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  z-index: 1;
-  &:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    background: linear-gradient(45deg, rgba(6,150,136,1) 0%, rgba(22,46,105,1) 100%);
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    opacity: 0.8;
-  }
-`
-
-const AboutInner = styled.div`
-  width: 100%;
-  max-width: 1200px;
-  padding: 0 20px;
-  display: flex;
-  align-items: center;
   box-sizing: border-box;
-  position: relative;
 `
 
 const AboutBio = styled.div`
   margin-left: 50px;
   @media (max-width: ${breakpoints[1] + "px"}) {
     margin-left: 0;
-    padding: 20px;
   }
 `
 
@@ -1070,42 +1106,40 @@ function App() {
         </Fade>
       </Container>
       <Divider height="100px"/>
-      <MediaQuery minWidth={ breakpoints[1]}>
-        <About onMouseMove={ onMoveAbout } bg={ flowers }>
-          <AboutInner>
-            <Zoom>
-              <AboutImageContainer
-                translateX={ aboutTranslate.x }
-                translateY={ aboutTranslate.y }
-              >
-                <AboutImage
-                  src={ aboutImageDesktop }
-                />
-                <HummingBird>
-                  <img className="body" src={ hBody }/>
-                  <img className="tail" src={ hTail }/>
-                  <img className="left" src={ hLeft }/>
-                  <img className="right" src={ hRight }/>
-                </HummingBird>
-              </AboutImageContainer>
-            </Zoom>
-            <Fade left>
-              <AboutBio>
-                <AboutTitle>About Me</AboutTitle>
-                <AboutP>I'm a Frontend Engineer and UIUX Designer who currently works remotely for a startup in the US. My role spans developing product concepts, prototyping, designing and coding. I also work as a freelance graphic designer and artist.</AboutP>
+      <About onMouseMove={ onMoveAbout } bg={ flowers }>
+        <AboutInner>
+          <Zoom>
+            <AboutImageContainer
+              translateX={ aboutTranslate.x }
+              translateY={ aboutTranslate.y }
+            >
+              <AboutImage
+                src={ aboutImageDesktop }
+              />
+              <HummingBird>
+                <img className="body" src={ hBody }/>
+                <img className="tail" src={ hTail }/>
+                <img className="left" src={ hLeft }/>
+                <img className="right" src={ hRight }/>
+              </HummingBird>
+            </AboutImageContainer>
+          </Zoom>
+          <Fade left>
+            <AboutBio>
+              <AboutTitle>About Me</AboutTitle>
+              <AboutP>I'm a Frontend Engineer and UIUX Designer who currently works remotely for a startup in the US. My role spans developing product concepts, prototyping, designing and coding. I also work as a freelance graphic designer and artist.</AboutP>
 
-                <AboutP>Raised in Japan and currently residing in Taiwan, I speak both Japanese and Mandarin. On my spare time, I like to work on personal web projects, draw and study foreign languages.</AboutP>
-                <Contact>
-                  <img src={ email3 }/>
-                  <p>maureenvogel@outlook.com</p>
-                </Contact>
-                <Download href={ resume } download="Maureen_Vogel_Resume">Download Resume</Download>
-              </AboutBio>
-            </Fade>
-          </AboutInner>
-        </About>
-      </MediaQuery>
-      <MediaQuery maxWidth={ breakpoints[1]}>
+              <AboutP>Raised in Japan and currently residing in Taiwan, I speak both Japanese and Mandarin. On my spare time, I like to work on personal web projects, draw and study foreign languages.</AboutP>
+              <Contact>
+                <img src={ email3 }/>
+                <p>maureenvogel@outlook.com</p>
+              </Contact>
+              <Download href={ resume } download="Maureen_Vogel_Resume">Download Resume</Download>
+            </AboutBio>
+          </Fade>
+        </AboutInner>
+      </About>
+      {/*<MediaQuery maxWidth={ breakpoints[1]}>
         <AboutMobile bg={ aboutImage }>
           <Fade left>
             <AboutBio>
@@ -1121,7 +1155,7 @@ function App() {
             </AboutBio>
           </Fade>
         </AboutMobile>
-      </MediaQuery>
+      </MediaQuery>*/}
       {/*<Footer>
         <Contact>
           <a href="https://www.linkedin.com/in/maureenvogel/">
