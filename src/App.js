@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import 'react-app-polyfill/ie11'
 import styled from '@emotion/styled'
 import MediaQuery from 'react-responsive'
 import { jsx, css, keyframes } from '@emotion/core'
@@ -20,11 +21,22 @@ import seeMenusDesktop from './images/seemenus-desktop.jpg'
 import popupDesktop from './images/popup-desktop.jpg'
 import popupMobile from './images/popup-mobile.png'
 import aboutImage from './images/about2.jpg'
+import aboutImageDesktop from './images/about3.jpg'
 import linkedIn from './images/linkedin.svg'
 import email3 from './images/email3.svg'
 import resume from './images/resume.pdf'
 import Logo from './images/logo.js'
 import background from './images/background.jpg'
+import laptop from './images/laptop.png'
+import wood from './images/wood.jpg'
+import noise from './images/noise2.png'
+import flowers from './images/flowers.jpg'
+
+// humming bird
+import hBody from './images/humming-body.png'
+import hTail from './images/humming-tail.png'
+import hLeft from './images/humming-left.png'
+import hRight from './images/humming-right.png'
 
 const Divider = styled.div`
   height: ${ props => props.height };
@@ -42,6 +54,54 @@ const LogoContainer = styled.div`
 
 const Page = styled.div`
   overflow: hidden;
+`
+
+const ParallaxContainer = styled.div`
+  height: 60vh;
+  width: 100%;
+  z-index: 1;
+  position: relative;
+  overflow: hidden;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+  background: linear-gradient(45deg, rgba(6,150,136,1) 0%, rgba(22,46,105,1) 100%);
+`
+
+const Laptop = styled.img`
+  transition: 0.2s ease-in-out all;
+  transform: translate(${ props => props.translateX}px, ${ props => props.translateY }px) rotate(10deg);
+  width: 500px;
+  position: absolute;
+`
+
+const Laptop2 = styled.img`
+  transition: 0.2s ease-in-out all;
+  transform: translate(-${ props => props.translateX}px, ${ props => props.translateY }px) rotate(${ props => (props.translateX/2)}deg);
+  width: 500px;
+  right: 0;
+  position: absolute;
+`
+
+const Overlay = styled.div`
+  height: 60vh;
+  width: 100%;
+  z-index: 1;
+  position: relative;
+  overflow: hidden;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0.5;
+  background: linear-gradient(45deg, rgba(6,150,136,1) 0%, rgba(22,46,105,1) 100%);
 `
 
 const Container = styled.div`
@@ -380,6 +440,15 @@ const SeeWeb = styled.a`
   transition: 0.3s ease-in-out all;
   overflow: hidden;
   z-index: 1;
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url(${ noise }) repeat center center;
+  }
   &:before {
     transition: 0.2s ease-in-out all;
     content: '';
@@ -436,14 +505,120 @@ const Link = styled.a`
   color: #069688;
 `
 
+const AboutImageContainer = styled.div`
+  position: relative;
+  margin-top: 50px;
+  transition: 0.2s ease-in-out all;
+  transform: translate(${ props => props.translateX}px, ${ props => props.translateY }px);
+`
+
+const rotateMe = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+`
+
+const rotateWingRight = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+`
+
+const rotateWingLeft = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+`
+
+const HummingBird = styled.div`
+  position: absolute;
+  top: -200px;
+  left: 50px;
+  img {
+    position: absolute;
+  }
+  .body {
+    z-index: 3;
+    width: 200px;
+  }
+  .right {
+    width: 400px;
+    left: 150px;
+    top: 90px;
+    animation: ${ rotateWingRight } 3s linear infinite;
+    transform-origin: center left;
+  }
+  .left {
+    width: 300px;
+    left: -170px;
+    top: 105px;
+    z-index: -1;
+    transform-origin: center right;
+    animation: ${ rotateWingLeft } 3s linear infinite;
+  }
+  .tail {
+    width: 110px;
+    top: 200px;
+    left: 130px;
+    z-index: -1;
+  }
+`
+
+const AboutImage = styled.img`
+  width: 400px;
+  margin: 0;
+  margin-top: 40px;
+  border: 10px solid #fff;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transition: 0.2s ease-in-out all;
+  transform-origin: top center;
+  animation: ${ rotateMe } 5s linear infinite;
+`
+
+
 const About = styled.div`
   width: 100%;
   background: rgb(22,46,105);
-  background: linear-gradient(45deg, rgba(6,150,136,1) 0%, rgba(22,46,105,1) 100%);
+  background: url(${(props) => props.bg}) repeat center center;
   /* #be2f2e */
+  height: 90vh;
+  min-height: 800px;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  z-index: 1;
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    background: linear-gradient(45deg, rgba(6,150,136,1) 0%, rgba(22,46,105,1) 100%);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.8;
+  }
 `
 
 const AboutInner = styled.div`
@@ -456,27 +631,8 @@ const AboutInner = styled.div`
   position: relative;
 `
 
-const AboutImage = styled.img`
-  width: 400px;
-  height: 400px;
-  position: absolute;
-  top: ${ props => props.top }px;
-  left: ${ props => props.left }px;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  /* border-right: 10px solid white;
-  border-left: 10px solid white; */
-`
-
-const AboutImageRelative = styled.img`
-  width: 400px;
-  margin: 0;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  transition: 0.2s ease-in-out all;
-  transform: translate(${ props => props.translateX}px, ${ props => props.translateY }px);
-`
-
 const AboutBio = styled.div`
-  margin-left: 30px;
+  margin-left: 50px;
   @media (max-width: ${breakpoints[1] + "px"}) {
     margin-left: 0;
     padding: 20px;
@@ -553,10 +709,31 @@ function App() {
     y: 0,
   })
 
+  const [backgroundTranslate, setBackgroundTranslate] = useState({
+    x: 0,
+    y: 0,
+  })
+
+  const [background2Translate, setBackground2Translate] = useState({
+    x: 0,
+    y: 0,
+  })
+
   const onMoveAbout = e => {
     setAboutTranslate({
       x: e.pageX/width * 15,
       y: e.pageY/height * 5,
+    })
+  }
+
+  const onMoveHeading = e => {
+    setBackgroundTranslate({
+      x: e.pageX/width * 20,
+      y: e.pageY/height * 20,
+    })
+    setBackground2Translate({
+      x: e.pageX/width * 10,
+      y: e.pageY/height * 20,
     })
   }
 
@@ -565,15 +742,31 @@ function App() {
       <LogoContainer>
         <Logo mColor={ 'rgba(255, 255, 255, 0.3)' } vColor={ '#fff'}/>
       </LogoContainer>
-      <Header bg={ background }>
+      {/*<Header bg={ background }>
         <HeaderContainer>
           <Heading>Hi, I'm Maureen</Heading>
           <SubHeading>Web Developer & UIUX Designer</SubHeading>
         </HeaderContainer>
         {/*<VideoContainer>
         <video muted loop autoPlay playsInline src="https://www.videvo.net/videvo_files/converted/2013_08/preview/hd0992.mov31753.webm" type="video/mp4" ></video>
-        </VideoContainer>*/}
+        </VideoContainer>
       </Header>
+      */}
+      <ParallaxContainer
+        onMouseMove={ onMoveHeading }
+      >
+        <Laptop
+          src={ laptop }
+          translateX={ backgroundTranslate.x }
+          translateY={ backgroundTranslate.y }
+        />
+        <Laptop2
+          src={ laptop }
+          translateX={ backgroundTranslate.x }
+          translateY={ backgroundTranslate.y }
+        />
+        <Overlay/>
+      </ParallaxContainer>
 
       <Divider height="80px"/>
       <Container>
@@ -878,14 +1071,23 @@ function App() {
       </Container>
       <Divider height="100px"/>
       <MediaQuery minWidth={ breakpoints[1]}>
-        <About onMouseMove={ onMoveAbout }>
+        <About onMouseMove={ onMoveAbout } bg={ flowers }>
           <AboutInner>
             <Zoom>
-              <AboutImageRelative
-                src={ aboutImage }
+              <AboutImageContainer
                 translateX={ aboutTranslate.x }
                 translateY={ aboutTranslate.y }
-              />
+              >
+                <AboutImage
+                  src={ aboutImageDesktop }
+                />
+                <HummingBird>
+                  <img className="body" src={ hBody }/>
+                  <img className="tail" src={ hTail }/>
+                  <img className="left" src={ hLeft }/>
+                  <img className="right" src={ hRight }/>
+                </HummingBird>
+              </AboutImageContainer>
             </Zoom>
             <Fade left>
               <AboutBio>
