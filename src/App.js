@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import 'react-app-polyfill/ie11'
 import styled from '@emotion/styled'
 import MediaQuery from 'react-responsive'
-import { jsx, css, keyframes } from '@emotion/core'
+import { css, keyframes } from '@emotion/core'
 import Fade from 'react-reveal/Fade'
 import Zoom from 'react-reveal/Zoom'
 import useWindowDimensions from './components/windowDimensions'
@@ -20,23 +20,31 @@ import seeMenusMobile from './images/seemenus-mobile.jpg'
 import seeMenusDesktop from './images/seemenus-desktop.jpg'
 import popupDesktop from './images/popup-desktop.jpg'
 import popupMobile from './images/popup-mobile.png'
-import aboutImage from './images/about2.jpg'
 import aboutImageDesktop from './images/about3.jpg'
-import linkedIn from './images/linkedin.svg'
 import email3 from './images/email3.svg'
 import resume from './images/resume.pdf'
 import Logo from './images/logo.js'
-import background from './images/background.jpg'
 import laptop from './images/laptop.png'
-import wood from './images/wood.jpg'
 import noise from './images/noise2.png'
 import flowers from './images/flowers.jpg'
+import flowersMobile from './images/flowers-mobile.jpg'
+import taipei from './images/taipei.jpg'
 
 // humming bird
 import hBody from './images/humming-body.png'
 import hTail from './images/humming-tail.png'
 import hLeft from './images/humming-left.png'
 import hRight from './images/humming-right.png'
+
+// hawk 1
+import h1Body from './images/hawk-1-body.png'
+import h1Wing from './images/hawk-1-wing.png'
+
+// hawk 2
+import h2Body from './images/hawk-2-body.png'
+import h2Tail from './images/hawk-2-tail.png'
+import h2Left from './images/hawk-2-left.png'
+import h2Right from './images/hawk-2-right.png'
 
 const Divider = styled.div`
   height: ${ props => props.height };
@@ -57,8 +65,9 @@ const Page = styled.div`
 `
 
 const ParallaxContainer = styled.div`
-  height: 60vh;
+  height: 70vh;
   width: 100%;
+  min-height: 700px;
   z-index: 1;
   position: relative;
   overflow: hidden;
@@ -67,26 +76,176 @@ const ParallaxContainer = styled.div`
   -o-background-size: cover;
   background-size: cover;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: linear-gradient(45deg, rgba(6,150,136,1) 0%, rgba(22,46,105,1) 100%);
 `
 
-const Laptop = styled.img`
-  transition: 0.2s ease-in-out all;
-  transform: translate(${ props => props.translateX}px, ${ props => props.translateY }px) rotate(10deg);
-  width: 500px;
+const Background = styled.img`
   position: absolute;
+  top: 0;
+  left: 0;
+  width: 110%;
+  transition: 0.2s ease-in-out all;
+  transform: translate(-${ props => props.translateX}px, -${ props => props.translateY }px);
 `
 
-const Laptop2 = styled.img`
+const HeadingContainer = styled.div`
+  position: relative;
+`
+
+const Heading = styled.h1`
+  font-family: "bebas";
+  font-size: 73px;
+  color: #fff;
+  line-height: 0.9;
+  position: relative;
+  z-index: 20;
   transition: 0.2s ease-in-out all;
-  transform: translate(-${ props => props.translateX}px, ${ props => props.translateY }px) rotate(${ props => (props.translateX/2)}deg);
-  width: 500px;
-  right: 0;
+  transform: translate(${ props => props.translateX}px, ${ props => props.translateY }px) rotate(5deg);
+  span {
+    font-size: 250px;
+    display: block;
+    line-height: 0.9;
+    border-bottom: 2px solid #fff;
+  }
+  p {
+    font-size: 23px;
+    padding-top: 10px;
+    font-family: "bebas";
+  }
+`
+
+const swing = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+`
+
+const swingWide = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+`
+
+const rotateWingRight = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+`
+
+const rotateWingLeft = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+`
+
+const skewWing = keyframes`
+  0% {
+    transform: skew(0deg);
+  }
+  50% {
+    transform: skew(5deg) rotate(5deg);
+  }
+  100% {
+    transform: skew(0deg);
+  }
+`
+
+const Hawk1 = styled.div`
   position: absolute;
+  z-index: 10;
+  right: -70px;
+  top: 100px;
+  transition: 0.2s ease-in-out all;
+  transform: translate(-${ props => props.translateX * 1.5}px, ${ props => props.translateY * 1.3 }px);
+  img {
+    position: absolute;
+  }
+  .body {
+    width: 320px;
+  }
+  .wing {
+    width: 320px;
+    top: -140px;
+    left: 80px;
+    transition: 0.2s ease-in-out all;
+    transform-origin: bottom left;
+    animation: ${ skewWing } 2s linear infinite;
+  }
+`
+const Hawk2 = styled.div`
+  position: absolute;
+  z-index: 10;
+  top: -150px;
+  left: -300px;
+  transition: 0.2s ease-in-out all;
+  transform: translate(${ props => props.translateX}px, -${ props => props.translateY * 2 }px);
+  img {
+    position: absolute;
+  }
+  .laptop {
+    width: 200px;
+    top: 150px;
+    left: 25px;
+    transform: rotate(-30deg);
+    transition: 0.2s ease-in-out all;
+    transform-origin: top center;
+    animation: ${ swingWide } 3s linear infinite;
+  }
+  .body {
+    width: 150px;
+    z-index: 1;
+  }
+  .left {
+    width: 330px;
+    left: -250px;
+    top: 40px;
+    animation: ${ rotateWingLeft } 2s linear infinite;
+    transform-origin: center right;
+  }
+  .right {
+    width: 420px;
+    right: -520px;
+    top: 0;
+    z-index: 2;
+    animation: ${ rotateWingRight } 2s linear infinite;
+    transform-origin: center left;
+  }
+  .tail {
+    width: 150px;
+    top: 110px;
+    right: -230px;
+  }
 `
 
 const Overlay = styled.div`
-  height: 60vh;
+  height: 100%;
   width: 100%;
   z-index: 1;
   position: relative;
@@ -100,7 +259,7 @@ const Overlay = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  opacity: 0.5;
+  opacity: 0.6;
   background: linear-gradient(45deg, rgba(6,150,136,1) 0%, rgba(22,46,105,1) 100%);
 `
 
@@ -133,84 +292,56 @@ const Container = styled.div`
   }
 `
 
-const Header = styled.header`
-  display: flex;
-  align-items: center;
-   background: url(${(props) => props.bg}) no-repeat center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  position: relative;
-  /*background: #069688;*/
-  height: 60vh;
-  width: 100%;
-  z-index: 1;
-  &:after {
-    content: '';
-    width: 100%;
-    height: 100%;
-    top: 0;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgb(22,46,105);
-    background: linear-gradient(45deg, rgba(6,150,136,1) 0%, rgba(22,46,105,1) 100%);
-    opacity: 0.8;
-    z-index: -1;
-  }
-  video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
-    min-width: 100%;
-    height: 100%;
-    width: 130%;
-    height: auto;
-    overflow: hidden;
-    z-index: -1;
-    &:after {
-      content: '';
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      background: black;
-      opacity: 0.4;
-      z-index: 0;
-    }
-  }
-`
-
-const HeaderContainer = styled.div`
-  width: 50%;
-  margin-left: auto;
-`
-
-const Heading = styled.div`
-  font-family: "bebas";
-  font-size: 110px;
-  color: #fff;
-`
-
-const SubHeading = styled.div`
-  color: #fff;
-  font-family: 'Regular';
-  font-size: 30px;
-  margin-top: 20px;
-  position: relative;
-`
-
-const VideoContainer = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 60vh;
-  overflow: hidden;
-`
+// const Header = styled.header`
+//   display: flex;
+//   align-items: center;
+//    background: url(${(props) => props.bg}) no-repeat center center;
+//   -webkit-background-size: cover;
+//   -moz-background-size: cover;
+//   -o-background-size: cover;
+//   background-size: cover;
+//   position: relative;
+//   /*background: #069688;*/
+//   height: 60vh;
+//   width: 100%;
+//   z-index: 1;
+//   &:after {
+//     content: '';
+//     width: 100%;
+//     height: 100%;
+//     top: 0;
+//     position: absolute;
+//     bottom: 0;
+//     left: 0;
+//     right: 0;
+//     background: rgb(22,46,105);
+//     background: linear-gradient(45deg, rgba(6,150,136,1) 0%, rgba(22,46,105,1) 100%);
+//     opacity: 0.8;
+//     z-index: -1;
+//   }
+//   video {
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
+//     -webkit-transform: translateX(-50%) translateY(-50%);
+//     transform: translateX(-50%) translateY(-50%);
+//     min-width: 100%;
+//     height: 100%;
+//     width: 130%;
+//     height: auto;
+//     overflow: hidden;
+//     z-index: -1;
+//     &:after {
+//       content: '';
+//       width: 100%;
+//       height: 100%;
+//       position: absolute;
+//       background: black;
+//       opacity: 0.4;
+//       z-index: 0;
+//     }
+//   }
+// `
 
 const PortfolioContainer = styled.div`
   margin-right: ${ props => props.right ? '0' : '40px'};
@@ -440,7 +571,7 @@ const SeeWeb = styled.a`
   transition: 0.3s ease-in-out all;
   overflow: hidden;
   z-index: 1;
-  &:after {
+  /* &:after {
     content: '';
     position: absolute;
     top: 0;
@@ -448,7 +579,7 @@ const SeeWeb = styled.a`
     left: 0;
     right: 0;
     background: url(${ noise }) repeat center center;
-  }
+  } */
   &:before {
     transition: 0.2s ease-in-out all;
     content: '';
@@ -507,8 +638,7 @@ const Link = styled.a`
 
 const About = styled.div`
   width: 100%;
-  background: rgb(22,46,105);
-  background: url(${(props) => props.bg}) repeat center center;
+  background: url(${(props) => props.bg}) no-repeat center center fixed;
   /* #be2f2e */
   min-height: 800px;
   display: flex;
@@ -529,6 +659,13 @@ const About = styled.div`
     z-index: -1;
     opacity: 0.8;
   }
+  @media (max-width: ${breakpoints[1] + "px"}) {
+    background: url(${(props) => props.bgMobile }) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
 `
 
 const AboutInner = styled.div`
@@ -545,42 +682,6 @@ const AboutInner = styled.div`
   }
 `
 
-const rotateMe = keyframes`
-  0% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(2deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-`
-
-const rotateWingRight = keyframes`
-  0% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(5deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-`
-
-const rotateWingLeft = keyframes`
-  0% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(-5deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-`
-
 const HummingBird = styled.div`
   position: absolute;
   top: -200px;
@@ -593,7 +694,7 @@ const HummingBird = styled.div`
     width: 200px;
   }
   .right {
-    width: 400px;
+    width: 420px;
     left: 150px;
     top: 90px;
     animation: ${ rotateWingRight } 3s linear infinite;
@@ -646,7 +747,7 @@ const HummingBird = styled.div`
 
 const AboutImageContainer = styled.div`
   position: relative;
-  margin-top: 50px;
+  margin-top: 70px;
   transition: 0.2s ease-in-out all;
   width: 100%;
   max-width: 400px;
@@ -664,7 +765,7 @@ const AboutImage = styled.img`
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   transition: 0.2s ease-in-out all;
   transform-origin: top center;
-  animation: ${ rotateMe } 5s linear infinite;
+  animation: ${ swing } 5s linear infinite;
   box-sizing: border-box;
 `
 
@@ -687,7 +788,7 @@ const AboutP = styled.div`
 const AboutTitle = styled.h3`
   color: #fff;
   font-family: 'bebas';
-  font-size: 50px;
+  font-size: 60px;
 `
 
 const AboutMobile = styled.div`
@@ -791,15 +892,49 @@ function App() {
       <ParallaxContainer
         onMouseMove={ onMoveHeading }
       >
-        <Laptop
-          src={ laptop }
+      {/*  <div>
+          <Laptop
+            src={ laptop }
+            translateX={ backgroundTranslate.x }
+            translateY={ backgroundTranslate.y }
+          />
+          <Laptop2
+            src={ laptop }
+            translateX={ backgroundTranslate.x }
+            translateY={ backgroundTranslate.y }
+          />
+        </div>*/}
+        <HeadingContainer>
+          <Heading
+            translateX={ backgroundTranslate.x }
+            translateY={ backgroundTranslate.y }
+          >
+            Make Creativity <span>Soar</span>
+            <p>Maureen Vogel | Frontend Engineer & UIUX Designer</p>
+          </Heading>
+          <Hawk1
+            translateX={ backgroundTranslate.x }
+            translateY={ backgroundTranslate.y }
+          >
+            <img className="body" src={ h1Body }/>
+            <img className="wing" src={ h1Wing }/>
+          </Hawk1>
+          <Hawk2
+            translateX={ backgroundTranslate.x }
+            translateY={ backgroundTranslate.y }
+          >
+            <img className="body" src={ h2Body }/>
+            <img className="tail" src={ h2Tail }/>
+            <img className="left" src={ h2Left }/>
+            <img className="right" src={ h2Right }/>
+            <img className="laptop" src={ laptop }/>
+          </Hawk2>
+        </HeadingContainer>
+        <Background
           translateX={ backgroundTranslate.x }
           translateY={ backgroundTranslate.y }
-        />
-        <Laptop2
-          src={ laptop }
-          translateX={ backgroundTranslate.x }
-          translateY={ backgroundTranslate.y }
+          src={ taipei }
+          alt="Maureen Portfolio"
         />
         <Overlay/>
       </ParallaxContainer>
@@ -808,7 +943,7 @@ function App() {
       <Container>
         <Fade left>
           <PortfolioContainer>
-            <Title>HUNGRY POPUPS App</Title>
+            <Title>HUNGRY POPUPS Mobile App</Title>
             <ColorPalette>
               <Color bg="#3d4853">#3d4853</Color>
               <Color bg="#ee346d">#ee346d</Color>
@@ -1081,12 +1216,12 @@ function App() {
             <div>
               <PadContainer>
                 <PadScreen animate={ true }>
-                  <img src={ marketplaceDesktop }/>
+                  <img src={ marketplaceDesktop } alt="maureen portfolio"/>
                 </PadScreen>
               </PadContainer>
               <PhoneContainer>
                 <PhoneScreen animate={ true }>
-                  <img src={ marketplaceMobile }/>
+                  <img src={ marketplaceMobile } alt="maureen portfolio"/>
                 </PhoneScreen>
               </PhoneContainer>
             </div>
@@ -1106,7 +1241,7 @@ function App() {
         </Fade>
       </Container>
       <Divider height="100px"/>
-      <About onMouseMove={ onMoveAbout } bg={ flowers }>
+      <About onMouseMove={ onMoveAbout } bg={ flowers } bgMobile={ flowersMobile }>
         <AboutInner>
           <Zoom>
             <AboutImageContainer
