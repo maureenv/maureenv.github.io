@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
+import 'react-app-polyfill/ie11'
 import styled from '@emotion/styled'
 import MediaQuery from 'react-responsive'
-import { jsx, css, keyframes } from '@emotion/core'
+import { css, keyframes } from '@emotion/core'
 import Fade from 'react-reveal/Fade'
 import Zoom from 'react-reveal/Zoom'
+import useWindowDimensions from './components/windowDimensions'
 import { breakpoints } from './constants.js'
 
 import stockMobile from './images/stock-mobile.png'
@@ -18,17 +20,42 @@ import seeMenusMobile from './images/seemenus-mobile.jpg'
 import seeMenusDesktop from './images/seemenus-desktop.jpg'
 import popupDesktop from './images/popup-desktop.jpg'
 import popupMobile from './images/popup-mobile.png'
-import aboutImage from './images/about2.jpg'
-import linkedIn from './images/linkedin.svg'
+import aboutImageDesktop from './images/about3.jpg'
 import email3 from './images/email3.svg'
 import resume from './images/resume.pdf'
 import Logo from './images/logo.js'
-import background from './images/background.jpg'
+import laptop from './images/laptop.png'
+import noise from './images/noise2.png'
+import flowers from './images/flowers.jpg'
+import flowersMobile from './images/flowers-mobile.jpg'
+import taipei from './images/taipei.jpg'
+import taipeiMobile from './images/taipei-mobile.jpg'
+import birdPhone from './images/bird-phone.png'
+
+// humming bird
+import hBody from './images/humming-body.png'
+import hTail from './images/humming-tail.png'
+import hLeft from './images/humming-left.png'
+import hRight from './images/humming-right.png'
+
+// hawk 1
+import h1Body from './images/hawk-1-body.png'
+import h1Wing from './images/hawk-1-wing.png'
+
+// hawk 2
+import h2Body from './images/hawk-2-body.png'
+import h2Tail from './images/hawk-2-tail.png'
+import h2Left from './images/hawk-2-left.png'
+import h2Right from './images/hawk-2-right.png'
 
 const Divider = styled.div`
   height: ${ props => props.height };
+  @media (max-width: ${breakpoints[1] + "px"}) {
+    display: ${ props => props.hideMobile ? 'none' : 'block' };
+  }
   @media (max-width: ${breakpoints[0] + "px"}) {
     height: ${ props => props.mobileHeight };
+    display: ${ props => props.hideMobile ? 'none' : 'block' };
   }
 `
 
@@ -41,6 +68,263 @@ const LogoContainer = styled.div`
 
 const Page = styled.div`
   overflow: hidden;
+`
+
+const ParallaxContainer = styled.div`
+  height: 70vh;
+  width: 100%;
+  min-height: 700px;
+  z-index: 1;
+  position: relative;
+  overflow: hidden;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(45deg, rgba(6,150,136,1) 0%, rgba(22,46,105,1) 100%);
+`
+
+const Background = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110%;
+  transition: 0.2s ease-in-out all;
+  transform: translate(0, -${ props => props.translateY }px);
+  height: 100%;
+  padding: 100px;
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: url(${(props) => props.bg }) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    @media (max-width: ${breakpoints[2] + "px"}) {
+      background: url(${(props) => props.bgMobile }) no-repeat center center;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+  }
+`
+
+const HeadingContainer = styled.div`
+  position: relative;
+`
+
+const Heading = styled.h1`
+  font-family: "bebas";
+  font-size: 73px;
+  color: #fff;
+  line-height: 0.9;
+  position: relative;
+  z-index: 20;
+  transition: 0.2s ease-in-out all;
+  transform: translate(${ props => props.translateX}px, ${ props => props.translateY }px) rotate(5deg);
+  span {
+    font-size: 250px;
+    display: block;
+    line-height: 0.9;
+    border-bottom: 2px solid #fff;
+  }
+  p {
+    font-size: 23px;
+    padding-top: 10px;
+    font-family: "bebas";
+  }
+  @media (max-width: ${breakpoints[2] + "px"}) {
+    font-size: 55px;
+    transform: rotate(0deg);
+    span {
+      font-size: 183px;
+    }
+    p {
+      font-size: 30px;
+      max-width: 290px;
+      line-height: 1.3;
+    }
+  }
+`
+
+const swing = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+`
+
+const swingWide = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+`
+
+const rotateWingRight = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+`
+
+const rotateWingLeft = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+`
+
+const skewWing = keyframes`
+  0% {
+    transform: skew(0deg);
+  }
+  50% {
+    transform: skew(5deg) rotate(5deg);
+  }
+  100% {
+    transform: skew(0deg);
+  }
+`
+
+const Hawk1 = styled.div`
+  position: absolute;
+  z-index: 10;
+  right: -70px;
+  top: 50px;
+  transition: 0.2s ease-in-out all;
+  transform: translate(-${ props => props.translateX * 1.5}px, ${ props => props.translateY * 1.3 }px);
+  img {
+    position: absolute;
+  }
+  .body {
+    width: 320px;
+    z-index: 1;
+  }
+  .wing {
+    z-index: 2;
+    width: 320px;
+    top: -140px;
+    left: 80px;
+    transition: 0.2s ease-in-out all;
+    transform-origin: bottom left;
+    animation: ${ skewWing } 2s linear infinite;
+  }
+  .phone {
+    width: 90px;
+    top: 240px;
+    left: 30px;
+    transition: 0.2s ease-in-out all;
+    transform-origin: top center;
+    animation: ${ swingWide } 2s linear infinite;
+  }
+  @media (max-width: ${breakpoints[2] + "px"}) {
+    right: 120px;
+    top: 320px;
+  }
+`
+const Hawk2 = styled.div`
+  position: absolute;
+  z-index: 10;
+  top: -150px;
+  left: -300px;
+  transition: 0.2s ease-in-out all;
+  transform: translate(${ props => props.translateX}px, -${ props => props.translateY * 2 }px);
+  img {
+    position: absolute;
+  }
+  .laptop {
+    width: 200px;
+    top: 150px;
+    left: 25px;
+    transform: rotate(-30deg);
+    transition: 0.2s ease-in-out all;
+    transform-origin: top center;
+    animation: ${ swingWide } 3s linear infinite;
+  }
+  .body {
+    width: 150px;
+    z-index: 1;
+  }
+  .left {
+    width: 330px;
+    left: -250px;
+    top: 40px;
+    animation: ${ rotateWingLeft } 2s linear infinite;
+    transform-origin: center right;
+  }
+  .right {
+    width: 420px;
+    right: -520px;
+    top: 0;
+    z-index: 2;
+    animation: ${ rotateWingRight } 2s linear infinite;
+    transform-origin: center left;
+  }
+  .tail {
+    width: 150px;
+    top: 110px;
+    right: -230px;
+  }
+  @media (max-width: ${breakpoints[1] + "px"}) {
+    left: 20px;
+    z-index: 1;
+    .laptop {
+      display: none;
+    }
+  }
+`
+
+const Overlay = styled.div`
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  position: relative;
+  overflow: hidden;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0.6;
+  background: linear-gradient(45deg, rgba(6,150,136,1) 0%, rgba(22,46,105,1) 100%);
+  @media (max-width: ${breakpoints[2] + "px"}) {
+    opacity: 0.7;
+  }
 `
 
 const Container = styled.div`
@@ -72,84 +356,56 @@ const Container = styled.div`
   }
 `
 
-const Header = styled.header`
-  display: flex;
-  align-items: center;
-   background: url(${(props) => props.bg}) no-repeat center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  position: relative;
-  /*background: #069688;*/
-  height: 60vh;
-  width: 100%;
-  z-index: 1;
-  &:after {
-    content: '';
-    width: 100%;
-    height: 100%;
-    top: 0;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgb(22,46,105);
-    background: linear-gradient(45deg, rgba(6,150,136,1) 0%, rgba(22,46,105,1) 100%);
-    opacity: 0.8;
-    z-index: -1;
-  }
-  video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
-    min-width: 100%;
-    height: 100%;
-    width: 130%;
-    height: auto;
-    overflow: hidden;
-    z-index: -1;
-    &:after {
-      content: '';
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      background: black;
-      opacity: 0.4;
-      z-index: 0;
-    }
-  }
-`
-
-const HeaderContainer = styled.div`
-  width: 50%;
-  margin-left: auto;
-`
-
-const Heading = styled.div`
-  font-family: "bebas";
-  font-size: 110px;
-  color: #fff;
-`
-
-const SubHeading = styled.div`
-  color: #fff;
-  font-family: 'Regular';
-  font-size: 30px;
-  margin-top: 20px;
-  position: relative;
-`
-
-const VideoContainer = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 60vh;
-  overflow: hidden;
-`
+// const Header = styled.header`
+//   display: flex;
+//   align-items: center;
+//    background: url(${(props) => props.bg}) no-repeat center center;
+//   -webkit-background-size: cover;
+//   -moz-background-size: cover;
+//   -o-background-size: cover;
+//   background-size: cover;
+//   position: relative;
+//   /*background: #069688;*/
+//   height: 60vh;
+//   width: 100%;
+//   z-index: 1;
+//   &:after {
+//     content: '';
+//     width: 100%;
+//     height: 100%;
+//     top: 0;
+//     position: absolute;
+//     bottom: 0;
+//     left: 0;
+//     right: 0;
+//     background: rgb(22,46,105);
+//     background: linear-gradient(45deg, rgba(6,150,136,1) 0%, rgba(22,46,105,1) 100%);
+//     opacity: 0.8;
+//     z-index: -1;
+//   }
+//   video {
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
+//     -webkit-transform: translateX(-50%) translateY(-50%);
+//     transform: translateX(-50%) translateY(-50%);
+//     min-width: 100%;
+//     height: 100%;
+//     width: 130%;
+//     height: auto;
+//     overflow: hidden;
+//     z-index: -1;
+//     &:after {
+//       content: '';
+//       width: 100%;
+//       height: 100%;
+//       position: absolute;
+//       background: black;
+//       opacity: 0.4;
+//       z-index: 0;
+//     }
+//   }
+// `
 
 const PortfolioContainer = styled.div`
   margin-right: ${ props => props.right ? '0' : '40px'};
@@ -379,6 +635,15 @@ const SeeWeb = styled.a`
   transition: 0.3s ease-in-out all;
   overflow: hidden;
   z-index: 1;
+  /* &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url(${ noise }) repeat center center;
+  } */
   &:before {
     transition: 0.2s ease-in-out all;
     content: '';
@@ -437,12 +702,38 @@ const Link = styled.a`
 
 const About = styled.div`
   width: 100%;
-  background: rgb(22,46,105);
-  background: linear-gradient(45deg, rgba(6,150,136,1) 0%, rgba(22,46,105,1) 100%);
+  background: url(${(props) => props.bg}) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   /* #be2f2e */
+  min-height: 800px;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  z-index: 1;
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    background: linear-gradient(45deg, rgba(6,150,136,1) 0%, rgba(22,46,105,1) 100%);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.8;
+  }
+  @media (max-width: ${breakpoints[1] + "px"}) {
+    background: url(${(props) => props.bgMobile }) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
 `
 
 const AboutInner = styled.div`
@@ -452,20 +743,104 @@ const AboutInner = styled.div`
   display: flex;
   align-items: center;
   box-sizing: border-box;
+  position: relative;
+  @media (max-width: ${breakpoints[1] + "px"}) {
+    flex-direction: column-reverse;
+    padding: 50px 20px;
+  }
+`
+
+const HummingBird = styled.div`
+  position: absolute;
+  top: -200px;
+  left: 50px;
+  img {
+    position: absolute;
+  }
+  .body {
+    z-index: 3;
+    width: 200px;
+  }
+  .right {
+    width: 420px;
+    left: 150px;
+    top: 90px;
+    animation: ${ rotateWingRight } 3s linear infinite;
+    transform-origin: center left;
+  }
+  .left {
+    width: 300px;
+    left: -170px;
+    top: 105px;
+    z-index: -1;
+    transform-origin: center right;
+    animation: ${ rotateWingLeft } 3s linear infinite;
+  }
+  .tail {
+    width: 110px;
+    top: 200px;
+    left: 130px;
+    z-index: -1;
+  }
+  @media (max-width: ${breakpoints[1] + "px"}) {
+    top: -120px;
+    left: 70px;
+    .body {
+      z-index: 3;
+      width: 130px;
+    }
+    .right {
+      width: 250px;
+      left: 100px;
+      top: 60px;
+      animation: ${ rotateWingRight } 3s linear infinite;
+      transform-origin: center left;
+    }
+    .left {
+      width: 180px;
+      left: -100px;
+      top: 70px;
+      z-index: -1;
+      transform-origin: center right;
+      animation: ${ rotateWingLeft } 3s linear infinite;
+    }
+    .tail {
+      width: 80px;
+      top: 120px;
+      left: 80px;
+      z-index: -1;
+    }
+  }
+`
+
+const AboutImageContainer = styled.div`
+  position: relative;
+  margin-top: 70px;
+  transition: 0.2s ease-in-out all;
+  width: 100%;
+  max-width: 400px;
+  transform: translate(${ props => props.translateX}px, ${ props => props.translateY }px);
+  @media (max-width: ${breakpoints[1] + "px"}) {
+    margin-top: 160px;
+  }
 `
 
 const AboutImage = styled.img`
-  width: 400px;
+  width:100%;
+  margin: 0;
+  margin-top: 40px;
+  border: 10px solid #fff;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  /* border-right: 10px solid white;
-  border-left: 10px solid white; */
+  transition: 0.2s ease-in-out all;
+  transform-origin: top center;
+  animation: ${ swing } 5s linear infinite;
+  box-sizing: border-box;
 `
 
 const AboutBio = styled.div`
-  margin-left: 30px;
+  margin-left: 50px;
   @media (max-width: ${breakpoints[1] + "px"}) {
     margin-left: 0;
-    padding: 20px;
   }
 `
 
@@ -481,7 +856,7 @@ const AboutP = styled.div`
 const AboutTitle = styled.h3`
   color: #fff;
   font-family: 'bebas';
-  font-size: 50px;
+  font-size: 60px;
 `
 
 const AboutMobile = styled.div`
@@ -533,26 +908,112 @@ const Contact = styled.div`
 
 
 function App() {
+  const { height, width } = useWindowDimensions()
+  const [aboutTranslate, setAboutTranslate] = useState({
+    x: 0,
+    y: 0,
+  })
+
+  const [backgroundTranslate, setBackgroundTranslate] = useState({
+    x: 0,
+    y: 0,
+  })
+
+  const [background2Translate, setBackground2Translate] = useState({
+    x: 0,
+    y: 0,
+  })
+
+  const onMoveAbout = e => {
+    setAboutTranslate({
+      x: e.pageX/width * 15,
+      y: e.pageY/height * 5,
+    })
+  }
+
+  const onMoveHeading = e => {
+    setBackgroundTranslate({
+      x: e.pageX/width * 20,
+      y: e.pageY/height * 20,
+    })
+    setBackground2Translate({
+      x: e.pageX/width * 10,
+      y: e.pageY/height * 20,
+    })
+  }
+
   return (
     <Page>
       <LogoContainer>
         <Logo mColor={ 'rgba(255, 255, 255, 0.3)' } vColor={ '#fff'}/>
       </LogoContainer>
-      <Header bg={ background }>
+      {/*<Header bg={ background }>
         <HeaderContainer>
           <Heading>Hi, I'm Maureen</Heading>
           <SubHeading>Web Developer & UIUX Designer</SubHeading>
         </HeaderContainer>
         {/*<VideoContainer>
         <video muted loop autoPlay playsInline src="https://www.videvo.net/videvo_files/converted/2013_08/preview/hd0992.mov31753.webm" type="video/mp4" ></video>
-        </VideoContainer>*/}
+        </VideoContainer>
       </Header>
+      */}
+      <ParallaxContainer
+        onMouseMove={ onMoveHeading }
+      >
+      {/*  <div>
+          <Laptop
+            src={ laptop }
+            translateX={ backgroundTranslate.x }
+            translateY={ backgroundTranslate.y }
+          />
+          <Laptop2
+            src={ laptop }
+            translateX={ backgroundTranslate.x }
+            translateY={ backgroundTranslate.y }
+          />
+        </div>*/}
+        <HeadingContainer>
+          <Heading
+            translateX={ backgroundTranslate.x }
+            translateY={ backgroundTranslate.y }
+          >
+            Make Creativity <span>Soar</span>
+            <p>Maureen Vogel | Frontend Engineer & UIUX Designer</p>
+          </Heading>
+          <Hawk1
+            translateX={ backgroundTranslate.x }
+            translateY={ backgroundTranslate.y }
+          >
+            <img className="body" src={ h1Body }/>
+            <img className="wing" src={ h1Wing }/>
+            <img className="phone" src={ birdPhone }/>
+          </Hawk1>
+          <Hawk2
+            translateX={ backgroundTranslate.x }
+            translateY={ backgroundTranslate.y }
+          >
+            <img className="body" src={ h2Body }/>
+            <img className="tail" src={ h2Tail }/>
+            <img className="left" src={ h2Left }/>
+            <img className="right" src={ h2Right }/>
+            <img className="laptop" src={ laptop }/>
+          </Hawk2>
+        </HeadingContainer>
+          <Background
+            bg={ taipei }
+            bgMobile={ taipeiMobile }
+            translateX={ backgroundTranslate.x }
+            translateY={ backgroundTranslate.y }
+            alt="Maureen Portfolio"
+          />
+        <Overlay/>
+      </ParallaxContainer>
 
-      <Divider height="80px"/>
+      <Divider height="80px" hideMobile={ true }/>
       <Container>
         <Fade left>
           <PortfolioContainer>
-            <Title>HUNGRY POPUPS App</Title>
+            <Title>HUNGRY POPUPS Mobile App</Title>
             <ColorPalette>
               <Color bg="#3d4853">#3d4853</Color>
               <Color bg="#ee346d">#ee346d</Color>
@@ -825,12 +1286,12 @@ function App() {
             <div>
               <PadContainer>
                 <PadScreen animate={ true }>
-                  <img src={ marketplaceDesktop }/>
+                  <img src={ marketplaceDesktop } alt="maureen portfolio"/>
                 </PadScreen>
               </PadContainer>
               <PhoneContainer>
                 <PhoneScreen animate={ true }>
-                  <img src={ marketplaceMobile }/>
+                  <img src={ marketplaceMobile } alt="maureen portfolio"/>
                 </PhoneScreen>
               </PhoneContainer>
             </div>
@@ -850,29 +1311,40 @@ function App() {
         </Fade>
       </Container>
       <Divider height="100px"/>
-      <MediaQuery minWidth={ breakpoints[1]}>
-        <About>
-          <AboutInner>
-            <Zoom>
-              <AboutImage src={ aboutImage }/>
-            </Zoom>
-            <Fade left>
-              <AboutBio>
-                <AboutTitle>About Me</AboutTitle>
-                <AboutP>I'm a Frontend Engineer and UIUX Designer who currently works remotely for a startup in the US. My role spans developing product concepts, prototyping, designing and coding. I also work as a freelance graphic designer and artist.</AboutP>
+      <About onMouseMove={ onMoveAbout } bg={ flowers } bgMobile={ flowersMobile }>
+        <AboutInner>
+          <Zoom>
+            <AboutImageContainer
+              translateX={ aboutTranslate.x }
+              translateY={ aboutTranslate.y }
+            >
+              <AboutImage
+                src={ aboutImageDesktop }
+              />
+              <HummingBird>
+                <img className="body" src={ hBody }/>
+                <img className="tail" src={ hTail }/>
+                <img className="left" src={ hLeft }/>
+                <img className="right" src={ hRight }/>
+              </HummingBird>
+            </AboutImageContainer>
+          </Zoom>
+          <Fade left>
+            <AboutBio>
+              <AboutTitle>About Me</AboutTitle>
+              <AboutP>I'm a Frontend Engineer and UIUX Designer who currently works remotely for a startup in the US. My role spans developing product concepts, prototyping, designing and coding. I also work as a freelance graphic designer and artist.</AboutP>
 
-                <AboutP>Raised in Japan and currently residing in Taiwan, I speak both Japanese and Mandarin. On my spare time, I like to work on personal web projects, draw and study foreign languages.</AboutP>
-                <Contact>
-                  <img src={ email3 }/>
-                  <p>maureenvogel@outlook.com</p>
-                </Contact>
-                <Download href={ resume } download="Maureen_Vogel_Resume">Download Resume</Download>
-              </AboutBio>
-            </Fade>
-          </AboutInner>
-        </About>
-      </MediaQuery>
-      <MediaQuery maxWidth={ breakpoints[1]}>
+              <AboutP>Raised in Japan and currently residing in Taiwan, I speak both Japanese and Mandarin. On my spare time, I like to work on personal web projects, draw and study foreign languages.</AboutP>
+              <Contact>
+                <img src={ email3 }/>
+                <p>maureenvogel@outlook.com</p>
+              </Contact>
+              <Download href={ resume } download="Maureen_Vogel_Resume">Download Resume</Download>
+            </AboutBio>
+          </Fade>
+        </AboutInner>
+      </About>
+      {/*<MediaQuery maxWidth={ breakpoints[1]}>
         <AboutMobile bg={ aboutImage }>
           <Fade left>
             <AboutBio>
@@ -888,7 +1360,7 @@ function App() {
             </AboutBio>
           </Fade>
         </AboutMobile>
-      </MediaQuery>
+      </MediaQuery>*/}
       {/*<Footer>
         <Contact>
           <a href="https://www.linkedin.com/in/maureenvogel/">
