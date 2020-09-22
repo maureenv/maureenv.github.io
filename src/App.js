@@ -11,16 +11,16 @@ import { breakpoints } from './constants.js'
 import stockMobile from './images/stock-mobile.png'
 import stockPad from './images/stock-desktop.png'
 import natsMobile from './images/nats-mobile.png'
-import natsDesktop from './images/nats-desktop.png'
+import natsDesktop from './images/nats-desktop2.jpg'
 import opsMobile from './images/ops-mobile.png'
 import opsDesktop from './images/ops-desktop.png'
 import marketplaceMobile from './images/marketplace-mobile.png'
-import marketplaceDesktop from './images/marketplace-desktop.png'
+import marketplaceDesktop from './images/marketplace-desktop2.jpg'
 import seeMenusMobile from './images/seemenus-mobile.jpg'
-import seeMenusDesktop from './images/seemenus-desktop.jpg'
-import popupDesktop from './images/popup-desktop.jpg'
+import seeMenusDesktop from './images/seemenus-desktop2.jpg'
+import popupDesktop from './images/popup-desktop2.jpg'
 import popupMobile from './images/popup-mobile.png'
-import aboutImageDesktop from './images/about3.jpg'
+import aboutImageDesktop from './images/about.jpg'
 import email3 from './images/email3.svg'
 import resume from './images/resume.pdf'
 import Logo from './images/logo.js'
@@ -64,6 +64,9 @@ const LogoContainer = styled.div`
   position: absolute;
   padding: 20px;
   z-index: 3;
+  @media (max-width: ${breakpoints[1] + "px"}) {
+    display: none;
+  }
 `
 
 const Page = styled.div`
@@ -154,6 +157,9 @@ const Heading = styled.h1`
       max-width: 290px;
       line-height: 1.3;
     }
+  }
+  @media (max-width: ${breakpoints[1] + "px"}) {
+    margin-top: -140px;
   }
 `
 
@@ -252,14 +258,33 @@ const Hawk1 = styled.div`
     right: 120px;
     top: 320px;
   }
+  @media (max-width: ${breakpoints[1] + "px"}) {
+    right: 230px;
+    top: 220px;
+    transform: translate(-${ props => props.translateX * 1.5}px, ${ props => props.translateY * 1.3 }px) rotate(-26deg);
+    .body {
+      width: 260px;
+    }
+    .wing {
+      width: 240px;
+      top: -100px;
+      left: 70px;
+    }
+    .phone {
+      width: 70px;
+      left: 30px;
+      top: 190px;
+    }
+  }
+}
 `
 const Hawk2 = styled.div`
   position: absolute;
   z-index: 10;
-  top: -150px;
-  left: -300px;
+  top: -80px;
+  left: -350px;
   transition: 0.2s ease-in-out all;
-  transform: translate(${ props => props.translateX}px, -${ props => props.translateY * 2 }px);
+  transform: translate(${ props => props.translateX}px, -${ props => props.translateY * 2 }px) rotate(-20deg);
   img {
     position: absolute;
   }
@@ -280,7 +305,7 @@ const Hawk2 = styled.div`
     width: 330px;
     left: -250px;
     top: 40px;
-    animation: ${ rotateWingLeft } 2s linear infinite;
+    animation: ${ rotateWingLeft } 5s linear infinite;
     transform-origin: center right;
   }
   .right {
@@ -288,7 +313,7 @@ const Hawk2 = styled.div`
     right: -520px;
     top: 0;
     z-index: 2;
-    animation: ${ rotateWingRight } 2s linear infinite;
+    animation: ${ rotateWingRight } 5s linear infinite;
     transform-origin: center left;
   }
   .tail {
@@ -299,6 +324,7 @@ const Hawk2 = styled.div`
   @media (max-width: ${breakpoints[1] + "px"}) {
     left: 20px;
     z-index: 1;
+    top: -230px;
     .laptop {
       display: none;
     }
