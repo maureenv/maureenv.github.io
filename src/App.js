@@ -29,6 +29,8 @@ import noise from './images/noise2.png'
 import flowers from './images/flowers.jpg'
 import flowersMobile from './images/flowers-mobile.jpg'
 import taipei from './images/taipei.jpg'
+import taipeiMobile from './images/taipei-mobile.jpg'
+import birdPhone from './images/bird-phone.png'
 
 // humming bird
 import hBody from './images/humming-body.png'
@@ -48,8 +50,12 @@ import h2Right from './images/hawk-2-right.png'
 
 const Divider = styled.div`
   height: ${ props => props.height };
+  @media (max-width: ${breakpoints[1] + "px"}) {
+    display: ${ props => props.hideMobile ? 'none' : 'block' };
+  }
   @media (max-width: ${breakpoints[0] + "px"}) {
     height: ${ props => props.mobileHeight };
+    display: ${ props => props.hideMobile ? 'none' : 'block' };
   }
 `
 
@@ -82,13 +88,35 @@ const ParallaxContainer = styled.div`
   background: linear-gradient(45deg, rgba(6,150,136,1) 0%, rgba(22,46,105,1) 100%);
 `
 
-const Background = styled.img`
+const Background = styled.div`
   position: absolute;
   top: 0;
   left: 0;
   width: 110%;
   transition: 0.2s ease-in-out all;
-  transform: translate(-${ props => props.translateX}px, -${ props => props.translateY }px);
+  transform: translate(0, -${ props => props.translateY }px);
+  height: 100%;
+  padding: 100px;
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: url(${(props) => props.bg }) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    @media (max-width: ${breakpoints[2] + "px"}) {
+      background: url(${(props) => props.bgMobile }) no-repeat center center;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+  }
 `
 
 const HeadingContainer = styled.div`
@@ -114,6 +142,18 @@ const Heading = styled.h1`
     font-size: 23px;
     padding-top: 10px;
     font-family: "bebas";
+  }
+  @media (max-width: ${breakpoints[2] + "px"}) {
+    font-size: 55px;
+    transform: rotate(0deg);
+    span {
+      font-size: 183px;
+    }
+    p {
+      font-size: 30px;
+      max-width: 290px;
+      line-height: 1.3;
+    }
   }
 `
 
@@ -181,7 +221,7 @@ const Hawk1 = styled.div`
   position: absolute;
   z-index: 10;
   right: -70px;
-  top: 100px;
+  top: 50px;
   transition: 0.2s ease-in-out all;
   transform: translate(-${ props => props.translateX * 1.5}px, ${ props => props.translateY * 1.3 }px);
   img {
@@ -189,14 +229,28 @@ const Hawk1 = styled.div`
   }
   .body {
     width: 320px;
+    z-index: 1;
   }
   .wing {
+    z-index: 2;
     width: 320px;
     top: -140px;
     left: 80px;
     transition: 0.2s ease-in-out all;
     transform-origin: bottom left;
     animation: ${ skewWing } 2s linear infinite;
+  }
+  .phone {
+    width: 90px;
+    top: 240px;
+    left: 30px;
+    transition: 0.2s ease-in-out all;
+    transform-origin: top center;
+    animation: ${ swingWide } 2s linear infinite;
+  }
+  @media (max-width: ${breakpoints[2] + "px"}) {
+    right: 120px;
+    top: 320px;
   }
 `
 const Hawk2 = styled.div`
@@ -242,6 +296,13 @@ const Hawk2 = styled.div`
     top: 110px;
     right: -230px;
   }
+  @media (max-width: ${breakpoints[1] + "px"}) {
+    left: 20px;
+    z-index: 1;
+    .laptop {
+      display: none;
+    }
+  }
 `
 
 const Overlay = styled.div`
@@ -261,6 +322,9 @@ const Overlay = styled.div`
   right: 0;
   opacity: 0.6;
   background: linear-gradient(45deg, rgba(6,150,136,1) 0%, rgba(22,46,105,1) 100%);
+  @media (max-width: ${breakpoints[2] + "px"}) {
+    opacity: 0.7;
+  }
 `
 
 const Container = styled.div`
@@ -639,6 +703,10 @@ const Link = styled.a`
 const About = styled.div`
   width: 100%;
   background: url(${(props) => props.bg}) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   /* #be2f2e */
   min-height: 800px;
   display: flex;
@@ -918,6 +986,7 @@ function App() {
           >
             <img className="body" src={ h1Body }/>
             <img className="wing" src={ h1Wing }/>
+            <img className="phone" src={ birdPhone }/>
           </Hawk1>
           <Hawk2
             translateX={ backgroundTranslate.x }
@@ -930,16 +999,17 @@ function App() {
             <img className="laptop" src={ laptop }/>
           </Hawk2>
         </HeadingContainer>
-        <Background
-          translateX={ backgroundTranslate.x }
-          translateY={ backgroundTranslate.y }
-          src={ taipei }
-          alt="Maureen Portfolio"
-        />
+          <Background
+            bg={ taipei }
+            bgMobile={ taipeiMobile }
+            translateX={ backgroundTranslate.x }
+            translateY={ backgroundTranslate.y }
+            alt="Maureen Portfolio"
+          />
         <Overlay/>
       </ParallaxContainer>
 
-      <Divider height="80px"/>
+      <Divider height="80px" hideMobile={ true }/>
       <Container>
         <Fade left>
           <PortfolioContainer>
