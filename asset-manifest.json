@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/static/css/main.c7db9c51.chunk.css",
-    "main.js": "/static/js/main.c2d849b4.chunk.js",
-    "main.js.map": "/static/js/main.c2d849b4.chunk.js.map",
+    "main.js": "/static/js/main.ca9a1751.chunk.js",
+    "main.js.map": "/static/js/main.ca9a1751.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.f8c5b4be.js",
     "runtime-main.js.map": "/static/js/runtime-main.f8c5b4be.js.map",
     "static/js/2.91107e67.chunk.js": "/static/js/2.91107e67.chunk.js",
     "static/js/2.91107e67.chunk.js.map": "/static/js/2.91107e67.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.d16dae51a5405fb8828d473f5958534c.js": "/precache-manifest.d16dae51a5405fb8828d473f5958534c.js",
+    "precache-manifest.a4ed0a729eb79b885b75418bcd21fec7.js": "/precache-manifest.a4ed0a729eb79b885b75418bcd21fec7.js",
     "service-worker.js": "/service-worker.js",
     "static/css/main.c7db9c51.chunk.css.map": "/static/css/main.c7db9c51.chunk.css.map",
     "static/js/2.91107e67.chunk.js.LICENSE.txt": "/static/js/2.91107e67.chunk.js.LICENSE.txt",
     "static/media/index.css": "/static/media/Roboto-Regular.11eabca2.ttf",
-    "static/media/about3.jpg": "/static/media/about3.e5235add.jpg",
+    "static/media/about.jpg": "/static/media/about.eed528b6.jpg",
     "static/media/bird-phone.png": "/static/media/bird-phone.d2a9da37.png",
     "static/media/email3.svg": "/static/media/email3.8a366fd8.svg",
     "static/media/flowers-mobile.jpg": "/static/media/flowers-mobile.7988c5e2.jpg",
@@ -29,27 +29,27 @@
     "static/media/humming-right.png": "/static/media/humming-right.878a4fa1.png",
     "static/media/humming-tail.png": "/static/media/humming-tail.1f572928.png",
     "static/media/laptop.png": "/static/media/laptop.9f3b5590.png",
-    "static/media/marketplace-desktop.png": "/static/media/marketplace-desktop.f613f10f.png",
+    "static/media/marketplace-desktop2.jpg": "/static/media/marketplace-desktop2.5c8f8cf4.jpg",
     "static/media/marketplace-mobile.png": "/static/media/marketplace-mobile.c3fcd239.png",
-    "static/media/nats-desktop.png": "/static/media/nats-desktop.cced0d8b.png",
+    "static/media/nats-desktop2.jpg": "/static/media/nats-desktop2.54328d39.jpg",
     "static/media/nats-mobile.png": "/static/media/nats-mobile.0a7361e4.png",
     "static/media/noise2.png": "/static/media/noise2.f5d9ce86.png",
     "static/media/ops-desktop.png": "/static/media/ops-desktop.c80df080.png",
     "static/media/ops-mobile.png": "/static/media/ops-mobile.09d634e2.png",
-    "static/media/popup-desktop.jpg": "/static/media/popup-desktop.efe9b91b.jpg",
+    "static/media/popup-desktop2.jpg": "/static/media/popup-desktop2.d3c1a600.jpg",
     "static/media/popup-mobile.png": "/static/media/popup-mobile.9583edbe.png",
     "static/media/resume.pdf": "/static/media/resume.fafea6df.pdf",
-    "static/media/seemenus-desktop.jpg": "/static/media/seemenus-desktop.b17cbc81.jpg",
+    "static/media/seemenus-desktop2.jpg": "/static/media/seemenus-desktop2.d56737dd.jpg",
     "static/media/seemenus-mobile.jpg": "/static/media/seemenus-mobile.214fadd8.jpg",
     "static/media/stock-desktop.png": "/static/media/stock-desktop.813b9482.png",
     "static/media/stock-mobile.png": "/static/media/stock-mobile.4ed5d8c3.png",
     "static/media/taipei-mobile.jpg": "/static/media/taipei-mobile.ac9cffd5.jpg",
-    "static/media/taipei.jpg": "/static/media/taipei.0c7ed5fa.jpg"
+    "static/media/taipei.jpg": "/static/media/taipei.b0a36cfd.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.f8c5b4be.js",
     "static/js/2.91107e67.chunk.js",
     "static/css/main.c7db9c51.chunk.css",
-    "static/js/main.c2d849b4.chunk.js"
+    "static/js/main.ca9a1751.chunk.js"
   ]
 }
