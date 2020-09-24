@@ -1360,7 +1360,7 @@ function App() {
               <AboutTitle>About Me</AboutTitle>
               <AboutP>I'm a Frontend Engineer and UIUX Designer who currently works remotely for a startup in the US. My role spans developing product concepts, prototyping, designing and coding. I also work as a freelance graphic designer and artist.</AboutP>
 
-              <AboutP>Raised in Japan and currently residing in Taiwan, I speak both Japanese and Mandarin. On my spare time, I like to work on personal web projects, draw and study foreign languages.</AboutP>
+              <AboutP>Raised in Japan by a Chilean mother and American father, I grew up speaking English, Japanese and Spanish and later learned Mandarin in Taiwan. On my spare time, I like to work on personal web projects, draw and study foreign languages.</AboutP>
               <Contact>
                 <img src={ email3 }/>
                 <p>maureenvogel@outlook.com</p>
