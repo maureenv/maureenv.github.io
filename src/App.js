@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState } from 'react'
 import 'react-app-polyfill/ie11'
 import styled from '@emotion/styled'
 import MediaQuery from 'react-responsive'
@@ -64,6 +64,7 @@ const LogoContainer = styled.div`
   position: absolute;
   padding: 20px;
   z-index: 3;
+  top: 0;
   @media (max-width: ${breakpoints[1] + "px"}) {
     display: none;
   }
@@ -1050,9 +1051,9 @@ function App() {
             <Tools>Tools Used</Tools>
             <ToolsContainer>
               <Tool color="#edf2f7">React Native</Tool>
+              <Tool color="#edf2f7">Typescript</Tool>
               <Tool color="#edf2f7">Sketch</Tool>
               <Tool color="#edf2f7">InVision</Tool>
-              <Tool color="#edf2f7">Emotion CSS</Tool>
             </ToolsContainer>
             <MediaQuery minWidth={ breakpoints[1]}>
               <SeeWeb color="#ee346d" href="https://projects.invisionapp.com/share/X9YLMJ0SCQE#/screens/430161794">See Prototype</SeeWeb>
