@@ -129,7 +129,7 @@ const HeadingContainer = styled.div`
 
 const Heading = styled.h1`
   font-family: "bebas";
-  font-size: 73px;
+  font-size: 93px;
   color: #fff;
   line-height: 0.9;
   position: relative;
@@ -137,13 +137,13 @@ const Heading = styled.h1`
   transition: 0.2s ease-in-out all;
   transform: translate(${ props => props.translateX}px, ${ props => props.translateY }px) rotate(5deg);
   span {
-    font-size: 250px;
+    font-size: 315px;
     display: block;
     line-height: 0.9;
     border-bottom: 2px solid #fff;
   }
   p {
-    font-size: 23px;
+    font-size: 29px;
     padding-top: 10px;
     font-family: "bebas";
   }
@@ -227,7 +227,7 @@ const skewWing = keyframes`
 const Hawk1 = styled.div`
   position: absolute;
   z-index: 10;
-  right: -70px;
+  right: -90px;
   top: 50px;
   transition: 0.2s ease-in-out all;
   transform: translate(-${ props => props.translateX * 1.5}px, ${ props => props.translateY * 1.3 }px);
