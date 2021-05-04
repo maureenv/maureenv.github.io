@@ -8,8 +8,8 @@ import Zoom from 'react-reveal/Zoom'
 import useWindowDimensions from './components/windowDimensions'
 import { breakpoints } from './constants.js'
 
-import stockMobile from './images/stock-mobile.png'
-import stockPad from './images/stock-desktop.png'
+import stockMobile from './images/stock-mobile.jpg'
+import stockPad from './images/stock-desktop.jpg'
 import natsMobile from './images/nats-mobile.png'
 import natsDesktop from './images/nats-desktop2.jpg'
 import opsMobile from './images/ops-mobile.png'
@@ -1036,6 +1036,60 @@ function App() {
         <Overlay/>
       </ParallaxContainer>
 
+      <Container>
+        <Fade left>
+          <PortfolioContainer>
+            <Title>Stock Comparer</Title>
+            <ColorPalette>
+              <Color bg="#00aee0">#00aee0</Color>
+              <Color bg="#00659e">#00659e</Color>
+              <Color bg="#f44336">#f44336</Color>
+              <Color bg="#efefef">#efefef</Color>
+            </ColorPalette>
+            <Info>Stock Comparer is a personal project that I designed and coded to help investors compare stocks easily through data visualization. It pulls in data from various stock APIs and generates charts for stock fundamental data including cash flow, balance sheets, income statements and more. I'm also marketing the website on social media through personally designed infographics related to stocks.</Info>
+            <Tools>Tools Used</Tools>
+            <ToolsContainer>
+              <Tool color="#efefef">React JS</Tool>
+              <Tool color="#efefef">Emotion CSS</Tool>
+              <Tool color="#efefef">Node</Tool>
+              <Tool color="#efefef">Mongo DB</Tool>
+            </ToolsContainer>
+            <MediaQuery minWidth={ breakpoints[1]}>
+              <SeeWeb color="#00659e" href="http://www.stockcomparer.com/">See Website</SeeWeb>
+            </MediaQuery>
+          </PortfolioContainer>
+        </Fade>
+        <Fade right>
+        <MediaQuery minWidth={ breakpoints[1]}>
+          <div>
+            <PadContainer>
+              <PadScreen animate={ true }>
+                <img src={ stockPad }/>
+              </PadScreen>
+            </PadContainer>
+            <PhoneContainer>
+              <PhoneScreen animate={ true }>
+                <img src={ stockMobile }/>
+              </PhoneScreen>
+            </PhoneContainer>
+          </div>
+        </MediaQuery>
+        </Fade>
+        <Fade right>
+          <div>
+            <MediaQuery maxWidth={ breakpoints[1]}>
+              <MobileImageContainer height="300px">
+                <MobileImage alt="Web Developer" src={ stockPad }/>
+              </MobileImageContainer>
+            </MediaQuery>
+            <MediaQuery maxWidth={ breakpoints[1]}>
+              <SeeWeb color="#00659e" href="http://www.stockcomparer.com/">See Website</SeeWeb>
+            </MediaQuery>
+          </div>
+        </Fade>
+      </Container>
+
+
       <Divider height="80px" hideMobile={ true }/>
       <Container>
         <Fade left>
@@ -1047,7 +1101,7 @@ function App() {
               <Color bg="#ff624d">#ff624d</Color>
               <Color bg="#edf2f7">#edf2f7</Color>
             </ColorPalette>
-            <Info>HUNGRY Popups is a mobile app I'm designing and developing for HUNGRY to allow customers to find catering popups nearby. It uses location tracking and google maps to notify customers of popups being held in nearby buildings.</Info>
+            <Info>HUNGRY Popups is a mobile app I designed and developed for HUNGRY (an office catering business) to allow customers to find catering popups nearby. It uses location tracking and google maps to notify customers of popups being held in nearby buildings.</Info>
             <Tools>Tools Used</Tools>
             <ToolsContainer>
               <Tool color="#edf2f7">React Native</Tool>
@@ -1092,14 +1146,14 @@ function App() {
       <Container>
         <Fade left>
           <PortfolioContainer>
-            <Title>SeeMenus Menu Builder</Title>
+            <Title>Restaurant Menu Builder</Title>
             <ColorPalette>
               <Color bg="#215a46">#215a46</Color>
               <Color bg="#248c67">#248c67</Color>
               <Color bg="#04bf7b">#04bf7b</Color>
               <Color bg="#edf2f7">#edf2f7</Color>
             </ColorPalette>
-            <Info>SeeMenus is a website I am designing and coding to help restaurants easily build their own website with an online menu and editable theme. The menu is automatically translated into Japanese and Chinese using a machine learning translation API called Deepl. Users can also print a PDF of their menu in the translated languages. </Info>
+            <Info>This is a website I designed and coded to help restaurants easily build their own website with an online menu and editable theme. The menu is automatically translated into Japanese and Chinese using a machine learning translation API called Deepl. Users can also print a PDF of their menu in the translated languages. </Info>
             <Tools>Tools Used</Tools>
             <ToolsContainer>
               <Tool color="#edf2f7">React JS</Tool>
@@ -1136,59 +1190,6 @@ function App() {
       <Container>
         <Fade left>
           <PortfolioContainer>
-            <Title>Stock Comparer</Title>
-            <ColorPalette>
-              <Color bg="#00aee0">#00aee0</Color>
-              <Color bg="#00659e">#00659e</Color>
-              <Color bg="#f44336">#f44336</Color>
-              <Color bg="#efefef">#efefef</Color>
-            </ColorPalette>
-            <Info>Stock Comparer is a project that uses the <Link href="https://iexcloud.io/docs/api/">IEX Cloud API</Link> to display stock data visually in charts. I've designed and started coding this site to help new investors better compare stock financial data through a clean and simple UI that explains what different financial data means.</Info>
-            <Tools>Tools Used</Tools>
-            <ToolsContainer>
-              <Tool color="#efefef">React JS</Tool>
-              <Tool color="#efefef">Emotion CSS</Tool>
-              <Tool color="#efefef">Node</Tool>
-              <Tool color="#efefef">Mongo DB</Tool>
-            </ToolsContainer>
-            <MediaQuery minWidth={ breakpoints[1]}>
-              <SeeWeb color="#00659e" href="http://www.stockcomparer.com/">See Website</SeeWeb>
-            </MediaQuery>
-          </PortfolioContainer>
-        </Fade>
-        <Fade right>
-        <MediaQuery minWidth={ breakpoints[1]}>
-          <div>
-            <PadContainer>
-              <PadScreen animate={ true }>
-                <img src={ stockPad }/>
-              </PadScreen>
-            </PadContainer>
-            <PhoneContainer>
-              <PhoneScreen animate={ true }>
-                <img src={ stockMobile }/>
-              </PhoneScreen>
-            </PhoneContainer>
-          </div>
-        </MediaQuery>
-        </Fade>
-        <Fade right>
-          <div>
-            <MediaQuery maxWidth={ breakpoints[1]}>
-              <MobileImageContainer height="300px">
-                <MobileImage alt="Web Developer" src={ stockPad }/>
-              </MobileImageContainer>
-            </MediaQuery>
-            <MediaQuery maxWidth={ breakpoints[1]}>
-              <SeeWeb color="#00659e" href="http://www.stockcomparer.com/">See Website</SeeWeb>
-            </MediaQuery>
-          </div>
-        </Fade>
-      </Container>
-
-      <Container>
-        <Fade left>
-          <PortfolioContainer>
             <Title>Major league baseball stadium food delivery site</Title>
             <ColorPalette>
               <Color bg="#00073b">#00073b</Color>
@@ -1196,7 +1197,7 @@ function App() {
               <Color bg="#b7b7b7">#b7b7b7</Color>
               <Color bg="#efefef">#efefef</Color>
             </ColorPalette>
-            <Info>I managed, designed and coded a themeable website for MLB teams to deliver stadium food to fan's homes during the Covid pandemic so that they can experience the ballpark from home. It's been a huge hit among baseball fans who've been ecstatically ordering food to to their homes to watch the baseball games. Here's a press page on this website: <Link href="https://www.arlnow.com/2020/07/27/arlington-startup-hungry-offering-ballpark-food-delivery-for-nationals-fans/?mc_cid=8cf027a4c2&mc_eid=aebdd8191c">Arlington Startup Hungry Offering Ballpark Food Delivery for Nationals Fans</Link></Info>
+            <Info>I managed, designed and coded a themeable website for MLB teams to deliver stadium food to fan's homes during the Covid pandemic. It was built for fans to get a "ballpark experience" from home. It's been a huge hit among baseball fans who've been ecstatically ordering food to to their homes to watch the baseball games. Here's a press page on this website: <Link href="https://www.arlnow.com/2020/07/27/arlington-startup-hungry-offering-ballpark-food-delivery-for-nationals-fans/?mc_cid=8cf027a4c2&mc_eid=aebdd8191c">Arlington Startup Hungry Offering Ballpark Food Delivery for Nationals Fans</Link></Info>
             <Tools>Tools Used</Tools>
             <ToolsContainer>
               <Tool color="#efefef">React JS</Tool>
@@ -1249,7 +1250,7 @@ function App() {
               <Color bg="#ff624d">#ff624d</Color>
               <Color bg="#f3f3f4">#f3f3f4</Color>
             </ColorPalette>
-            <Info>This is a dashboard designed and coded by me to help the HUNGRY delivery team manage all catering deliveries. I did user research to discover what the pain points where for our delivery team and designed a user interface to tackle these problems. Our delivery team can now easily see the status of all deliveries and whether they're on time or not. They can also use the accounting tab in the dashboard to manage delivery team pay. </Info>
+            <Info>This is a dashboard designed and coded by me to help the HUNGRY delivery team manage all catering deliveries. HUNGRY is an office catering company that connects top local chefs and food delivery services. I did user research to discover what the pain points are for our delivery team and designed a user interface to tackle these problems. Our delivery team can now easily see the status of all deliveries and whether they're on time or not. They can also use the accounting tab in the dashboard to manage delivery team pay. </Info>
             <Tools>Tools Used</Tools>
             <ToolsContainer>
               <Tool color="#f3f3f4">React JS</Tool>
