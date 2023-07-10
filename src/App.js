@@ -1055,7 +1055,7 @@ function App() {
               <Tool color="#efefef">Mongo DB</Tool>
             </ToolsContainer>
             <MediaQuery minWidth={ breakpoints[1]}>
-              <SeeWeb color="#00659e" href="http://www.stockcomparer.com/">See Website</SeeWeb>
+              <SeeWeb color="#00659e" target="_blank" href="http://www.stockcomparer.com/">See Website</SeeWeb>
             </MediaQuery>
           </PortfolioContainer>
         </Fade>
@@ -1083,7 +1083,7 @@ function App() {
               </MobileImageContainer>
             </MediaQuery>
             <MediaQuery maxWidth={ breakpoints[1]}>
-              <SeeWeb color="#00659e" href="http://www.stockcomparer.com/">See Website</SeeWeb>
+              <SeeWeb color="#00659e" target="_blank" href="http://www.stockcomparer.com/">See Website</SeeWeb>
             </MediaQuery>
           </div>
         </Fade>
@@ -1110,7 +1110,7 @@ function App() {
               <Tool color="#edf2f7">InVision</Tool>
             </ToolsContainer>
             <MediaQuery minWidth={ breakpoints[1]}>
-              <SeeWeb color="#ee346d" href="https://projects.invisionapp.com/share/X9YLMJ0SCQE#/screens/430161794">See Prototype</SeeWeb>
+              <SeeWeb color="#ee346d" target="_blank" href="https://projects.invisionapp.com/share/X9YLMJ0SCQE#/screens/430161794">See Prototype</SeeWeb>
             </MediaQuery>
           </PortfolioContainer>
         </Fade>
@@ -1136,7 +1136,7 @@ function App() {
               <MobileImage noShadow={ true } alt="Web Developer" src={ popupDesktop }/>
             </MediaQuery>
             <MediaQuery maxWidth={ breakpoints[1]}>
-              <SeeWeb color="#ee346d" href="https://projects.invisionapp.com/share/X9YLMJ0SCQE#/screens/430161794">See Prototype</SeeWeb>
+              <SeeWeb color="#ee346d" target="_blank" href="https://projects.invisionapp.com/share/X9YLMJ0SCQE#/screens/430161794">See Prototype</SeeWeb>
             </MediaQuery>
           </div>
         </Fade>
@@ -1205,9 +1205,6 @@ function App() {
               <Tool color="#efefef">Sketch</Tool>
               <Tool color="#efefef">InVision</Tool>
             </ToolsContainer>
-            <MediaQuery minWidth={ breakpoints[1]}>
-              <SeeWeb color="#00073b" href="https://nationals.tryhungry.com/">See Website</SeeWeb>
-            </MediaQuery>
           </PortfolioContainer>
         </Fade>
         <Fade right>
@@ -1234,7 +1231,7 @@ function App() {
               </MobileImageContainer>
             </MediaQuery>
             <MediaQuery maxWidth={ breakpoints[1]}>
-              <SeeWeb color="#00073b" href="https://nationals.tryhungry.com/">See Website</SeeWeb>
+              <SeeWeb color="#00073b" target="_blank" href="https://nationals.tryhungry.com/">See Website</SeeWeb>
             </MediaQuery>
           </div>
         </Fade>
@@ -1305,7 +1302,7 @@ function App() {
               <Tool>Google Analytics</Tool>
             </ToolsContainer>
             <MediaQuery minWidth={ breakpoints[1]}>
-              <SeeWeb color="#ee346d" href="https://tryhungry.com/">See Website</SeeWeb>
+              <SeeWeb color="#ee346d" target="_blank" href="https://tryhungry.com/">See Website</SeeWeb>
             </MediaQuery>
           </PortfolioContainer>
         </Fade>
@@ -1333,7 +1330,7 @@ function App() {
               </MobileImageContainer>
             </MediaQuery>
             <MediaQuery maxWidth={ breakpoints[1]}>
-              <SeeWeb color="#ee346d" href="https://tryhungry.com/">See Website</SeeWeb>
+              <SeeWeb color="#ee346d" target="_blank" href="https://tryhungry.com/">See Website</SeeWeb>
             </MediaQuery>
           </div>
         </Fade>
@@ -1360,9 +1357,9 @@ function App() {
           <Fade left>
             <AboutBio>
               <AboutTitle>About Me</AboutTitle>
-              <AboutP>I'm a Frontend Engineer and UIUX Designer who currently works remotely for a startup in the US. My role spans developing product concepts, prototyping, designing and coding. I also work as a freelance graphic designer and artist.</AboutP>
+              <AboutP>Hello! I'm a Front End Engineer and UIUX Designer with over 7 years of experience. My expertise lies in designing elegant and intuitive user interfaces and translating them into clean, efficient code. I've worked closely with product managers, developers, designers and stakeholders to deliver outstanding results. Outside of the tech and product realm, I also have experience in graphic design, video editing and painting.</AboutP>
 
-              <AboutP>Raised in Japan by a Chilean mother and American father, I grew up speaking English, Japanese and Spanish and later learned Mandarin in Taiwan. On my spare time, I like to work on personal web projects, draw and study foreign languages.</AboutP>
+              <AboutP>Having spent over two decades in Japan and Taiwan, I have cultivated fluency in both Japanese and Mandarin. The invaluable experiences of living abroad for the majority of my life have provided me with a profound understanding of how to thrive in multicultural settings. This experiences has shaped me into an individual who seamlessly navigates diverse settings, fostering cross-cultural connections with ease.</AboutP>
               <Contact>
                 <img src={ email3 }/>
                 <p>maureenvogel@outlook.com</p>
