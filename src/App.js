@@ -1359,7 +1359,7 @@ function App() {
               <AboutTitle>About Me</AboutTitle>
               <AboutP>Hello! I'm a Front End Engineer and UIUX Designer with over 7 years of experience. My expertise lies in designing elegant and intuitive user interfaces and translating them into clean, efficient code. I've worked closely with product managers, developers, designers and stakeholders to deliver outstanding results. Outside of the tech and product realm, I also have experience in graphic design, video editing and painting.</AboutP>
 
-              <AboutP>Having spent over two decades in Japan and Taiwan, I have cultivated fluency in both Japanese and Mandarin. The invaluable experiences of living abroad for the majority of my life have provided me with a profound understanding of how to thrive in multicultural settings. This experiences has shaped me into an individual who seamlessly navigates diverse settings, fostering cross-cultural connections with ease.</AboutP>
+              <AboutP>Having spent over two decades in Japan and Taiwan, I have cultivated fluency in both Japanese and Mandarin. The invaluable experiences of living abroad for the majority of my life have provided me with a profound understanding of how to thrive in diverse settings.</AboutP>
               <Contact>
                 <img src={ email3 }/>
                 <p>maureenvogel@outlook.com</p>
