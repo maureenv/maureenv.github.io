@@ -1,46 +1,22 @@
 {
-  "homepage": "http://maureenv.github.io/",
-  "name": "my-app",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@emotion/core": "^10.0.28",
-    "@emotion/styled": "^10.0.27",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "emotion-theming": "^10.0.27",
-    "react": "^16.13.1",
-    "react-app-polyfill": "^1.0.6",
-    "react-dom": "^16.13.1",
-    "react-responsive": "^8.1.0",
-    "react-reveal": "^1.2.2",
-    "react-scripts": "3.4.1"
-  },
+  "name": "spiffy-shepherd",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "@astrojs/tailwind": "^5.0.0",
+    "@fontsource-variable/outfit": "^5.0.8",
+    "astro": "^3.1.4",
+    "tailwindcss": "^3.3.3"
   },
   "devDependencies": {
-    "gh-pages": "^3.1.0"
+    "prettier": "^3.0.3",
+    "prettier-plugin-astro": "^0.12.0"
   }
 }

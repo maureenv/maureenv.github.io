@@ -1,4 +1,7 @@
 CHANGE 1
+## Run prettier
+prettier --write .
+
 ## To deploy to github pages
 1. at top of package.json add   "homepage": "http://maureenv.github.io/",
 2. To deploy do npm run build > copy everything in build folder and move out to root folder
