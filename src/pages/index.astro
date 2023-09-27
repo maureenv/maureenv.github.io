@@ -1,19 +1,26 @@
 ---
-import { Image } from 'astro:assets'
+import {Image} from "astro:assets";
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
-import phone from '../../images/phone.svg';
+import phone from "../../images/phone.svg";
+import Test from "../components/Test.tsx";
 ---
 
 <Layout title="Maureen Vogel | UIUX Design | Frontend">
-	<div class="flex items-center justify-center h-screen">
-		<h1 class="max-w-6xl text-white font-black text-6xl leading-normal">Heard you’re looking for a UI/UX designer & Frontend Dev. who can</h1>
-		<div class="bg-gradient-to-r
+  <div class="flex items-center justify-center h-screen">
+    <div class="flex flex-col max-w-5xl text-6xl leading-normal text-white">
+      <h1 class="font-bold">
+        Heard you’re looking for a UI/UX designer & Frontend Dev. who can
+      </h1>
+      <Test client:only="react" />
+    </div>
+    <div
+      class="bg-gradient-to-r
     from-pink-500
     via-red-500
     to-yellow-500
-    background-animate">
-			<Image src={ phone } alt="phone"/>
-		</div>
-	</div>
+    background-animate"
+    >
+      <Image src={phone} alt="phone" />
+    </div>
+  </div>
 </Layout>
