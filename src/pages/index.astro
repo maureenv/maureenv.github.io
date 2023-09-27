@@ -1,10 +1,19 @@
 ---
+import { Image } from 'astro:assets'
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
+import phone from '../../images/phone.svg';
 ---
 
 <Layout title="Maureen Vogel | UIUX Design | Frontend">
 	<div class="flex items-center justify-center h-screen">
-		<h1 class="max-w-6xl text-white font-black text-6xl leading-normal">Heard you're looking for a UI/UX designer who can also code...</h1>
+		<h1 class="max-w-6xl text-white font-black text-6xl leading-normal">Heard you’re looking for a UI/UX designer who can also code...</h1>
+		<div class="bg-gradient-to-r
+    from-pink-500
+    via-red-500
+    to-yellow-500
+    background-animate">
+			<Image src={ phone } alt="phone"/>
+		</div>
 	</div>
 </Layout>
