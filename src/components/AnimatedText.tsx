@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactTypingEffect from 'react-typing-effect';
 
-const Test = () => {
+const AnimatedText = () => {
   return (
     <>
       <ReactTypingEffect
-        text={["code JavaScript", "design in Figma", "use Photoshop", "conduct user interviews"]}
+        text={["code in JavaScript", "use React", "design in Figma & Sketch", "code in TypeScript", "use Photoshop", "conduct user interviews", "write CSS", "integrate APIs", "use Illustrator", "make responsive designs"]}
         speed={ 50 }
         eraseSpeed={ 100 }
         eraseDelay={ 1000 }
@@ -30,4 +30,4 @@ const Test = () => {
   );
 };
 
-export default Test
+export default AnimatedText
